@@ -1,0 +1,23 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css);
+
+@font-face {
+    font-family: 'NanumSquareOTF_acB';
+    src: url('NanumSquareOTF_acB.otf');
+}
+@font-face {
+    font-family: 'NanumSquareOTF_acEB';
+    src: url('NanumSquareOTF_acEB.otf');
+}
+@font-face {
+    font-family: 'NanumSquareOTF_acL';
+    src: url('NanumSquareOTF_acL.otf');
+}
+@font-face {
+    font-family: 'NanumSquareOTF_acR';
+    src: url('NanumSquareOTF_acR.otf');
+}
+@font-face {
+    font-family: 'Geneva';
+    src: url('GenevaRegular.ttf');
+}
