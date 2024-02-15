@@ -29,7 +29,7 @@ const SelectSix = () => {
   
           <div className='selectOne'>
             <div class="progress-bar">
-              <div className="progress" style={{ width: `${progress}%` }}></div>
+              <div className="progress6" style={{ width: `${progress}%` }}></div>
             </div>
   
             {/* 질문 */}
