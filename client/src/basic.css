@@ -41,7 +41,9 @@
 .intro-context {
     margin-left: 50px;
     line-height: 2.5;
-    font-size: 17px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(80, 80, 80);
 }
 
 /* 2 page */
@@ -654,20 +656,162 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Progress-bar */
+
 .progress-bar {
-    width: 100%;
+    width: 95%;
     height: 20px;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0 !important;
     border-radius: 10px;
-    margin-bottom: 10px;
-  }
+    margin-top: 20px;
+    margin-left: 10px;
+}
   
-  .progress {
+.progress1 {
     height: 100%;
-    background-color: #4caf50;
+    width: 0; 
+    background-color: rgba(133, 105, 247, 0.7) !important;
     border-radius: 10px;
-    transition: width 0.3s ease;
+    animation: progressAnimation1 1s ease forwards;
+}
+
+@keyframes progressAnimation1 {
+    from {
+      width: 0;
+    }
+    to {
+      width: 12.5%;
+    }
+    
   }
+
+.progress2 {
+    height: 100%;
+    width: 0; 
+    background-color: rgba(133, 105, 247, 0.7) !important;
+    border-radius: 10px;
+    animation: progressAnimation2 1s ease forwards;
+}
+
+@keyframes progressAnimation2 {
+    from {
+      width: 12.5%;
+    }
+    to {
+      width: 25%;
+    }
+    
+}
+
+.progress3 {
+    height: 100%;
+    width: 0; 
+    background-color: rgba(133, 105, 247, 0.7) !important;
+    border-radius: 10px;
+    animation: progressAnimation3 1s ease forwards;
+}
+
+@keyframes progressAnimation3 {
+    from {
+      width: 25%;
+    }
+    to {
+      width: 37.5%;
+    }
+    
+}
+
+.progress4 {
+    height: 100%;
+    width: 0; 
+    background-color: rgba(133, 105, 247, 0.7) !important;
+    border-radius: 10px;
+    animation: progressAnimation4 1s ease forwards;
+}
+
+@keyframes progressAnimation4 {
+    from {
+      width: 37.5%;
+    }
+    to {
+      width: 50%;
+    }
+    
+}
+
+.progress5 {
+    height: 100%;
+    width: 0; 
+    background-color: rgba(133, 105, 247, 0.7) !important;
+    border-radius: 10px;
+    animation: progressAnimation5 1s ease forwards;
+}
+
+@keyframes progressAnimation5 {
+    from {
+      width: 50%;
+    }
+    to {
+      width: 62.5%;
+    }
+    
+}
+
+.progress6 {
+    height: 100%;
+    width: 0; 
+    background-color: rgba(133, 105, 247, 0.7) !important;
+    border-radius: 10px;
+    animation: progressAnimation6 1s ease forwards;
+}
+
+@keyframes progressAnimation6 {
+    from {
+      width: 62.5%;
+    }
+    to {
+      width: 75%;
+    }
+    
+}
+
+.progress7 {
+    height: 100%;
+    width: 0; 
+    background-color: rgba(133, 105, 247, 0.7) !important;
+    border-radius: 10px;
+    animation: progressAnimation7 1s ease forwards;
+}
+
+@keyframes progressAnimation7 {
+    from {
+      width: 75%;
+    }
+    to {
+      width: 87.5%;
+    }
+    
+}
+
+.progress8 {
+    height: 100%;
+    width: 0; 
+    background-color: rgba(133, 105, 247, 0.7) !important;
+    border-radius: 10px;
+    animation: progressAnimation8 1s ease forwards;
+}
+
+@keyframes progressAnimation8 {
+    from {
+      width: 87.5%;
+    }
+    to {
+      width: 100%;
+    }
+    
+}
+
+/*  */
 
 .question {
     margin-top: 100px;

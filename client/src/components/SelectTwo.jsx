@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const SelectTwo = () => {
@@ -29,7 +29,7 @@ const SelectTwo = () => {
 
         <div className='selectOne'>
           <div class="progress-bar">
-              <div className="progress" style={{ width: `${progress}%` }}></div>
+              <div className="progress2" style={{ width: `${progress}%` }}></div>
           </div>
 
           {/* 질문 */}

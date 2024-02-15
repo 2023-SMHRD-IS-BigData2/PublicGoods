@@ -1,48 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const SelectEight = () => {
-    const navigate = useNavigate();
 
-    // 있습니다. 클릭했을 때
-    const handleYesClick = () => {
-      navigate('/selectEight');
-    };
-  
-    // 없습니다. 클릭했을 때
-    const handleNoClick = () => {
-      navigate('/selectEight');
+    const navigate = useNavigate();
+    const [progress, setProgress] = useState(100);
+
+    // 확인버튼 클릭했을 때
+    const handleOkClick = () => {
+      setProgress(0);
+      navigate('/finalSelect');
     };
   
     // 모릅니다. 클릭했을 때
     const handleKnowClick = () => {
-      navigate('/selectEight');
+      setProgress(0);
+      navigate('/finalSelect');
     };
   
     return (
       <div className='selectPage'>
   
           <div className='selectOne'>
+            <div class="progress-bar">
+              <div className="progress8" style={{ width: `${progress}%` }}></div>
+            </div>
   
             {/* 질문 */}
             <div className='question'>
-              <h3 className='questionTitle'>대출승인금액</h3>
+              <h3 className='questionTitle'>은행에게 대출 받은 금액은 얼마입니까?</h3>
             </div>
   
-            {/* 있습니다 Button */}
+            {/* 금액 Input */}
             <div className='apply-box'>
-                <div className='apply-bank'>
-                  <button className='apply-btn' onClick={handleYesClick}>
-                    <p className='btn-sub'>있습니다.<br/> </p>
-                  </button>
-                </div>
-  
-            {/* 없습니다 Button */}
-            <div className='apply-company'>
-              <button className='apply-btn' onClick={handleNoClick}>
-                 <p className='btn-sub'>없습니다.<br/> </p>
-              </button>
-            </div>
+              <div className='apply-bank'>
+                <div className='btn-sub2'>
+                  <div class="input-wrapper">
+                    <input className='apply-btn2' type='number' placeholder='예)  1000' />
+                    <span className="placeholder-text">만원</span>
+                    <button className='okBtn' onClick={handleOkClick}>확인</button>
+                  </div>
+                </div> 
+              </div>
   
             {/* 모릅니다 Button */}
               <div className='apply-company' onClick={handleKnowClick}>

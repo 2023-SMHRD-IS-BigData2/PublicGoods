@@ -12,6 +12,10 @@ import CompanyJoin from './components/CompanyJoin'
 import BankApply from './components/BankApply';
 import CompanyApply from './components/CompanyApply';
 import FileUpload from './components/FileUpload';
+import FinalSelect from './components/FinalSelect';
+import ResultPage from './components/ResultPage';
+import AfterCompanyApply from './components/AfterCompanyApply';
+import ShowPage from './components/ShowPage';
 
 import SelectOne from './components/SelectOne';
 import SelectTwo from './components/SelectTwo';
@@ -48,6 +52,8 @@ function project() {
             <Route path='/BankApply' element={<BankApply/>} />
             {/* 기업 신청하기 상세 페이지 */}
             <Route path='/companyApply' element={<CompanyApply/>} />
+            {/* 비재무제출 후 기업 신청하기 상세 페이지 */}
+            <Route path='/afterApply' element={<AfterCompanyApply/>} />
             {/* 재무제표 제출 페이지 */}
             <Route path='/fileUpload' element={<FileUpload/>} />
             {/* 비재무제표 제출 페이지 - 질문에 따라 */}
@@ -59,6 +65,12 @@ function project() {
             <Route path='/selectSix' element={<SelectSix/>} />
             <Route path='/selectSeven' element={<SelectSeven/>} />
             <Route path='/selectEight' element={<SelectEight/>} />
+            {/* 비재무제표 제출 하고 난 후의 선택하는 페이지 */}
+            <Route path='/finalSelect' element={<FinalSelect/>} />
+            {/* 비재무제표 제출한 후 결과 확인 페이지 */}
+            <Route path='/resultPage' element={<ResultPage/>} />
+            {/* 은행 신청하기 조회 페이지 */}
+            <Route path='/showPage' element={<ShowPage/>} />
         </Routes>
 
         <Footer />
