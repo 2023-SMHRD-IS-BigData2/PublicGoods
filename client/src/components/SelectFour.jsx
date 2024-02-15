@@ -4,23 +4,23 @@ import { useNavigate } from 'react-router-dom';
 const SelectFour = () => {
 
     const navigate = useNavigate();
-    const [progress, setProgress] = useState(62.5);
+    const [progress, setProgress] = useState(50);
 
     // 있습니다. 클릭했을 때
     const handleYesClick = () => {
-      setProgress(75);
+      setProgress(62.5);
       navigate('/selectFive');
     };
   
     // 없습니다. 클릭했을 때
     const handleNoClick = () => {
-      setProgress(75);
+      setProgress(62.5);
       navigate('/selectFive');
     };
   
     // 모릅니다. 클릭했을 때
     const handleKnowClick = () => {
-      setProgress(75);
+      setProgress(62.5);
       navigate('/selectFive');
     };
   
