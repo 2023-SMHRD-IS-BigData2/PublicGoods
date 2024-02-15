@@ -15,6 +15,7 @@ import FileUpload from './components/FileUpload';
 import FinalSelect from './components/FinalSelect';
 import ResultPage from './components/ResultPage';
 import AfterCompanyApply from './components/AfterCompanyApply';
+import ShowPage from './components/ShowPage';
 
 import SelectOne from './components/SelectOne';
 import SelectTwo from './components/SelectTwo';
@@ -68,6 +69,8 @@ function project() {
             <Route path='/finalSelect' element={<FinalSelect/>} />
             {/* 비재무제표 제출한 후 결과 확인 페이지 */}
             <Route path='/resultPage' element={<ResultPage/>} />
+            {/* 은행 신청하기 조회 페이지 */}
+            <Route path='/showPage' element={<ShowPage/>} />
         </Routes>
 
         <Footer />
