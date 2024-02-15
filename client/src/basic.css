@@ -41,7 +41,9 @@
 .intro-context {
     margin-left: 50px;
     line-height: 2.5;
-    font-size: 17px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(80, 80, 80);
 }
 
 /* 2 page */
