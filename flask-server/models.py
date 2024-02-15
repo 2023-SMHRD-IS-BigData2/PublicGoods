@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, UUID
+from sqlalchemy import create_engine, Column
 from sqlalchemy.dialects.mysql import CHAR, VARCHAR, DATETIME
 from sqlalchemy.orm import sessionmaker, declarative_base
 
