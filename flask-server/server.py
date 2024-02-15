@@ -12,13 +12,21 @@ CORS(app)
 # def members():
 #     return {"members": ["Member1", "Member2", "Member3"]}
 
-@app.route("/api/login", methods=['POST'])
+@app.route("/api/join", methods=['POST'])
 def login() :
     data = request.json
     idInput = data.get('idInput')
     pwNum = data.get('pwNum')
-    businessNum = data.get('businessNum')
-    print(idInput, pwNum, businessNum)
+    businessNum = None
+    bankNumber = None
+    bankName = None
+    try : businessNum = data.get('businessNum'); print('businessNum : ' + businessNum)
+    except : pass
+    try : 
+        bankNumber = data.get('bankNumber'); print('bankNumber : ' + bankNumber)
+        bankName = data.get('bankName'); print('bankName : ' + bankName)
+    except : pass
+    print(idInput, pwNum)
     
     resultString = 'JoinAccess successful'
     session = DatabaseHandler().session
