@@ -19,7 +19,6 @@ def login() :
     pwNum = data.get('pwNum')
     businessNum = data.get('businessNum')
     print(idInput, pwNum, businessNum)
-    pwNum = hashlib
     
     resultString = 'JoinAccess successful'
     session = DatabaseHandler().session
@@ -29,15 +28,15 @@ def login() :
         session.begin()
         newAccount = moolLoan_user_table(user_id=idInput, user_password=hashPassword, user_type='N')
         session.add(newAccount)
+        added_rows = len(session.new)
         session.commit()
     except Exception as e :
         resultString = 'ERROR!! : ' + e
     finally :
-        added_rows = len(session.new)
+        print(added_rows)
+        if added_rows <= 0 :
+            resultString = 'JoinAccess Failed'
         session.close()
-    
-    if added_rows != 1 :
-        resultString = 'JoinAccess Failed'
 
     return resultString
 
