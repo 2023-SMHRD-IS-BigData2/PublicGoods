@@ -6,14 +6,8 @@ const SelectSeven = () => {
     const navigate = useNavigate();
     const [progress, setProgress] = useState(87.5);
 
-    // 있습니다. 클릭했을 때
-    const handleYesClick = () => {
-      setProgress(100);
-      navigate('/selectEight');
-    };
-  
-    // 없습니다. 클릭했을 때
-    const handleNoClick = () => {
+    // 확인버튼 클릭했을 때
+    const handleOkClick = () => {
       setProgress(100);
       navigate('/selectEight');
     };
@@ -34,23 +28,20 @@ const SelectSeven = () => {
   
             {/* 질문 */}
             <div className='question'>
-              <h3 className='questionTitle'>평균고용인원수</h3>
+              <h3 className='questionTitle'>평균 고용 인원 수가 어떻게 됩니까?</h3>
             </div>
   
-            {/* 있습니다 Button */}
+            {/* 인원수 Input */}
             <div className='apply-box'>
-                <div className='apply-bank'>
-                  <button className='apply-btn' onClick={handleYesClick}>
-                    <p className='btn-sub'>있습니다.<br/> </p>
-                  </button>
-                </div>
-  
-            {/* 없습니다 Button */}
-            <div className='apply-company'>
-              <button className='apply-btn' onClick={handleNoClick}>
-                 <p className='btn-sub'>없습니다.<br/> </p>
-              </button>
-            </div>
+              <div className='apply-bank'>
+                <div className='btn-sub2'>
+                  <div class="input-wrapper">
+                    <input className='apply-btn2' type='number' placeholder='예)  10' />
+                    <span className="placeholder-text">명</span>
+                    <button className='okBtn' onClick={handleOkClick}>확인</button>
+                  </div>
+                </div> 
+              </div>
   
             {/* 모릅니다 Button */}
               <div className='apply-company' onClick={handleKnowClick}>
