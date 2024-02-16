@@ -29,21 +29,23 @@
 }
 
 .introBox {
-    margin-top: 5em;
+    margin-top: 7em;
     margin-bottom: 50px;
+    text-align: center;
 }
 
 .intro-start {
-    margin-left: 70px;
     font-weight: bold;
 }
 
 .intro-context {
-    margin-left: 50px;
     line-height: 2.5;
-    font-size: 18px;
+    font-size: 21px;
     font-weight: 600;
+    text-align: left;
     color: rgb(80, 80, 80);
+    max-width: 700px; /* 텍스트의 최대 너비를 설정할 수 있습니다. 필요에 따라 조정하십시오. */
+    margin: 0 auto;
 }
 
 /* 2 page */
