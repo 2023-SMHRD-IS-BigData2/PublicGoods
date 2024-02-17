@@ -15,7 +15,7 @@ const OnePage = () => {
 
             {/* 1 페이지 - 물론 소개 */}
             <div className='introBox'>
-                <h4 className='intro-start'>안녕하세요. 물론(moolLoan)입니다.</h4>
+                <h2 className='intro-start'>안녕하세요. 물론(moolLoan)입니다.</h2>
                 <br />
                 <p className='intro-context'>
                     저희는 신용평가가 어려운 자영업자와 창업 초기단계 회사를 대상으로 <br/>
