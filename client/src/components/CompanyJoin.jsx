@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 const CompanyJoin = () => {
@@ -8,8 +9,9 @@ const CompanyJoin = () => {
     const [pwNum, setPwNum] = useState('');
     const [idError, setIdError] = useState('');
     const [pwError, setPwError] = useState('');
+    const navigate = useNavigate();
 
-    const handleLoginSubmit = async (e) => {
+    const handleJoinSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://127.0.0.1:5000/api/join', {
@@ -17,7 +19,11 @@ const CompanyJoin = () => {
                 pwNum: pwNum,
                 businessNum: businessNum
             });
-            console.log(response.data);
+            if (response.data.Insert) {
+                navigate('/companyApply')
+            } else {
+                alert('회원가입에 실패하였습니다!');
+            }
         } catch (error) {
             console.error('ERROR!!', error);
         }
@@ -62,7 +68,7 @@ const CompanyJoin = () => {
             <div className="titleWrap3">
                 회원가입
             </div>
-            <form onSubmit={handleLoginSubmit}>
+            <form onSubmit={handleJoinSubmit}>
                 {/* contentWrap - 아이디 입력 */}
                 <div className="contentWrap3">
                     <div className="inputTitle3">

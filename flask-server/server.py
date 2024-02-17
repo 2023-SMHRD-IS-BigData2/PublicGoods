@@ -1,19 +1,21 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS
  
-from models import DatabaseHandler, moolLoan_user_table, getHashStr
-import hashlib
+from app.models import insertUser, selectUser
+from werkzeug.utils import secure_filename
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-# Members API Route
-# @app.route("/members")
-# def members():
-#     return {"members": ["Member1", "Member2", "Member3"]}
+UPLOAD_FOLDER = '/path/to/uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
 
 @app.route("/api/join", methods=['POST'])
-def login() :
+def join() :
     data = request.json
     idInput = data.get('idInput')
     pwNum = data.get('pwNum')
@@ -27,26 +29,37 @@ def login() :
         bankName = data.get('bankName'); print('bankName : ' + bankName)
     except : pass
     print(idInput, pwNum)
+    return_data = {"Insert" : insertUser(idInput, pwNum)}
+    return return_data
+
+@app.route('/api/login', methods=['POST'])
+def login() :
+    data = request.json
+    idInput = data.get('idInput')
+    pwNum = data.get('pwNum')
+    print(idInput, pwNum)
+    return_data = selectUser(idInput, pwNum)
+    return return_data
+
+@app.route('/api/fileUpload', methods=['POST'])
+def upload_file():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part'})
+
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'})
+
+    if file:
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+        # 파일이 이미 존재하는지 확인하고 있다면 덮어씌웁니다.
+        if os.path.exists(filepath):
+            os.remove(filepath)  # 기존 파일 삭제
+
+        file.save(filepath)  # 파일 저장
+        return jsonify({'success': 'File uploaded successfully', 'filename': filename})
     
-    resultString = 'JoinAccess successful'
-    session = DatabaseHandler().session
-    hashPassword = getHashStr(pwNum)
-
-    try : 
-        session.begin()
-        newAccount = moolLoan_user_table(user_id=idInput, user_password=hashPassword, user_type='N')
-        session.add(newAccount)
-        added_rows = len(session.new)
-        session.commit()
-    except Exception as e :
-        resultString = 'ERROR!! : ' + e
-    finally :
-        print(added_rows)
-        if added_rows <= 0 :
-            resultString = 'JoinAccess Failed'
-        session.close()
-
-    return resultString
-
 if __name__ == "__main__":
     app.run(debug=True)

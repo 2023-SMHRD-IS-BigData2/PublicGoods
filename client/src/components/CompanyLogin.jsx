@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const CompanyLogin = () => {
 
@@ -7,8 +9,9 @@ const CompanyLogin = () => {
   const [pwNum, setPwNum] = useState('');
   const [idError, setIdError] = useState('');
   const [pwError, setPwError] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     let hasError = false;
 
     // 아이디
@@ -28,7 +31,21 @@ const CompanyLogin = () => {
     // 로그인 처리
     if (!hasError) {
       // 여기에 로그인 처리 로직을 추가하세요
-      console.log('Logged in successfully!');
+        try {
+            const response = await axios.post('http://127.0.0.1:5000/api/login', {
+                idInput : idInput,
+                pwNum : pwNum
+            })
+            console.log(response.data);
+            if (response.data != null) {
+                console.log('Logged in successfully!');
+                navigate('/companyApply');
+            } else {
+                alert('로그인에 실패하였습니다! ')
+            }
+        } catch (error) {
+            console.log('ERROR!! : ' + error);
+        }
     }
   }
   
@@ -77,8 +94,7 @@ const CompanyLogin = () => {
 
         {/* 로그인 버튼 */}
         <div className='bottomBtn'>
-            <Link to='/companyApply'><button className='loginBtn'
-            onClick={handleLogin}>Login</button></Link>
+            <button className='loginBtn' onClick={handleLogin}>Login</button>
         </div>
 
         {/* 회원가입 버튼 */}

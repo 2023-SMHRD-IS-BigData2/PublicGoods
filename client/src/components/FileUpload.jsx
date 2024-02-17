@@ -19,32 +19,52 @@ const FileUpload = () => {
             method: 'POST',
             body: formData
         })
-        .then(response => {
-            // 응답 처리
-            console.log('파일 업로드 완료');
-        })
-        .catch(error => {
-            console.error('파일 업로드 실패:', error);
-        });
+            .then(response => {
+                // 응답 처리
+                console.log('파일 업로드 완료');
+            })
+            .catch(error => {
+                console.error('파일 업로드 실패:', error);
+            });
     };
 
-  return (
-    <div className='file-upload'>
+    const handleFileSubmit = async (event) => {
+        event.preventDefault();
 
-        {/* 파일 업로드 */}
-        <div className='file-div'>
-            <div className='file-header'>재무제표 파일을 제출해주세요.</div>
-            <div className='file-box'>
-                <div className='uploadBox'>
-                    <h2 className='uploadSub'>파일 업로드</h2>
-                    <input className='uploadInput' type="file" onChange={handleFileChange} />
-                    <button className='uploadBtn' onClick={handleUpload}>업로드</button>
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/api/fileUpload', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.log('ERROR!! : ' + error);
+        }
+    };
+
+    return (
+        <div className='file-upload'>
+
+            {/* 파일 업로드 */}
+            <div className='file-div'>
+                <div className='file-header'>재무제표 파일을 제출해주세요.</div>
+                <div className='file-box'>
+                    <div className='uploadBox'>
+                        <h2 className='uploadSub'>파일 업로드</h2>
+                        <form onSubmit={handleFileSubmit}>
+                            <input className='uploadInput' type="file" onChange={handleFileChange} />
+                            <button className='uploadBtn' onClick={handleUpload}>업로드</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-  )
+        </div>
+    )
 }
 
 export default FileUpload
