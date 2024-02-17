@@ -9,11 +9,11 @@ const AfterCompanyApply = () => {
         {/* 기업 신청하기 - 재무제표 Button */}
         <div className='apply-box'>
             <div className='apply-bank'>
-              <Link to='/fileUpload'><button className='apply-btn'>
+              <Link to='/SelFinance'><button className='apply-btn'>
                 <img src="/images/Content/documents2.png" className='bankImg'></img>
                 <p className='btn-sub'>재무제표 제출<br/> </p>
                 <p className='btn-content2'>
-                  - 재무제표 제출 <br/>
+                  - 재무상태표 제출 <br/>
                   <br/>
                   <br/>
                   <br/>
