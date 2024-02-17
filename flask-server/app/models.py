@@ -118,12 +118,12 @@ def insertUser(user_id, user_password) : # 회원가입
         session.commit()
     except Exception as e :
         print('ERROR! : ' + str(e)) 
+        session.rollback()
     finally :
         print(row)
         session.close()
         if row == 1 : return True # 'insertSuccess'
         else : return False # 'insertFail'
-
 
 def selectUser(user_id, user_password) : # 로그인
     session = DatabaseHandler().session
@@ -138,4 +138,29 @@ def selectUser(user_id, user_password) : # 로그인
     finally :
         session.close()
     return None
-    
+
+def updateUser(user_id, user_password, new_id = None, new_password = None) :
+    session = DatabaseHandler().session
+    try :
+        session.begin()
+        changeUser = session.query(moolLoan_user_table).filter(moolLoan_user_table.user_id == user_id).first()
+        if changeUser and sha512_crypt.verify(user_password, changeUser.user_password) :
+            if new_id is None : new_id = user_id
+            if new_password is None : new_password = changeUser.user_password
+            else : new_password = sha512_crypt.hash(str(new_password))
+            session.query(moolLoan_user_table).filter(moolLoan_user_table.user_id == user_id).update({
+                moolLoan_user_table.user_id : new_id,
+                moolLoan_user_table.user_password : new_password
+            })
+            session.commit()
+            return json.dumps({'user_id' : new_id})
+    except Exception as e :
+        print('ERROR! : ' + str(e))
+        session.rollback()
+    finally :
+        session.close()
+    return False
+
+# def insertNonFinancial(user_id, NonFinJson) {
+#     return None
+# }
