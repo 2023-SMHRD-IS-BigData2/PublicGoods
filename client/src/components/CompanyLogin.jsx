@@ -41,7 +41,7 @@ const CompanyLogin = () => {
                 console.log('Logged in successfully!');
                 navigate('/companyApply');
             } else {
-                alert('로그인에 실패하였습니다! ')
+                alert('로그인에 실패하였습니다! ');
             }
         } catch (error) {
             console.log('ERROR!! : ' + error);
