@@ -26,6 +26,14 @@ import SelectSix from './components/SelectSix';
 import SelectSeven from './components/SelectSeven';
 import SelectEight from './components/SelectEight';
 
+import SelFinance from './components/SelFinance';
+import Fin_SelectOne from './components/Fin_SelectOne';
+import Fin_SelectTwo from './components/Fin_SelectTwo';
+import Fin_SelectThree from './components/Fin_SelectThree';
+import Fin_SelectFour from './components/Fin_SelectFour';
+
+import Fin_Check from './components/Fin_Check';
+import NonfinCheck from './components/NonFinCheck';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -65,12 +73,21 @@ function project() {
             <Route path='/selectSix' element={<SelectSix/>} />
             <Route path='/selectSeven' element={<SelectSeven/>} />
             <Route path='/selectEight' element={<SelectEight/>} />
-            {/* 비재무제표 제출 하고 난 후의 선택하는 페이지 */}
-            <Route path='/finalSelect' element={<FinalSelect/>} />
+           
             {/* 비재무제표 제출한 후 결과 확인 페이지 */}
             <Route path='/resultPage' element={<ResultPage/>} />
             {/* 은행 신청하기 조회 페이지 */}
             <Route path='/showPage' element={<ShowPage/>} />
+
+            <Route path='selFinance' element={<SelFinance/>}/>
+            <Route path='/fin_selectOne' element={<Fin_SelectOne/>} />
+            <Route path='/fin_selectTwo' element={<Fin_SelectTwo/>} />
+            <Route path='/fin_selectThree' element={<Fin_SelectThree/>} />
+            <Route path='/fin_selectFour' element={<Fin_SelectFour/>} />
+            
+            {/* 재무 비재무 제출시 다른 제출로 넘어가는 페이지 */}
+            <Route path='nonFinCheck' element={<NonfinCheck/>}/>
+            <Route path='fin_Check' element={<Fin_Check/>}/>
         </Routes>
 
         <Footer />

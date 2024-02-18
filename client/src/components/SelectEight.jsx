@@ -9,13 +9,13 @@ const SelectEight = () => {
     // 확인버튼 클릭했을 때
     const handleOkClick = () => {
       setProgress(0);
-      navigate('/finalSelect');
+      navigate('/NonFinCheck');
     };
   
     // 모릅니다. 클릭했을 때
     const handleKnowClick = () => {
       setProgress(0);
-      navigate('/finalSelect');
+      navigate('/NonFinCheck');
     };
   
     return (

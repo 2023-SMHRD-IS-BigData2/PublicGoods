@@ -11,12 +11,12 @@ const AfterCompanyApply = () => {
             <div className='apply-bank'>
               <Link to='/SelFinance'><button className='apply-btn'>
                 <img src="/images/Content/documents2.png" className='bankImg'></img>
-                <p className='btn-sub'>재무제표 제출<br/> </p>
+                <p className='btn-sub'>재무상태표 제출<br/> </p>
                 <p className='btn-content2'>
-                  - 재무상태표 제출 <br/>
-                  <br/>
-                  <br/>
-                  <br/>
+                  - 매출액 <br/>
+                  - 영업이익<br/>
+                  - 자산<br/>
+                  - 부채 <br/>
                 </p>
               </button></Link>
             </div>
