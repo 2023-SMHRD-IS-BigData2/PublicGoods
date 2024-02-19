@@ -249,6 +249,42 @@
     text-align: left;
 }
 
+/* SelFinance */
+
+.apply-box2 {
+    margin-top: 8em;
+    display: flex;
+    justify-content: center;
+}
+
+.apply-bank2 {
+    margin: 0 10px;
+}
+
+.apply-company2 {
+    margin: 0 10px;
+    position: relative;
+}
+
+.information-box {
+    width: 650px;
+    text-align: center;
+    margin-bottom: 10em !important;
+    border-radius: 30px;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.information-content {
+    margin: 0 auto;
+    font-size: 13px;
+}
+
 /* --------------------------------------------------- */
 
 /* Login */
@@ -806,6 +842,80 @@
 @keyframes progressAnimation8 {
     from {
       width: 87.5%;
+    }
+    to {
+      width: 100%;
+    }
+    
+}
+
+/* Progress - Fin_Select */
+
+.progressFin1 {
+    height: 100%;
+    width: 0; 
+    background-color: rgba(133, 105, 247, 0.7) !important;
+    border-radius: 10px;
+    animation: progressFinAnimation1 1s ease forwards;
+}
+
+@keyframes progressFinAnimation1 {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 25%;
+    }
+    
+}
+
+.progressFin2 {
+    height: 100%;
+    width: 0; 
+    background-color: rgba(133, 105, 247, 0.7) !important;
+    border-radius: 10px;
+    animation: progressFinAnimation2 1s ease forwards;
+}
+
+@keyframes progressFinAnimation2 {
+    from {
+      width: 25%;
+    }
+    to {
+      width: 50%;
+    }
+    
+}
+
+.progressFin3 {
+    height: 100%;
+    width: 0; 
+    background-color: rgba(133, 105, 247, 0.7) !important;
+    border-radius: 10px;
+    animation: progressFinAnimation3 1s ease forwards;
+}
+
+@keyframes progressFinAnimation3 {
+    from {
+      width: 50%;
+    }
+    to {
+      width: 75%;
+    }
+    
+}
+
+.progressFin4 {
+    height: 100%;
+    width: 0; 
+    background-color: rgba(133, 105, 247, 0.7) !important;
+    border-radius: 10px;
+    animation: progressFinAnimation4 1s ease forwards;
+}
+
+@keyframes progressFinAnimation4 {
+    from {
+      width: 75%;
     }
     to {
       width: 100%;

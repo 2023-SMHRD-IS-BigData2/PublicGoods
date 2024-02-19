@@ -1,13 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const FinalSelect_nonFin = () => {
+const AllSelect_nonFin = () => {
     const navigate = useNavigate();
-
-    // 비재무제출 완료 버튼 클릭했을 때
-    const handleSubmitClick = () => {
-      navigate('/selFinance');
-    };
   
     // 결과 확인 버튼 클릭했을 때
     const handleResultClick = () => {
@@ -18,10 +13,10 @@ const FinalSelect_nonFin = () => {
       // 전체 페이지 - div
     <div className='onePage-div'>
 
-    {/* FinalSelect_nonFin - Box */}
+    {/* AllSelect_nonFin - box */}
     <div className='apply-box'>
 
-      {/* 비재무제표 제출 시 - 비재무제표 체크 완료 */}
+      {/* 비재무제표 제출 - 체크완료 */}
       <div className='apply-company'>
         <button className='apply-btn3'>
           <img src="/images/Content/documents3.png" className='comImg'></img>
@@ -36,22 +31,22 @@ const FinalSelect_nonFin = () => {
         <img src="/images/Content/check.png" className='checkImg'></img>
       </div>
 
-        {/* 재무제표 제출하기 Button */}
-        <div className='apply-bank'>
-          <button className='apply-btn' onClick={handleSubmitClick}>
-            <img src="/images/Content/submit1.png" className='bankImg'></img>
-            <p className='btn-sub'>재무제표 제출하기 <br/> </p>
-            <p className='btn-content'>
-              <br/>
-              비재무제표는 <strong style={{fontSize : '18px'}}>선택사항으로</strong> 생략해도됩니다.
-              <br/>
-              <br/>
-              <br/>
-            </p>
-          </button>
-        </div>
+      {/* 재무제표 제출 - 체크완료 */}
+      <div className='apply-company'>
+        <button className='apply-btn3'>
+          <img src="/images/Content/documents3.png" className='comImg'></img>
+          <p className='btn-sub'>재무제표 제출<br/> </p>
+          <p className='btn-content2'>
+            - 매출액 <br/>
+            - 영업이익<br/>
+            - 자산<br/>
+            - 부채 <br/>
+          </p>
+        </button>
+        <img src="/images/Content/check.png" className='checkImg'></img>
+      </div>
 
-        {/* 결과 확인 Button */}
+        {/* 결과 버튼 */}
         <div className='apply-company'>
           <button className='apply-btn' onClick={handleResultClick}>
             <img src="/images/Content/result.png" className='comImg'></img>
@@ -70,4 +65,4 @@ const FinalSelect_nonFin = () => {
     )
 }
 
-export default FinalSelect_nonFin
+export default AllSelect_nonFin

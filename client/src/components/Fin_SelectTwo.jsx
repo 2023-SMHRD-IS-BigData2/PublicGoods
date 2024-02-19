@@ -1,40 +1,36 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const Fin_SelectTwo = () => {
 
   const navigate = useNavigate();
-  const [progress, setProgress] = useState(25);
 
   // 있습니다. 클릭했을 때
   const handleYesClick = () => {
-    setProgress(37.5);
-    navigate('/Fin_selectThree');
+    navigate('/fin_selectThree');
   };
 
   // 없습니다. 클릭했을 때
   const handleNoClick = () => {
-    setProgress(37.5);
-    navigate('/Fin_selectThree');
+    navigate('/fin_selectThree');
   };
 
   // 모릅니다. 클릭했을 때
   const handleKnowClick = () => {
-    setProgress(37.5);
-    navigate('/Fin_selectThree');
+    navigate('/fin_selectThree');
   };
 
   return (
     <div className='selectPage'>
 
-        <div className='Fin_SelectTwo'>
+        <div className='selectOne'>
           <div class="progress-bar">
-              <div className="progress2" style={{ width: `${progress}%` }}></div>
+              <div className="progressFin2"></div>
           </div>
 
           {/* 질문 */}
           <div className='question'>
-            <h3 className='questionTitle'>자산을 입력해주세요.</h3>
+            <h3 className='questionTitle'>영업이익을 입력해주세요.</h3>
           </div>
 
           {/* 있습니다 Button */}
