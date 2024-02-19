@@ -18,28 +18,58 @@ const Fin_Check = () => {
       // 전체 페이지 - div
     <div className='onePage-div'>
 
-    {/* 선택한 리스트 보여주기 */}
-    <div className='apply-box'>
+    {/* 체크 리스트 보여주기 */}
+    <div className='apply-box3'>
         <div className='apply-bank'>
-          <button className='apply-btn'>
-            <img src="/images/Content/submit1.png" className='bankImg'></img>
-            <p className='btn-sub'>표로 기존의 여부 보여주기</p>
-          </button>
+            <p className='btn-sub2'>확인하기</p>
+            <table className='checkListTable'>
+              <tbody className='checkListTbody'>
+                <th>
+                  <tr>번호</tr>
+                </th>
+                <th>
+                  <tr>질문</tr>
+                </th>
+                <th>
+                  <tr>답변</tr>
+                </th>
+                <tr>
+                  <td>1</td>
+                  <td>매출을 입력해주세요.</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>영업이익을 입력해주세요.</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>자산을 입력해주세요.</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>부채를 입력해주세요.</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
         </div>
     </div>
 
-    {/* 제출 체크 - 맞습니까? Button */}
-    <div className='apply-box2'>
+    {/* 위 사항 맞는지 체크 */}
+    <div className='apply-box4'>
         <div className='apply-bank2'>
-          <button className='apply-btn'>
-            <p className='btn-sub' onClick={handleCheckClick}>위 사항이 맞습니까? </p>
+          <button className='apply-btn4'>
+            <p className='btn-sub3' onClick={handleCheckClick}>위 사항이 맞다면 클릭</p>
           </button>
         </div>
 
-        {/* 제출 체크 - 다시 입력하기 Button */}
+        {/* 다시 입력하기 Button */}
         <div className='apply-company2'>
-          <button className='apply-btn'>
-            <p className='btn-sub' onClick={handleAgainClick}>다시 입력하기</p>
+          <button className='apply-btn4'>
+            <p className='btn-sub3' onClick={handleAgainClick}>다시 입력하기</p>
           </button>
         </div>
     </div>

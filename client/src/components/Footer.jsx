@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="Footer__Container-sc-qi151k-0 imwsby section fp-auto-height">
               <div className="Footer__ContentsContainer-sc-qi151k-1 leJchl">
                 <div className="Footer__LogoContainer-sc-qi151k-2 cIpqjX">
-                <img src="/images/Header/moolLoan-white.png" class="Footer__LogoWhite-sc-qi151k-3 istqrW"/>
+                <img src="/images/Footer/moolLoan-white.png" class="Footer__LogoWhite-sc-qi151k-3 istqrW"/>
                 </div>
                 <div className="Footer__CompanyContainer-sc-qi151k-4 iKdtHl">
                   <div className="Footer__CompanyText-sc-qi151k-5 gSzsZj">

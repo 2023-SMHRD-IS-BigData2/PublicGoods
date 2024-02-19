@@ -607,12 +607,13 @@
 }
 
 .file-div {
-    height: 23em;
     width: 90%;
     border-radius: 30px;
     text-align: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     background-color: #a89adf;
+    margin-bottom: 10em;
+    margin-top: 5em;
 }
 
 .file-header {
@@ -622,9 +623,20 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 22px;
     color: white;
     border-bottom: 1px solid lightgray;
+}
+
+.exSub {
+    margin-top: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.ocrImg {
+    width: 250px;
 }
 
 .file-box {
@@ -633,6 +645,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
 }
 
 .uploadBox {
@@ -672,6 +686,24 @@
     font-size: 14px;
     padding: 5px;
     margin-left: 30px;
+}
+
+.submitBtn {
+    margin-top: 30px;
+}
+
+.subBtn {
+    border-radius: 15px;
+    border: none;
+    width: 80px;
+    color: black;
+    background-color: white;
+    padding: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.subBtn:hover {
+    background-color: lightgray;
 }
 
 /* --------------------------------------------------- */
@@ -1149,7 +1181,57 @@
 
 /* --------------------------------------------------- */
 
-/*  */
+/* 확인하기 - 체크 리스트 */
+
+.apply-box3 {
+    margin-top: 9em;
+    display: flex;
+    justify-content: center;
+}
+
+.apply-box4 {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.checkListTable {
+    border: 1px solid black;
+}
+
+.checkListTable td, .checkListTable th {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.checkListTable th {
+    background-color: #f2f2f2;
+}
+
+.apply-btn4 {
+    padding: 5px;
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+    color: white;
+    background-color: rgba(133, 105, 247, 0.7);
+}
+
+.apply-btn4:hover {
+    color: white;
+    background-color: rgba(133, 105, 247, 0.4);
+}
+
+.btn-sub3 {
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+/* --------------------------------------------------- */
+
+/* Footer */
 
 .imwsby {
     width: 100%;
@@ -1178,7 +1260,7 @@
     }
 }
 
-/*!sc*/
+/* !sc - Footer */
 data-styled.g1[id="Footer__Container-sc-qi151k-0"] {
     content: "imwsby,"
 }

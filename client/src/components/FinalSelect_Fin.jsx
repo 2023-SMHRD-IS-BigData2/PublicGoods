@@ -43,24 +43,10 @@ const FinalSelect_Fin = () => {
             <p className='btn-sub'>비재무제표 제출하기 <br/> </p>
             <p className='btn-content'>
               <br/>
-              비재무제표는 <strong style={{fontSize:'18px'}}>필수로</strong> 제출해야합니다.
+              비재무제표는 <strong style={{fontSize:'18px'}}>필수</strong> 제출해야합니다.
               <br/>
               <br/>
               <br/>
-            </p>
-          </button>
-        </div>
-
-        {/* 결과 확인 - Button */}
-        <div className='apply-company'>
-          <button className='apply-btn' onClick={handleResultClick}>
-            <img src="/images/Content/result.png" className='comImg'></img>
-            <p className='btn-sub'>결과 확인</p>
-            <p className='btn-content'>
-               <br/>
-               <br/>
-               <br/>
-               <br/>
             </p>
           </button>
         </div>

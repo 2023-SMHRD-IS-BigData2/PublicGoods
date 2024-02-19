@@ -32,6 +32,7 @@ import Fin_SelectFour from './components/Fin_SelectFour';
 
 import Fin_Check from './components/Fin_Check';
 import NonfinCheck from './components/NonFinCheck';
+import OcrCheck from './components/OcrCheck';
 import FinalSelect_nonFin from './components/FinalSelect_nonFin';
 import FinalSelect_Fin from './components/FinalSelect_Fin';
 
@@ -65,6 +66,8 @@ function project() {
             
             {/* 재무제표 제출 페이지 */}
             <Route path='/fileUpload' element={<FileUpload/>} />
+            {/* OCR 체크 페이지 */}
+            <Route path='/ocrCheck' element={<OcrCheck/>} />
             {/* 비재무제표 제출 페이지 - 질문에 따라 */}
             <Route path='/selectOne' element={<SelectOne/>} />
             <Route path='/selectTwo' element={<SelectTwo/>} />

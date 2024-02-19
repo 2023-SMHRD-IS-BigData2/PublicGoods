@@ -1,17 +1,17 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const NonFinCheck = () => {
+const OcrCheck = () => {
     const navigate = useNavigate();
 
-    // 맞다면 클릭 버튼 클릭했을 때
+    // 맞습니까? 버튼 클릭했을 때
     const handleCheckClick = () => {
-      navigate('/finalSelectNonFin');
+      navigate('/finalSelectFin');
     };
   
-    // 다시 입력하기 버튼 클릭했을 때
+    // 다시 올리기 버튼 클릭했을 때
     const handleAgainClick = () => {
-      navigate('/selectOne');
+      navigate('/fileUpload');
     };
   
     return (
@@ -35,43 +35,23 @@ const NonFinCheck = () => {
                 </th>
                 <tr>
                   <td>1</td>
-                  <td>기존 대출 연체가 있습니까?</td>
-                  <td>있음</td>
+                  <td>매출을 입력해주세요.</td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td>기존 대출이 청산이 되어있습니까?</td>
-                  <td>있음</td>
+                  <td>영업이익을 입력해주세요.</td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td>기존 대출 보유시 대출 보유 기간이 어떻게 되십니까?(월 단위)</td>
-                  <td>5개월</td>
+                  <td>자산을 입력해주세요.</td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>4</td>
-                  <td>계열사가 있습니까?</td>
-                  <td>있음</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>신용보증재단, 기술보증재단 등 재단에서 보증한 금액이 있습니까?</td>
-                  <td>2000만원</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>수도권에 있습니까?</td>
-                  <td>있음</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>평균 고용 인원 수가 어떻게 됩니까?</td>
-                  <td>10명</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>은행에게 대출 받은 금액은 얼마입니까?</td>
-                  <td>1000만원</td>
+                  <td>부채를 입력해주세요.</td>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
@@ -89,7 +69,7 @@ const NonFinCheck = () => {
         {/* 다시 입력하기 Button */}
         <div className='apply-company2'>
           <button className='apply-btn4'>
-            <p className='btn-sub3' onClick={handleAgainClick}>다시 입력하기</p>
+            <p className='btn-sub3' onClick={handleAgainClick}>다시 올리기</p>
           </button>
         </div>
     </div>
@@ -108,4 +88,4 @@ const NonFinCheck = () => {
     )
 }
 
-export default NonFinCheck
+export default OcrCheck

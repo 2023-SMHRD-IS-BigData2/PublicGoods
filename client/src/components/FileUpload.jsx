@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const FileUpload = () => {
 
@@ -52,6 +53,7 @@ const FileUpload = () => {
             {/* 파일 업로드 */}
             <div className='file-div'>
                 <div className='file-header'>재무제표 파일을 제출해주세요.</div>
+                <div><p className='exSub'>양식 예시</p><img src="/images/Content/ex-ocr.jpg" alt="" className='ocrImg'/></div>
                 <div className='file-box'>
                     <div className='uploadBox'>
                         <h2 className='uploadSub'>파일 업로드</h2>
@@ -60,6 +62,11 @@ const FileUpload = () => {
                             <button className='uploadBtn' onClick={handleUpload}>업로드</button>
                         </form>
                     </div>
+
+                    <div className='submitBtn'>
+                        <Link to='/ocrCheck'><button className='subBtn'>제출</button></Link>
+                    </div>
+                    
                 </div>
             </div>
 

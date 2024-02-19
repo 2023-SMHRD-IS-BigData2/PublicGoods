@@ -31,7 +31,7 @@ const Fin_SelectOne = () => {
 
           {/* 질문 */}
           <div className='question'>
-            <h3 className='questionTitle'> 매출을 입력해주세요. </h3>
+            <h3 className='questionTitle'>매출을 입력해주세요.</h3>
           </div>
 
           {/* 있습니다 Button */}
