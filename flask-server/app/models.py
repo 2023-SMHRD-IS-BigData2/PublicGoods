@@ -40,27 +40,42 @@ class moolLoan_user_documents_table (Base) :
 
     ForeignKeyConstraint(['user_unique_number'], ['moolLoan_user_table.user_unique_number'], onupdate='CASCADE')
 
+# class non_financial_documents_table (Base) :
+#     __tablename__ = 'non_financial_documents_table'
+#     __table_args__ = {'comment': '비재무_문서_테이블'}
+
+#     non_finance_unique_number = Column(CHAR(40), primary_key=True, nullable=False, comment='비재무문서번호')
+#     biz_taxcode = Column(VARCHAR(50), nullable=False, comment='기업_세번호')
+#     biz_address = Column(VARCHAR(50), nullable=False, comment='기업_주소')
+#     biz_industry = Column(VARCHAR(50), nullable=False, comment='기업_산업종류')
+#     biz_foundation_at = Column(INTEGER, nullable=False, comment='기업_창립년도')
+#     eco_edu = Column(TEXT, nullable=False, comment='대표학력')
+#     employee_no = Column(INTEGER, nullable=False, comment='종업원_수')
+#     credit_history = Column(TEXT, nullable=False, comment='신용이력')
+#     credit_score = Column(VARCHAR(50), nullable=False, comment='신용점수')
+#     loan_statue = Column(VARCHAR(50), nullable=False, comment='대출_상태')
+#     loan_amount = Column(BIGINT, nullable=False, comment='대출_금액')
+#     long_period = Column(VARCHAR(50), nullable=False, comment='대출_기간')
+#     pay_pre_loan_status = Column(CHAR(1), nullable=False, comment='기존대출_상환여부')
+#     bank_com_rel = Column(INTEGER, nullable=False, comment='은행과기업_관계')
+#     document_creation_date = Column(DATETIME, nullable=False, default=datetime.now(), comment='비재무_작성일자')
+#     document_score = Column(DECIMAL(5, 4), nullable=True, comment='비재무_평가점수')
+
+#     ForeignKeyConstraint(['non_finance_unique_number'], ['moolLoan_user_documents_table.non_finance_unique_number'], onupdate='CASCADE')
 class non_financial_documents_table (Base) :
     __tablename__ = 'non_financial_documents_table'
     __table_args__ = {'comment': '비재무_문서_테이블'}
 
-    non_finance_unique_number = Column(CHAR(40), primary_key=True, nullable=False, comment='비재무문서번호')
-    biz_taxcode = Column(VARCHAR(50), nullable=False, comment='기업_세번호')
-    biz_address = Column(VARCHAR(50), nullable=False, comment='기업_주소')
-    biz_industry = Column(VARCHAR(50), nullable=False, comment='기업_산업종류')
-    biz_foundation_at = Column(INTEGER, nullable=False, comment='기업_창립년도')
-    eco_edu = Column(TEXT, nullable=False, comment='대표학력')
-    employee_no = Column(INTEGER, nullable=False, comment='종업원_수')
-    credit_history = Column(TEXT, nullable=False, comment='신용이력')
-    credit_score = Column(VARCHAR(50), nullable=False, comment='신용점수')
-    loan_statue = Column(VARCHAR(50), nullable=False, comment='대출_상태')
-    loan_amount = Column(BIGINT, nullable=False, comment='대출_금액')
-    long_period = Column(VARCHAR(50), nullable=False, comment='대출_기간')
-    pay_pre_loan_status = Column(CHAR(1), nullable=False, comment='기존대출_상환여부')
-    bank_com_rel = Column(INTEGER, nullable=False, comment='은행과기업_관계')
-    document_creation_date = Column(DATETIME, nullable=False, default=datetime.now(), comment='비재무_작성일자')
-    document_score = Column(DECIMAL(5, 4), nullable=True, comment='비재무_평가점수')
-
+    document_date = Column(DATETIME, primary_key=True, nullable=False, default=datetime.now(), comment='문서작성일')
+    non_finance_unique_number = Column(CHAR(40), nullable=False, comment='비재무문서번호')
+    pre_yeonchae = Column(INTEGER, nullable=True, comment='')
+    pay_pre_loan_status = Column(INTEGER, nullable=True, comment='')
+    loan_period = Column(INTEGER, nullable=True, comment='')
+    franchaise = Column(INTEGER, nullable=True, comment='')
+    loan_amount = Column(INTEGER, nullable=True, comment='')
+    city = Column(INTEGER, nullable=True, comment='')
+    employee_no = Column(INTEGER, nullable=True, comment='')
+    bank_loan_amount = Column(INTEGER, nullable=True, comment='')
     ForeignKeyConstraint(['non_finance_unique_number'], ['moolLoan_user_documents_table.non_finance_unique_number'], onupdate='CASCADE')
 
 class FinancialDocument(Base):
@@ -161,6 +176,34 @@ def updateUser(user_id, user_password, new_id = None, new_password = None) :
         session.close()
     return False
 
-# def insertNonFinancial(user_id, NonFinJson) {
-#     return None
-# }
+def inUpNonFinancial(user_id, NonFinJson) :
+    session = DatabaseHandler().session
+    try :
+        session.begin()
+        FindUser = session.query(moolLoan_user_table)
+        NonFinDocu = json.loads(NonFinJson)
+        FindUser = session.query(moolLoan_user_table).filter(moolLoan_user_table.user_id == user_id).first()
+        if FindUser : 
+            FindDocuNum = session.query(moolLoan_user_documents_table).filter(moolLoan_user_documents_table.user_unique_number ==
+                                                                               FindUser.user_unique_number).first()
+            if FindDocuNum :
+                NonFinUniqueNum = FindDocuNum.non_finance_unique_number
+                NonFinDocu = non_financial_documents_table(
+                    # document_date (기본값 존재)
+                    non_finance_unique_number = NonFinUniqueNum,
+                    pre_yeonchae = NonFinJson['one'],
+                    pay_pre_loan_status = NonFinJson['two'],
+                    loan_period = NonFinJson['three'],
+                    franchaise = NonFinJson['four'],
+                    loan_amount = NonFinJson['five'],
+                    city = NonFinJson['six'],
+                    employee_no = NonFinJson['seven'],
+                    bank_loan_amount = NonFinJson['eight']
+                )
+                session.add(NonFinDocu)
+    except Exception as e :
+        print('ERROR! : ' + e)
+        session.rollback()
+    finally :
+        session.close()
+    return False
