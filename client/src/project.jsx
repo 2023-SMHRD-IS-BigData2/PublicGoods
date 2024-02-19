@@ -12,9 +12,7 @@ import CompanyJoin from './components/CompanyJoin'
 import BankApply from './components/BankApply';
 import CompanyApply from './components/CompanyApply';
 import FileUpload from './components/FileUpload';
-import FinalSelect from './components/FinalSelect';
 import ResultPage from './components/ResultPage';
-import AfterCompanyApply from './components/AfterCompanyApply';
 import ShowPage from './components/ShowPage';
 
 import SelectOne from './components/SelectOne';
@@ -34,6 +32,9 @@ import Fin_SelectFour from './components/Fin_SelectFour';
 
 import Fin_Check from './components/Fin_Check';
 import NonfinCheck from './components/NonFinCheck';
+import FinalSelect_nonFin from './components/FinalSelect_nonFin';
+import FinalSelect_Fin from './components/FinalSelect_Fin';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -56,12 +57,12 @@ function project() {
             <Route path='/companyLogin' element={<CompanyLogin/>} />
             {/* 기업 회원가입 페이지 */}
             <Route path='/companyJoin' element={<CompanyJoin/>} />
+
             {/* 은행 신청하기 상세 페이지 */}
             <Route path='/BankApply' element={<BankApply/>} />
             {/* 기업 신청하기 상세 페이지 */}
             <Route path='/companyApply' element={<CompanyApply/>} />
-            {/* 비재무제출 후 기업 신청하기 상세 페이지 */}
-            <Route path='/afterApply' element={<AfterCompanyApply/>} />
+            
             {/* 재무제표 제출 페이지 */}
             <Route path='/fileUpload' element={<FileUpload/>} />
             {/* 비재무제표 제출 페이지 - 질문에 따라 */}
@@ -79,6 +80,7 @@ function project() {
             {/* 은행 신청하기 조회 페이지 */}
             <Route path='/showPage' element={<ShowPage/>} />
 
+            {/* 재무제표 직접 제출하기 */}
             <Route path='selFinance' element={<SelFinance/>}/>
             <Route path='/fin_selectOne' element={<Fin_SelectOne/>} />
             <Route path='/fin_selectTwo' element={<Fin_SelectTwo/>} />
@@ -86,8 +88,12 @@ function project() {
             <Route path='/fin_selectFour' element={<Fin_SelectFour/>} />
             
             {/* 재무 비재무 제출시 다른 제출로 넘어가는 페이지 */}
-            <Route path='nonFinCheck' element={<NonfinCheck/>}/>
-            <Route path='fin_Check' element={<Fin_Check/>}/>
+            <Route path='/nonFinCheck' element={<NonfinCheck/>}/>
+            <Route path='/fin_Check' element={<Fin_Check/>}/>
+
+            {/* 재무 비재무 제출시 마지막 체크 페이지 */}
+            <Route path='/finalSelectNonFin' element={<FinalSelect_nonFin/>}/>
+            <Route path='/finalSelectFin' element={<FinalSelect_Fin/>}/>
         </Routes>
 
         <Footer />

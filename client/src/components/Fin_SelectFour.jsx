@@ -1,35 +1,32 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const Fin_SelectFour = () => {
 
   const navigate = useNavigate();
-  const [progress, setProgress] = useState(25);
 
   // 있습니다. 클릭했을 때
   const handleYesClick = () => {
-    setProgress(37.5);
-    navigate('/Fin_check');
+    navigate('/fin_Check');
   };
 
   // 없습니다. 클릭했을 때
   const handleNoClick = () => {
-    setProgress(37.5);
-    navigate('/Fin_check');
+    navigate('/fin_Check');
   };
 
   // 모릅니다. 클릭했을 때
   const handleKnowClick = () => {
-    setProgress(37.5);
-    navigate('/Fin_check');
+    navigate('/fin_Check');
   };
 
   return (
     <div className='selectPage'>
 
-        <div className='Fin_SelectFour'>
+        {/* Progress - Bar */}
+        <div className='selectOne'>
           <div class="progress-bar">
-              <div className="progress2" style={{ width: `${progress}%` }}></div>
+              <div className="progressFin4"></div>
           </div>
 
           {/* 질문 */}

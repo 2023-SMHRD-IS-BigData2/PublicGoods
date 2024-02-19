@@ -1,20 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const SelectSeven = () => {
 
     const navigate = useNavigate();
-    const [progress, setProgress] = useState(87.5);
 
     // 확인버튼 클릭했을 때
     const handleOkClick = () => {
-      setProgress(100);
       navigate('/selectEight');
     };
   
     // 모릅니다. 클릭했을 때
     const handleKnowClick = () => {
-      setProgress(100);
       navigate('/selectEight');
     };
   
@@ -22,8 +19,9 @@ const SelectSeven = () => {
       <div className='selectPage'>
   
           <div className='selectOne'>
+            {/* Progress-Bar */}
             <div class="progress-bar">
-              <div className="progress7" style={{ width: `${progress}%` }}></div>
+              <div className="progress7"></div>
             </div>
   
             {/* 질문 */}
