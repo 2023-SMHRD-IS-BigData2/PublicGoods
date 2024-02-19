@@ -29,7 +29,7 @@ def join() :
         bankName = data.get('bankName'); print('bankName : ' + bankName)
     except : pass
     print(idInput, pwNum)
-    return_data = {"Insert" : insertUser(idInput, pwNum)}
+    return_data = {"Insert" : insertUser(idInput, pwNum), 'user_id' : idInput}
     return return_data
 
 @app.route('/api/login', methods=['POST'])
