@@ -5,13 +5,8 @@ const Fin_SelectFour = () => {
 
   const navigate = useNavigate();
 
-  // 있습니다. 클릭했을 때
-  const handleYesClick = () => {
-    navigate('/fin_Check');
-  };
-
   // 없습니다. 클릭했을 때
-  const handleNoClick = () => {
+  const handleMoneyClick = () => {
     navigate('/fin_Check');
   };
 
@@ -34,29 +29,26 @@ const Fin_SelectFour = () => {
             <h3 className='questionTitle'>부채를 입력해주세요.</h3>
           </div>
 
-          {/* 있습니다 Button */}
+          {/* 부채 Input */}
           <div className='apply-box'>
               <div className='apply-bank'>
-                <button className='apply-btn' onClick={handleYesClick}>
-                  <p className='btn-sub'>있습니다.<br/> </p>
+                <div className='btn-sub2'>
+                  <div class="input-wrapper">
+                    <input className='apply-btn2' type='number' placeholder='예)  3000' />
+                    <span className="placeholder-text">만원</span>
+                    <button className='okBtn' onClick={handleMoneyClick}>확인</button>
+                  </div>
+                </div> 
+              </div>
+  
+            {/* 모릅니다 Button */}
+              <div className='apply-company' onClick={handleKnowClick}>
+                <button className='apply-btn'>
+                  <p className='btn-sub'>모릅니다.<br/> </p>
                 </button>
               </div>
-
-          {/* 없습니다 Button */}
-          <div className='apply-company'>
-            <button className='apply-btn' onClick={handleNoClick}>
-               <p className='btn-sub'>없습니다.<br/> </p>
-            </button>
-          </div>
-
-          {/* 모릅니다 Button */}
-            <div className='apply-company' onClick={handleKnowClick}>
-              <button className='apply-btn'>
-                <p className='btn-sub'>모릅니다.<br/> </p>
-              </button>
             </div>
           </div>
-        </div>
 
     </div>
   )

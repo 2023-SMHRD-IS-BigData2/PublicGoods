@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const AllSelect_nonFin = () => {
+const AllSelectNext = () => {
     const navigate = useNavigate();
   
     // 결과 확인 버튼 클릭했을 때
@@ -13,8 +13,23 @@ const AllSelect_nonFin = () => {
       // 전체 페이지 - div
     <div className='onePage-div'>
 
-    {/* AllSelect_nonFin - box */}
+    {/* AllSelect_Fin - box */}
     <div className='apply-box'>
+      
+      {/* 재무제표 제출 - 체크완료 */}
+      <div className='apply-company'>
+        <button className='apply-btn3'>
+          <img src="/images/Content/documents3.png" className='comImg'></img>
+          <p className='btn-sub'>재무제표 제출<br/> </p>
+          <p className='btn-content2'>
+            - 매출액 <br/>
+            - 영업이익<br/>
+            - 자산<br/>
+            - 부채 <br/>
+          </p>
+        </button>
+        <img src="/images/Content/check.png" className='checkImg'></img>
+      </div>
 
       {/* 비재무제표 제출 - 체크완료 */}
       <div className='apply-company'>
@@ -31,26 +46,11 @@ const AllSelect_nonFin = () => {
         <img src="/images/Content/check.png" className='checkImg'></img>
       </div>
 
-      {/* 재무제표 제출 - 체크완료 */}
-      <div className='apply-company'>
-        <button className='apply-btn3'>
-          <img src="/images/Content/documents3.png" className='comImg'></img>
-          <p className='btn-sub'>재무제표 제출<br/> </p>
-          <p className='btn-content2'>
-            - 매출액 <br/>
-            - 영업이익<br/>
-            - 자산<br/>
-            - 부채 <br/>
-          </p>
-        </button>
-        <img src="/images/Content/check.png" className='checkImg'></img>
-      </div>
-
         {/* 결과 버튼 */}
         <div className='apply-company'>
           <button className='apply-btn' onClick={handleResultClick}>
             <img src="/images/Content/result.png" className='comImg'></img>
-            <p className='btn-sub'>결과 확인 <br/> </p>
+            <p className='btn-sub'>결과 확인</p>
             <p className='btn-content'>
                <br/>
                <br/>
@@ -65,4 +65,4 @@ const AllSelect_nonFin = () => {
     )
 }
 
-export default AllSelect_nonFin
+export default AllSelectNext
