@@ -108,7 +108,6 @@ def insertUser(user_id, user_password) : # 회원가입
         print('ERROR! : ' + str(e)) 
         session.rollback()
     finally :
-        print(row)
         if row == 1 :
             try :
                 session.add(newDocuTable)
@@ -128,8 +127,7 @@ def selectUser(user_id, user_password) : # 로그인
         session.begin()
         loginUser =  session.query(moolLoan_user_table).filter(moolLoan_user_table.user_id == user_id).first()
         if loginUser and sha512_crypt.verify(user_password, loginUser.user_password):
-            return json.dumps({'user_id' : loginUser.user_id, 
-                               'user_password' : loginUser.user_password})
+            return {'user_id' : loginUser.user_id, 'user_password' : loginUser.user_password}
     except Exception as e :
         print('ERROR! : ' + str(e))
     finally :
@@ -150,7 +148,7 @@ def updateUser(user_id, user_password, new_id = None, new_password = None) :
                 moolLoan_user_table.user_password : new_password
             })
             session.commit()
-            return json.dumps({'user_id' : new_id})
+            return {'user_id' : new_id}
     except Exception as e :
         print('ERROR! : ' + str(e))
         session.rollback()

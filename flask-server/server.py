@@ -29,7 +29,7 @@ def join() :
         bankName = data.get('bankName'); print('bankName : ' + bankName)
     except : pass
     print(idInput, pwNum)
-    return_data = {"Insert" : insertUser(idInput, pwNum), 'user_id' : idInput}
+    return_data = jsonify({"Insert" : insertUser(idInput, pwNum), 'user_id' : idInput})
     return return_data
 
 @app.route('/api/login', methods=['POST'])
@@ -38,7 +38,7 @@ def login() :
     idInput = data.get('idInput')
     pwNum = data.get('pwNum')
     print(idInput, pwNum)
-    return_data = selectUser(idInput, pwNum)
+    return_data = jsonify(selectUser(idInput, pwNum))
     return return_data
 
 @app.route('/api/fileUpload', methods=['POST'])
