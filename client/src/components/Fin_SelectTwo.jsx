@@ -6,8 +6,11 @@ const Fin_SelectTwo = () => {
 
   const navigate = useNavigate();
   const {selectFinList, setSelectFinList} = useContext(answerContext);
-  // 확이버튼 클릭했을 때
+  // 확인 버튼 클릭했을 때
   const handleMoneyClick = () => {
+    setSelectFinList(setSelectFinList => ({
+      ...setSelectFinList, b2: document.querySelector('.apply-btn2').value
+    }));
     navigate('/fin_selectThree');
   };
 

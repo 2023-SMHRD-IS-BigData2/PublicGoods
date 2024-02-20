@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { answerContext } from './AnswerContext';
 
 const Fin_Check = () => {
+
+    const {selectFinList, setSelectFinList} = useContext(answerContext);
     const navigate = useNavigate();
 
     // 맞습니까? 버튼 클릭했을 때
@@ -36,22 +39,22 @@ const Fin_Check = () => {
                 <tr>
                   <td>1</td>
                   <td>매출을 입력해주세요.</td>
-                  <td></td>
+                  <td>{selectFinList.b1}</td>
                 </tr>
                 <tr>
                   <td>2</td>
                   <td>영업이익을 입력해주세요.</td>
-                  <td></td>
+                  <td>{selectFinList.b2}</td>
                 </tr>
                 <tr>
                   <td>3</td>
                   <td>자산을 입력해주세요.</td>
-                  <td></td>
+                  <td>{selectFinList.b3}</td>
                 </tr>
                 <tr>
                   <td>4</td>
                   <td>부채를 입력해주세요.</td>
-                  <td></td>
+                  <td>{selectFinList.b4}</td>
                 </tr>
               </tbody>
             </table>

@@ -8,12 +8,15 @@ const Fin_SelectOne = () => {
 
   // 확인버튼 클릭했을 때
   const handleMoneyClick = () => {
-
+    setSelectFinList(setSelectFinList => ({
+      ...setSelectFinList, b1: document.querySelector('.apply-btn2').value
+    }));
     navigate('/fin_selectTwo');
   };
 
   // 모릅니다. 클릭했을 때
   const handleKnowClick = (e) => {
+    console.log(e);
       setSelectFinList(setSelectFinList => ({
         ...setSelectFinList, b1:e.target.innerText
       }));
