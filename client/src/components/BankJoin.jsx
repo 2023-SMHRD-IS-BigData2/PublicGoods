@@ -62,7 +62,7 @@ const Join = () => {
                 if (response.data.Insert) {
                     // response.data.user_id 값을 처리해 주세요
                     console.log('Logged in successfully!');
-                    navigate('/BankApply');
+                    navigate('/bankLogin');
                 } else {
                     alert('회원가입에 실패했습니다!');
                     // 회원가입 실패
