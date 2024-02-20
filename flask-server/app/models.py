@@ -1,7 +1,6 @@
 from sqlalchemy import create_engine, Column, ForeignKeyConstraint
 from sqlalchemy.dialects.mysql import CHAR, VARCHAR, DATETIME, TEXT, INTEGER, BIGINT, DECIMAL, FLOAT
-from sqlalchemy.orm import sessionmaker, declarative_base, Mapped, mapped_column
-
+from sqlalchemy.orm import sessionmaker, declarative_base, Mapped
 from uuid import uuid4
 from datetime import datetime
 from passlib.hash import sha512_crypt
