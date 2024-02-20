@@ -11,7 +11,6 @@ const NonFinCheck = () => {
   
     // 맞다면 클릭 버튼 클릭했을 때
     const handleCheckClick = () => {
-
       navigate('/finalSelectNonFin');
     };
   
