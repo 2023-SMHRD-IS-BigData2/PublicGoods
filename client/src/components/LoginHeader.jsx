@@ -17,7 +17,7 @@ const LoginHeader = () => {
 
             // 서버에서 받은 사용자 정보를 이용하여 로그인 상태를 설정
             if (response.data != null) {
-                setUsername(response.data.username);
+                setUsername(response.data.idInput);
                 setIsLogin(true);
             } else {
                 setUsername('');

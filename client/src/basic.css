@@ -1239,14 +1239,155 @@
 
 /* Result Page */
 
+/* Result Box */
+.resultBox {
+    height: 1000px;
+}
+
 /* firstDash */
 .firstDash {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .possImposs {
-    
+    width: 60%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
+
+.possible {
+    background-color: green;
+}
+
+.impossible {
+    background-color: rgb(220, 2, 2);
+}
+
+/* secondDash */
+.secondDash {
+    width: 60%;
+    height: 100px;
+    border-radius: 30px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.percentValue {
+    padding: 5px;
+    color: #8569f7;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.valueUp {
+    color: white;
+    height: 100%;
+    width: auto;
+    background-color: green;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    animation: percentAnimation1 1s ease forwards;
+}
+
+@keyframes percentAnimation1 {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 60%;
+    }
+    
+  }
+
+.valueDown {
+    color: white;
+    height: 100%;
+    width: auto;
+    background-color: rgb(220, 2, 2);
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    animation: percentAnimation2 1s ease forwards;
+}
+
+@keyframes percentAnimation2 {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 40%;
+    }
+    
+  }
+
+  /* 세 번째, 네 번째 묶기 */
+  .barBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .thirdDash, .fourDash {
+    margin: 0 50px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* thirdDash */
+  .thirdDash {
+    width: 40%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bar {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  
+  .bar-fill {
+    height: 30px;
+    background-color: #8569f7;
+    color: white;
+    transition: width 0.5s ease;
+  }
+
+  .labels {
+    display: flex;
+    flex-direction: column;
+    position: absolute; /* 포지션을 상대적으로 설정합니다 */
+  }
+  
+  .label {
+    position: relative; /* 포지션을 절대적으로 설정합니다 */
+    left: -20px; /* 왼쪽으로 이동시킵니다 */
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* fourDash */
+  .fourDash {
+    width: 40%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+  }
 
 /* --------------------------------------------------- */
 
