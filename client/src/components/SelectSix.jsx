@@ -1,22 +1,33 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { answerContext } from './AnswerContext';
 
 const SelectSix = () => {
 
     const navigate = useNavigate();
+    const { selectList, setSelectList } = useContext(answerContext);
 
     // 있습니다. 클릭했을 때
-    const handleYesClick = () => {
+    const handleYesClick = (e) => {
+      setSelectList(setSelectList => ({
+        ...setSelectList, a6:e.target.innerText
+      }));
       navigate('/selectSeven');
     };
   
     // 없습니다. 클릭했을 때
-    const handleNoClick = () => {
+    const handleNoClick = (e) => {
+      setSelectList(setSelectList => ({
+        ...setSelectList, a6:e.target.innerText
+      }));
       navigate('/selectSeven');
     };
   
     // 모릅니다. 클릭했을 때
-    const handleKnowClick = () => {
+    const handleKnowClick = (e) => {
+      setSelectList(setSelectList => ({
+        ...setSelectList, a6:e.target.innerText
+      }));
       navigate('/selectSeven');
     };
   

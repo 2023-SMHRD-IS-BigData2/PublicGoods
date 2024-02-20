@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { answerContext } from './AnswerContext';
+
+
 
 const NonFinCheck = () => {
-    const navigate = useNavigate();
-
+  const {selectList, setSelectList} = useContext(answerContext);
+  const navigate = useNavigate();
+  console.log(selectList);
+  
     // 맞다면 클릭 버튼 클릭했을 때
     const handleCheckClick = () => {
+
       navigate('/finalSelectNonFin');
     };
   
     // 다시 입력하기 버튼 클릭했을 때
     const handleAgainClick = () => {
+
       navigate('/selectOne');
     };
   
@@ -23,8 +30,7 @@ const NonFinCheck = () => {
         <div className='apply-bank'>
             <p className='btn-sub2'>확인하기</p>
             <table className='checkListTable'>
-              <tbody className='checkListTbody'>
-                <th>
+                <th align='center'>
                   <tr>번호</tr>
                 </th>
                 <th>
@@ -36,44 +42,43 @@ const NonFinCheck = () => {
                 <tr>
                   <td>1</td>
                   <td>기존 대출 연체가 있습니까?</td>
-                  <td>있음</td>
+                  <td>{selectList.a1}</td>
                 </tr>
                 <tr>
                   <td>2</td>
                   <td>기존 대출이 청산이 되어있습니까?</td>
-                  <td>있음</td>
+                  <td>{selectList.a2}</td>
                 </tr>
                 <tr>
                   <td>3</td>
                   <td>기존 대출 보유시 대출 보유 기간이 어떻게 되십니까?(월 단위)</td>
-                  <td>5개월</td>
+                  <td>{selectList.a3}</td>
                 </tr>
                 <tr>
                   <td>4</td>
                   <td>계열사가 있습니까?</td>
-                  <td>있음</td>
+                  <td>{selectList.a4}</td>
                 </tr>
                 <tr>
                   <td>5</td>
-                  <td>신용보증재단, 기술보증재단 등 재단에서 보증한 금액이 있습니까?</td>
-                  <td>2000만원</td>
+                  <td>신용보증재단, 기술보증재단 등 재단에서 보증한 금액이 있습니까? (만원 단위)</td>
+                  <td>{selectList.a5}</td>
                 </tr>
                 <tr>
                   <td>6</td>
                   <td>수도권에 있습니까?</td>
-                  <td>있음</td>
+                  <td>{selectList.a6}</td>
                 </tr>
                 <tr>
                   <td>7</td>
                   <td>평균 고용 인원 수가 어떻게 됩니까?</td>
-                  <td>10명</td>
+                  <td>{selectList.a7}</td>
                 </tr>
                 <tr>
                   <td>8</td>
-                  <td>은행에게 대출 받은 금액은 얼마입니까?</td>
-                  <td>1000만원</td>
+                  <td>은행에게 대출 받은 금액은 얼마입니까? (만원 단위)</td>
+                  <td>{selectList.a8}</td>
                 </tr>
-              </tbody>
             </table>
         </div>
     </div>
