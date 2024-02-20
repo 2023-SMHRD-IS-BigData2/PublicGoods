@@ -35,6 +35,7 @@ import NonfinCheck from './components/NonFinCheck';
 import OcrCheck from './components/OcrCheck';
 import FinalSelect_nonFin from './components/FinalSelect_nonFin';
 import FinalSelect_Fin from './components/FinalSelect_Fin';
+import AllSelectNext from './components/AllSelectNext';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -97,6 +98,9 @@ function project() {
             {/* 재무 비재무 제출시 마지막 체크 페이지 */}
             <Route path='/finalSelectNonFin' element={<FinalSelect_nonFin/>}/>
             <Route path='/finalSelectFin' element={<FinalSelect_Fin/>}/>
+
+            {/* 재무 비재무 둘 다 제출했을 때 결과버튼만 나오는 페이지 */}
+            <Route path='/allSelectNext' element={<AllSelectNext/>}/>
         </Routes>
 
         <Footer />
