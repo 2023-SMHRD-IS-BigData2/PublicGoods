@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { answerContext } from './AnswerContext';
 
 const Fin_SelectTwo = () => {
 
   const navigate = useNavigate();
-
+  const {selectFinList, setSelectFinList} = useContext(answerContext);
   // 확이버튼 클릭했을 때
   const handleMoneyClick = () => {
     navigate('/fin_selectThree');
   };
 
   // 모릅니다. 클릭했을 때
-  const handleKnowClick = () => {
+  const handleKnowClick = (e) => {
+    setSelectFinList(setSelectFinList => ({
+      ...setSelectFinList, b2:e.target.innerText
+    }));
     navigate('/fin_selectThree');
   };
 

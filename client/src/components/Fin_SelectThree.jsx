@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { answerContext } from './AnswerContext';
 
 const Fin_SelectThree = () => {
-
+  const {selectFinList, setSelectFinList} = useContext(answerContext);
   const navigate = useNavigate();
 
   // 확입버튼 클릭했을 때
@@ -11,7 +12,10 @@ const Fin_SelectThree = () => {
   };
 
   // 모릅니다. 클릭했을 때
-  const handleKnowClick = () => {
+  const handleKnowClick = (e) => {
+    setSelectFinList(setSelectFinList => ({
+      ...setSelectFinList, b3:e.target.innerText
+    }));
     navigate('/fin_selectFour');
   };
 
