@@ -94,7 +94,7 @@ const CompanyLogin = () => {
 
         {/* 로그인 버튼 */}
         <div className='bottomBtn'>
-            <Link to='/companyApply'><button className='loginBtn' onClick={handleLogin}>Login</button></Link>
+            <button className='loginBtn' onClick={handleLogin}>Login</button>
         </div>
 
         {/* 회원가입 버튼 */}
