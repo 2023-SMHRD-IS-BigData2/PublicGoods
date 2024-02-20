@@ -52,7 +52,7 @@ function Project() {
     <div>
 
       
-      <answerContext.Provider value={{ selectFinList, setSelectFinList, selectFinList, setSelectFinList}}>
+      <answerContext.Provider value={{ selectFinList, setSelectFinList, selectList, setSelectList}}>
 
         <Header />
         <LoginHeader />

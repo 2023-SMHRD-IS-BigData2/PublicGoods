@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { answerContext } from './AnswerContext';
 
 const Fin_SelectFour = () => {
+  const {selectFinList, setSelectFinList} = useContext(answerContext);
 
   const navigate = useNavigate();
 
-  // 없습니다. 클릭했을 때
+  // 확인 클릭했을 때
   const handleMoneyClick = () => {
+    setSelectFinList(setSelectFinList => ({
+      ...setSelectFinList, b4: document.querySelector('.apply-btn2').value
+    }));
     navigate('/fin_Check');
   };
 
   // 모릅니다. 클릭했을 때
-  const handleKnowClick = () => {
+  const handleKnowClick = (e) => {
+setSelectFinList(setSelectFinList => ({
+        ...setSelectFinList, b4:e.target.innerText
+      }));
     navigate('/fin_Check');
   };
 

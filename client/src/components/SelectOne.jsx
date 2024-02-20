@@ -1,13 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { answerContext } from './AnswerContext';
 
-
 const SelectOne = () => {
 
-  const {selectList, setSelectList} = useContext(answerContext);
-
   const navigate = useNavigate();
+  const [selectList, setSelectList] = useContext(answerContext);
+
   // 있습니다. 클릭했을 때
   const handleYesClick = (e) => {
     setSelectList(setSelectList => ({
@@ -18,13 +17,17 @@ const SelectOne = () => {
 
   // 없습니다. 클릭했을 때
   const handleNoClick = (e) => {
-    setSelectList({a1:e.target.innerText})
+    setSelectList(setSelectList => ({
+      ...setSelectList, a1:e.target.innerText
+    }));
     navigate('/selectTwo');
   };
 
   // 모릅니다. 클릭했을 때
   const handleKnowClick = (e) => {
-    setSelectList({a1:e.target.innerText})
+    setSelectList(setSelectList => ({
+      ...setSelectList, a1:e.target.innerText
+    }));
     navigate('/selectTwo');
   };
 
@@ -34,8 +37,9 @@ const SelectOne = () => {
         <div className='selectOne'>
           {/* Progress-Bar */}
           <div class="progress-bar">
-            <div className="progress1"></div>
+              <div className="progress2"></div>
           </div>
+        
 
           {/* 질문 */}
           <div className='question'>

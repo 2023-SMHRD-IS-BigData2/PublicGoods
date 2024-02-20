@@ -8,6 +8,9 @@ const Fin_SelectThree = () => {
 
   // 확입버튼 클릭했을 때
   const handleMoneyClick = () => {
+    setSelectFinList(setSelectFinList => ({
+      ...setSelectFinList, b3: document.querySelector('.apply-btn2').value
+    }));
     navigate('/fin_selectFour');
   };
 
