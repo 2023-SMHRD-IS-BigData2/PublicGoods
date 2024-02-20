@@ -38,6 +38,7 @@ import FinalSelect_Fin from './components/FinalSelect_Fin';
 import AllSelectNext from './components/AllSelectNext';
 
 import Header from './components/Header';
+import LoginHeader from './components/LoginHeader';
 import Footer from './components/Footer';
 
 function project() {
@@ -45,6 +46,7 @@ function project() {
     <div>
 
         <Header />
+        <LoginHeader />
 
         <Routes>
             {/* 메인페이지 */}
