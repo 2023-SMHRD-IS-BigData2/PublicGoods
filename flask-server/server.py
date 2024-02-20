@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask import session as Flasksession
 from flask_cors import CORS
  
 from app.models import insertUser, selectUser
 from werkzeug.utils import secure_filename
+import json
 import os
 
 app = Flask(__name__)
@@ -13,6 +15,13 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
+
+@app.route('/api/loginCheck', methods=['POST'])
+def loginCheck() :
+    if 'user_id' in Flasksession : 
+        user_id = Flasksession['user_id']
+        return user_id
+    else : return None
 
 @app.route("/api/join", methods=['POST'])
 def join() :
@@ -29,6 +38,7 @@ def join() :
         bankName = data.get('bankName'); print('bankName : ' + bankName)
     except : pass
     print(idInput, pwNum)
+    Flasksession['user_id'] = idInput # 아이디를 세션값에 저장
     return_data = jsonify({"Insert" : insertUser(idInput, pwNum), 'user_id' : idInput}) # insert : Boolean , user_id : 회원가입 아이디
     return return_data
 
@@ -38,6 +48,7 @@ def login() :
     idInput = data.get('idInput')
     pwNum = data.get('pwNum')
     print(idInput, pwNum)
+    Flasksession['user_id'] = idInput
     return_data = jsonify(selectUser(idInput, pwNum))
     return return_data
 
@@ -60,6 +71,13 @@ def upload_file():
 
         file.save(filepath)  # 파일 저장
         return jsonify({'success': 'File uploaded successfully', 'filename': filename})
+    
+@app.route('api/NonFin', methods=['POST'])
+def non_fin() :
+    data = request.json
+    data = json.loads(data)
+    print(data)
+    return True
     
 if __name__ == "__main__":
     app.run(debug=True, use_reloader= False)
