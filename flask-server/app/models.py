@@ -156,55 +156,132 @@ def updateUser(user_id, user_password, new_id = None, new_password = None) :
         session.close()
     return False
 
-def insertFinancial(user_id, FinJson) : # 업데이트문은 임시로 삭제 나중에 추가 예정
+def findDocuNum(user_id) :
     session = DatabaseHandler().session
+    result = None
     try :
-        session.begin() # 세션시작
-        FinJson = json.loads(FinJson) # json을 딕셔너리로 변환
-        FindUser = session.query(moolLoan_user_table).filter(moolLoan_user_table.user_id == user_id).first() # user_id를 기반으로 유저를 찾아냄
-        if FindUser : # user_id 가 포함된 첫번째 튜플이 존재시
-            FindDocuNum = session.query(moolLoan_user_documents_table).filter(moolLoan_user_documents_table.user_unique_number ==
-                                                                               FindUser.user_unique_number).first()
-                # moolLoan_user_documents_table에서 FindUser의 유니크넘버가 일치하는 첫번째 튜플을 찾아낸다 
-            if FindDocuNum : # FindDocuNum이 존재할 시
-                UniqueNum = FindDocuNum.finance_unique_number # FindDocuNum의 재무문서번호를 호출함
-                FinDocu = financial_documents_table(
-                    # document_number (기본값 존재)
-                    finance_unique_number=UniqueNum, # 외래키이기 때문에moolLoan_user_documents_table의 finance_unique_number을 받는다 
-                    revenue=FinJson['매출액'], # 이하 컬럼에 값을 대입
-                    operating_profit=FinJson['영업이익'], 
-                    operating_profit_reported_basis=FinJson['영업이익(발표기준)'], 
-                    net_income=FinJson['당기순이익'], 
-                    NIACI=FinJson['지배주주순이익'], 
-                    EANCI=FinJson['비지배주주순이익'], 
-                    total_assets=FinJson['자산총계'], 
-                    total_liabilities=FinJson['부채총계'], 
-                    total_equity=FinJson['자본총계'], 
-                    EACI=FinJson['지배주주지분'], 
-                    capital_stock=FinJson['자본금'], 
-                    debt_ratio=FinJson['부채비율'], 
-                    retention_ratio=FinJson['유보율'], 
-                    operating_profit_margin=FinJson['영업이익률'], 
-                    NIMACI=FinJson['지배주주순이익률'], 
-                    PER=FinJson['PER'], 
-                    EPS=FinJson['EPS(원)'], 
-                    PBR=FinJson['PBR'], 
-                    Sector_Code=FinJson['Sector_Code']
-                )
-                try :
-                    session.add(FinDocu) # 튜플추가
-                    row = len(session.new) # 갱신값 확인 
-                    session.commit() # 커밋
-                    if row == 1 :
-                        # 성공시 모델을 가동시켜 값을 확인한다
-                        # 모델코드부분
-                        return None # 임의의 값
-                except Exception as e :
-                    print('ERROR! : ' + str(e))
-                    session.rollback()
+        session.begin() 
+        FindUser = session.query(moolLoan_user_table).filter(moolLoan_user_table.user_id == user_id).first()
+        if FindUser :
+            findDocuNum = session.query(moolLoan_user_documents_table).filter(
+                moolLoan_user_documents_table.user_unique_number == FindUser.user_unique_number).first()
+            if findDocuNum :
+                result = {'NonFinNum' : findDocuNum.non_finance_unique_number, 'FinNum' : findDocuNum.finance_unique_number}
     except Exception as e :
         print('ERROR! : ' + str(e))
-        session.rollback()
     finally :
         session.close()
-    return False
+        return result
+
+def insertFinancial(user_id, FinJson) : # 업데이트문은 임시로 삭제 나중에 추가 예정
+    FinNum = findDocuNum(user_id)['FinNum']
+    row = 0
+    if not FinNum :
+        return row
+    else :
+        session = DatabaseHandler().session
+        session.begin()
+        FinJson = json.loads(FinJson)
+        FinDocu = financial_documents_table(# document_number : 기본값 존재
+            finance_unique_number = FinNum, # 외래키이기 때문에moolLoan_user_documents_table의 finance_unique_number을 받는다 
+            revenue = FinJson['매출액'], # 이하 컬럼에 값을 대입
+            operating_profit = FinJson['영업이익'], 
+            operating_profit_reported_basis = FinJson['영업이익(발표기준)'], 
+            net_income = FinJson['당기순이익'], 
+            NIACI = FinJson['지배주주순이익'], 
+            EANCI = FinJson['비지배주주순이익'], 
+            total_assets = FinJson['자산총계'], 
+            total_liabilities = FinJson['부채총계'], 
+            total_equity = FinJson['자본총계'], 
+            EACI = FinJson['지배주주지분'], 
+            capital_stock = FinJson['자본금'], 
+            debt_ratio = FinJson['부채비율'], 
+            retention_ratio = FinJson['유보율'], 
+            operating_profit_margin = FinJson['영업이익률'], 
+            NIMACI=FinJson['지배주  주순이익률'], 
+            PER=FinJson['PER'], 
+            EPS=FinJson['EPS(원)'], 
+            PBR=FinJson['PBR'], 
+            Sector_Code=FinJson['Sector_Code']
+        )
+        try :
+            session.add(FinDocu)
+            row = len(session.new)
+            if row == 1 : session.commit()
+            else : session.rollback()
+        except Exception as e :
+            print('ERROR! : ' + str(e))
+            session.rollback()
+        finally :
+            session.close()
+            return row
+
+def insertNonFinancial(user_id, NonFinJson) : # 비재무문서 튜플 추가
+    NonFinNum = findDocuNum(user_id)['NonFinNum']
+    row = 0
+    if not NonFinNum :
+        return row
+    else :
+        session = DatabaseHandler().session
+        session.begin()
+        NonFinJson = json.loads(NonFinJson)
+        NonFinDocu = non_financial_documents_table(# document_number : 기본값 존재
+            non_finance_unique_number = NonFinNum, # 외래키
+            delinquency_status = NonFinJson['연체여부'], # 이하 컬럼에 값을 대입
+            pay_pre_loan_status = NonFinJson['대출청산여부'],
+            loan_period = NonFinJson['대출보유기간(월)'],
+            franchaise = NonFinJson['계열사여부'],
+            loan_amount = NonFinJson['보증금액(만원)'],
+            city = NonFinJson['수도권여부'],
+            employee_no = NonFinJson['고용인원수'],
+            bank_loan_amount = NonFinJson['대출금액']
+        )
+        try :
+            session.add(NonFinDocu)
+            row = len(session.new)
+            if row == 1 : session.commit()
+            else : session.rollback()
+        except Exception as e :
+            print('ERROR! : ' + str(e))
+            session.rollback()
+        finally :
+            session.close()
+            return row
+        
+def updateNonFinancial(user_id, NonFinJson):
+    NonFinNum = findDocuNum(user_id)['NonFinNum']
+    row = 0
+    if not NonFinNum:
+        return row
+    else:
+        session = DatabaseHandler().session
+        session.begin()
+        NonFinJson = json.loads(NonFinJson)
+        existing_doc = session.query(non_financial_documents_table).filter_by(non_finance_unique_number=NonFinNum).first()
+        if existing_doc:
+            try:
+                existing_doc.delinquency_status = NonFinJson['연체여부']
+                existing_doc.pay_pre_loan_status = NonFinJson['대출청산여부']
+                existing_doc.loan_period = NonFinJson['대출보유기간(월)']
+                existing_doc.franchaise = NonFinJson['계열사여부']
+                existing_doc.loan_amount = NonFinJson['보증금액(만원)']
+                existing_doc.city = NonFinJson['수도권여부']
+                existing_doc.employee_no = NonFinJson['고용인원수']
+                existing_doc.bank_loan_amount = NonFinJson['대출금액']
+                session.commit()
+                row = 1
+            except Exception as e:
+                print('ERROR! : ' + str(e))
+                session.rollback()
+            finally:
+                session.close()
+                return row
+        else:
+            return row
+        
+# def validateNonFinancialJson(NonFinJson):
+#     required_keys = ['연체여부', '대출청산여부', '대출보유기간(월)', '계열사여부', '보증금액(만원)', '수도권여부', '고용인원수', '대출금액']
+#     for key in required_keys:
+#         if key not in NonFinJson:
+#             return False
+#     return True
