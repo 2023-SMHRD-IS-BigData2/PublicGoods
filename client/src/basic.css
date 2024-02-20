@@ -1067,6 +1067,12 @@
     align-items: center;
 }
 
+/* Login Header */
+.loginHeader {
+    text-align: right;
+    margin-right: 20px;
+}
+
 /* --------------------------------------------------- */
 
 /* Bank */
