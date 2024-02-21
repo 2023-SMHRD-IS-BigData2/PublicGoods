@@ -91,8 +91,10 @@ const OnePage = () => {
                     여부에 따라서 동종업계와 비교 및 산업군별 성장가능성을 머신러닝과 딥러닝 모델을 통해 예측하여 기업의 대출 한도 향상을 목표로 합니다.
                     </p>
             </div>
+            <div className='btn-box'>
+                <Link to='/apply'><button className='app-btn'>신청하기</button></Link>
+            </div>
         </div>
-
         
     </div>
   )

@@ -35,34 +35,48 @@ const Fin_SelectOne = () => {
           {/* 질문 */}
           <div className='question'>
             <h3 className='questionTitle'>매출을 입력해주세요.</h3>
+            <p className='selectInfor'>* <strong>최소 3분기</strong>에서 <strong>최대 5분기</strong>까지 <strong>순서대로</strong> 적어주세요.</p>
           </div>
 
           {/* 매출 Input */}
           <div className='apply-box'>
               <div className='apply-bank'>
                 <div className='btn-sub2'>
+                  {/* 1분기 */}
                   <div class="input-wrapper">
+                    <p className='quarter'>1분기</p>
                     <input className='apply-btn2' type='number' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
+                  {/* 2분기 */}
                   <div class="input-wrapper">
+                    <p className='quarter'>2분기</p>
                     <input className='apply-btn2' type='number' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
+                  {/* 3분기 */}
                   <div class="input-wrapper">
+                    <p className='quarter'>3분기</p>
                     <input className='apply-btn2' type='number' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
+                  {/* 4분기 */}
                   <div class="input-wrapper">
+                    <p className='quarter'>4분기</p>
                     <input className='apply-btn2' type='number' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
+                  {/* 5분기 */}
                   <div class="input-wrapper">
+                    <p className='quarter'>5분기</p>
                     <input className='apply-btn2' type='number' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
+                  </div>
+                  {/* 확인 버튼 */}
+                  <div class="input-wrapper">
+                    <button className='okBtn2' onClick={handleMoneyClick}>확인</button>
                   </div>
                 </div> 
-                <button className='okBtn' onClick={handleMoneyClick}>확인</button>
               </div>
             </div>
           </div>

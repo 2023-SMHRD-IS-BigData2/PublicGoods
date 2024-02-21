@@ -979,7 +979,7 @@
 /*  */
 
 .question {
-    margin-top: 100px;
+    margin-top: 80px;
     text-align: center;
 }
 
@@ -999,12 +999,12 @@
 
 .input-wrapper {
     position: relative;
-    display: flex;
+    display: inline-block;
 }
 
 .apply-btn2 {
     padding: 65px;
-    margin-bottom: 20px;
+    margin: 10px;
     width: 300px;
     height: 133.5px;
     border: none;
@@ -1026,7 +1026,7 @@
     font-weight: bold;
     font-size: 25px;
     position: absolute;
-    top: 50%;
+    top: 58%;
     right: 15px;
     transform: translateY(-50%);
     color: white;
@@ -1035,11 +1035,11 @@
   .okBtn {
     border: none;
     background-color: rgba(133, 105, 247, 0);
-    color: black;
+    color: white;
     text-decoration: underline;
     position: absolute;
     right: 100px;
-    bottom: 5px; 
+    bottom: 15px; 
     height: 30px;
     width: 100px;
     font-weight: bold;
@@ -1048,6 +1048,34 @@
 
   .okBtn:hover {
     text-decoration: none;
+  }
+
+  .okBtn2 {
+    border: none;
+    background-color: rgba(133, 105, 247, 0);
+    color: black;
+    text-decoration: underline;
+    position: absolute;
+    right: 100px;
+    width: 100px;
+    top : 90px;
+    font-weight: bold;
+    font-size: 23px;
+  }
+
+  .okBtn2:hover {
+    text-decoration: none;
+  }
+
+  .quarter {
+    font-size: 20px;
+    margin: 0;
+    color: rgb(80, 80, 80);
+  }
+
+  .selectInfor {
+    color: rgb(80, 80, 80);
+    font-size: 18px;
   }
 
 /* --------------------------------------------------- */
