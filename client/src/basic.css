@@ -1483,6 +1483,35 @@
 
 /* --------------------------------------------------- */
 
+/* Show Page */
+
+.searchBox {
+    margin-left: 20px;
+}
+
+.searchInput {
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding-left: 10px;
+}
+
+.searchInput::placeholder {
+    color: black;
+}
+
+.searchBtn {
+    background-color: rgba(133, 105, 247, 0.7);
+    color: white;
+    font-weight: bold;
+    border: none;
+    margin-left: 10px;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+}
+
+/* --------------------------------------------------- */
+
 /* Footer */
 
 .imwsby {
