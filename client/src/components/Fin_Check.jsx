@@ -24,7 +24,7 @@ const Fin_Check = () => {
     {/* 체크 리스트 보여주기 */}
     <div className='apply-box3'>
         <div className='apply-bank'>
-            <p className='btn-sub2'>확인하기</p>
+            <p className='btn-sub2'>재무제출 확인하기</p>
             <table className='checkListTable'>
               <tbody className='checkListTbody'>
                 <th>

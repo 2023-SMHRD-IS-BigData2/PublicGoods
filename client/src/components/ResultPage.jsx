@@ -74,14 +74,14 @@ const ResultPage = () => {
           <div className='thirdDash'>
             <p className='nonChart'>비재무 차트</p>
             <BarChart
-              width={600}
+              width={800}
               height={300}
               data={barData1}
               layout="vertical" // 옆으로 막대 그래프를 표시하기 위해 'vertical'로 설정
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis type="number" /> {/* X축을 수직으로 설정 */}
-              <YAxis dataKey="name" type="category" width={120}/> {/* Y축을 범주형으로 설정 */}
+              <XAxis type="number" tick={{ fontWeight: 'bold' }}/> {/* X축을 수직으로 설정 */}
+              <YAxis dataKey="name" type="category" width={120} tick={{ fontWeight: 'bold' }} /> 
               <Tooltip />
               <Legend />
               <Bar dataKey="비재무" fill="#8884d8" barSize={20} /> {/* barSize로 막대의 높이 설정 */}
@@ -92,15 +92,15 @@ const ResultPage = () => {
           <div className='fourDash'>
             <p className='finChart'>재무 차트</p>
             <BarChart
-                width={500}
+                width={700}
                 height={300}
                 data={barData2}
                 layout="vertical" // 옆으로 막대 그래프를 표시하기 위해 'vertical'로 설정
-                margin={{ right: 30, bottom: 5 }}
+                margin={{ right: 30 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis type="number" /> {/* X축을 수직으로 설정 */}
-                <YAxis dataKey="name" type="category" width={70}/> {/* Y축을 범주형으로 설정 */}
+                <XAxis type="number" tick={{ fontWeight: 'bold' }}/> {/* X축을 수직으로 설정 */}
+                <YAxis dataKey="name" type="category" width={70} tick={{ fontWeight: 'bold' }}/> {/* Y축을 범주형으로 설정 */}
                 <Tooltip />
                 <Legend />
                 <Bar dataKey="재무" fill="#ffa2ba" barSize={25} /> {/* barSize로 막대의 높이 설정 */}
@@ -113,13 +113,13 @@ const ResultPage = () => {
           <div className='fifthDash'>
             <p className='compareLine'>해당 산업군과 해당 기업 비교</p>
             <LineChart
-              width={1000}
+              width={1500}
               height={500}
               data={lineData}
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
+              <XAxis dataKey="name" tick={{ fontWeight: 'bold' }}/>
+              <YAxis tick={{ fontWeight: 'bold' }}/>
               <Tooltip />
               <Legend />
               <Line type="monotone" dataKey="기업군" stroke="#86b4f8" strokeWidth={2.5}/>

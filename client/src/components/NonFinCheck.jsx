@@ -8,17 +8,6 @@ const NonFinCheck = () => {
   const navigate = useNavigate();
   console.log(selectList);
 
-  
-    // 맞다면 클릭 버튼 클릭했을 때
-    const handleCheckClick = () => {
-      navigate('/finalSelectNonFin');
-    };
-  
-    // 다시 입력하기 버튼 클릭했을 때
-    const handleAgainClick = () => {
-    
-
-
   // 맞다면 클릭 버튼 클릭했을 때
   const handleCheckClick = async () => {
     try {
@@ -133,5 +122,5 @@ const NonFinCheck = () => {
     </div>
   )
 }
-}
+
 export default NonFinCheck
