@@ -20,7 +20,7 @@ const LoginHeader = () => {
                 setUsername(response.data.user_id);
                 setIsLogin(true);
             } else {
-                setUsername('');
+                setUsername();
                 setIsLogin(false);
             }
         } catch (error) {
