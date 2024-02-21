@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { answerContext } from './AnswerContext';
 
 const SelectOne = () => {
 
   const navigate = useNavigate();
-  const [selectList, setSelectList] = useContext(answerContext);
+  const {selectList, setSelectList} = useContext(answerContext);
 
   // 있습니다. 클릭했을 때
   const handleYesClick = (e) => {

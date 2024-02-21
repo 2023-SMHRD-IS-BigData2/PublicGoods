@@ -15,7 +15,7 @@ const OnePage = () => {
 
             {/* 1 페이지 - 물론 소개 */}
             <div className='introBox'>
-                <h2 className='intro-start'>안녕하세요. 물론(moolLoan)입니다.</h2>
+                <h3 className='intro-start'>안녕하세요. 물론(moolLoan)입니다.</h3>
                 <br />
                 <p className='intro-context'>
                     저희는 신용평가가 어려운 자영업자와 창업 초기단계 회사를 대상으로 <br/>
@@ -26,7 +26,8 @@ const OnePage = () => {
                     <br/>
                     심사의 결과가 대출의 가능/불가능 으로 나오며, <br/>
                     여부에 따라서 동종업계와 비교 및 산업군별 성장가능성을 <br/>
-                    머신러닝과 딥러닝 모델을 통해 예측하여 기업의 대출 한도 향상을 목표로 합니다.
+                    머신러닝과 딥러닝 모델을 통해 예측하여 기업의 대출 한도 향상을 <br/>
+                    목표로 합니다.
                 </p>
             </div>
         </div>
