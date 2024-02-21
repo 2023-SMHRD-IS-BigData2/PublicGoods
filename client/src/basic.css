@@ -28,6 +28,25 @@
     color: white;
 }
 
+.app-btn2 {
+    border: 2px solid white;
+    border-radius: 40px;
+    background-color: white;
+    margin-top: 20px;
+    padding: 12px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 19px;
+    font-weight: bold;
+    color: #714efc;
+    letter-spacing: 2px;
+    transition: background-color 0.5s ease;
+}
+.app-btn2:hover {
+    background-color: white;
+    color: black;
+}
+
 .introBox {
     margin-top: 1em;
     margin-bottom: 50px;
@@ -1002,6 +1021,11 @@
     display: inline-block;
 }
 
+.input-wrapper2 {
+    position: relative;
+    display: flex;
+}
+
 .apply-btn2 {
     padding: 65px;
     margin: 10px;
@@ -1026,10 +1050,21 @@
     font-weight: bold;
     font-size: 25px;
     position: absolute;
-    top: 58%;
+    top: 51%;
     right: 15px;
     transform: translateY(-50%);
     color: white;
+  }
+
+  .placeholder-text2 {
+    font-weight: bold;
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: white;
+    margin-right: 20px;
   }
 
   .okBtn {
@@ -1058,7 +1093,7 @@
     position: absolute;
     right: 100px;
     width: 100px;
-    top : 90px;
+    top : 50px;
     font-weight: bold;
     font-size: 23px;
   }
@@ -1067,10 +1102,26 @@
     text-decoration: none;
   }
 
+  .apply-finBtn {
+    padding: 30px;
+    padding-right: 80px;
+    margin: 10px;
+    width: 300px;
+    height: 80px;
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+    outline: none;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(133, 105, 247, 0.7);
+  }
+
   .quarter {
     font-size: 20px;
-    margin: 0;
     color: rgb(80, 80, 80);
+    margin-top: 35px;
+    margin-right: 5px;
   }
 
   .selectInfor {
@@ -1403,7 +1454,7 @@
   .nonChart, .finChart {
     font-size: 20px;
     font-weight: bold;
-    color: rgb(80, 80, 80);
+    color: black
   }
 
   /* thirdDash */
@@ -1426,7 +1477,7 @@
   .compareLine {
     font-size: 20px;
     font-weight: bold;
-    color: rgb(80, 80, 80);
+    color: black;
     text-align: center;
   }
 

@@ -33,7 +33,10 @@ const Fin_SelectThree = () => {
           {/* 질문 */}
           <div className='question'>
             <h3 className='questionTitle'>자산을 입력해주세요.</h3>
-            <p className='selectInfor'>* <strong>최소 3분기</strong>에서 <strong>최대 5분기</strong>까지 <strong>순서대로</strong> 적어주세요.</p>
+            <p className='selectInfor'>
+              * <strong>최소 3개</strong>에서 <strong>최대 5개</strong>까지 <strong>순서대로</strong> 적어주세요. <br/>
+              (분기 또는 연도로 작성해주세요.)
+            </p>
           </div>
 
           {/* 자산 Input */}
@@ -41,37 +44,37 @@ const Fin_SelectThree = () => {
               <div className='apply-bank'>
                 <div className='btn-sub2'>
                   {/* 1분기 */}
-                  <div class="input-wrapper">
-                    <p className='quarter'>1분기</p>
-                    <input className='apply-btn2' type='number' name = 'b11' placeholder='예)  3000' />
+                  <div class="input-wrapper2">
+                    <p className='quarter'>1</p>
+                    <input className='apply-finBtn' type='number' name = 'b11' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
                   {/* 2분기 */}
-                  <div class="input-wrapper">
-                    <p className='quarter'>2분기</p>
-                    <input className='apply-btn2' type='number' name = 'b12' placeholder='예)  3000' />
+                  <div class="input-wrapper2">
+                    <p className='quarter'>2</p>
+                    <input className='apply-finBtn' type='number' name = 'b12' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
                   {/* 3분기 */}
-                  <div class="input-wrapper">
-                    <p className='quarter'>3분기</p>
-                    <input className='apply-btn2' type='number' name = 'b13' placeholder='예)  3000' />
+                  <div class="input-wrapper2">
+                    <p className='quarter'>3</p>
+                    <input className='apply-finBtn' type='number' name = 'b13' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
                   {/* 4분기 */}
-                  <div class="input-wrapper">
-                    <p className='quarter'>4분기</p>
-                    <input className='apply-btn2' type='number' name = 'b14' placeholder='예)  3000' />
+                  <div class="input-wrapper2">
+                    <p className='quarter'>4</p>
+                    <input className='apply-finBtn' type='number' name = 'b14' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
                   {/* 5분기 */}
-                  <div class="input-wrapper">
-                    <p className='quarter'>5분기</p>
-                    <input className='apply-btn2' type='number' name = 'b15' placeholder='예)  3000' />
+                  <div class="input-wrapper2">
+                    <p className='quarter'>5</p>
+                    <input className='apply-finBtn' type='number' name = 'b15' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
                   {/* 확인 버튼 */}
-                  <div class="input-wrapper">
+                  <div class="input-wrapper2">
                     <button className='okBtn2' onClick={handleMoneyClick}>확인</button>
                   </div>
                 </div> 

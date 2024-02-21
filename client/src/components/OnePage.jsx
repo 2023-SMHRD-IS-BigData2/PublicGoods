@@ -90,9 +90,12 @@ const OnePage = () => {
                     → 재무와 비재무모델에 따른 머신러닝을 이용한 학습된모델에 데이터를 넣어 예측된 결과값을 종합하여 대출 가능 불가능 여부에 대해 알려줍니다. <br/>
                     여부에 따라서 동종업계와 비교 및 산업군별 성장가능성을 머신러닝과 딥러닝 모델을 통해 예측하여 기업의 대출 한도 향상을 목표로 합니다.
                     </p>
-            </div>
-            <div className='btn-box'>
-                <Link to='/apply'><button className='app-btn'>신청하기</button></Link>
+
+                <div className='btn-box'>
+                    <Link to='/apply'><button className='app-btn2'>신청하기</button></Link>
+                </div>
+                <br/>
+                <br/>
             </div>
         </div>
         
