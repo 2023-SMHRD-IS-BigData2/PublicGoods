@@ -1,5 +1,5 @@
-from sqlalchemy import create_engine, Column, ForeignKeyConstraint
 from sqlalchemy.dialects.mysql import CHAR, VARCHAR, DATETIME, TEXT, INTEGER, FLOAT
+from sqlalchemy import create_engine, Column, ForeignKeyConstraint
 from sqlalchemy.orm import sessionmaker, declarative_base
 from sqlalchemy.exc import SQLAlchemyError
 from passlib.hash import sha512_crypt
@@ -79,6 +79,18 @@ class financial_documents_table (Base) : # financial_documents_table 매핑
     EPS = Column(FLOAT, nullable=False, comment='EPS(원)')
     PBR = Column(FLOAT, nullable=False, comment='PBR')
     Sector_Code = Column(FLOAT, nullable=False, comment='Sector_Code')
+    ForeignKeyConstraint(['finance_unique_number'], ['moolLoan_user_documents_table.finance_unique_number'], onupdate='CASCADE')
+class simple_financial_documents_table(Base) :
+    __tablename__ = 'simple_financial_documents_table'
+    __table_args__ = {'comment': '간단_재무_문서_테이블'}
+
+    document_number = Column(VARCHAR(50), primary_key=True, nullable=False, comment='문서고유번호',
+                             default=(datetime.now().strftime('%Y%m%d') + str(uuid4()).replace('-', '')).upper() )
+    finance_unique_number = Column(CHAR(40), nullable=False, comment='재무문서번호')
+    revenue = Column(FLOAT, nullable=False, comment='매출액')
+    operating_profit = Column(FLOAT, nullable=False, comment='영업이익')
+    total_equity = Column(FLOAT, nullable=False, comment='총자산')
+    debt = Column(FLOAT, nullable=False, comment='총부채')
     ForeignKeyConstraint(['finance_unique_number'], ['moolLoan_user_documents_table.finance_unique_number'], onupdate='CASCADE')
 
 def insertUser(user_id, user_password, user_type) : # return Boolean
@@ -302,7 +314,8 @@ def updateNonFinancial(user_id, NonFinJson): # return Boolean
                 print('ERROR! : ' + str(e))
                 session.rollback()
     return updateBoolean
-        
+
+
 # def validateNonFinancialJson(NonFinJson):
 #     required_keys = ['연체여부', '대출청산여부', '대출보유기간(월)', '계열사여부', '보증금액(만원)', '수도권여부', '고용인원수', '대출금액']
 #     for key in required_keys:

@@ -1,12 +1,13 @@
 from flask import Flask, request, jsonify
 from flask import session as Flasksession
 from flask_cors import CORS
- 
+
+from app.controllers import JsonDataProcessing
+from app.controllers import SimpleDocuProcessing
 from app.models import insertUser, selectUser
 from werkzeug.utils import secure_filename
 from threading import Lock
 import secrets
-import json
 import os
 
 app = Flask(__name__)
@@ -88,10 +89,17 @@ def upload_file():
     
 @app.route('/api/NonFin', methods=['POST'])
 def non_fin() :
-    data = request.json
-    data = json.loads(data)
-    print(data)
-    return True
+    data = JsonDataProcessing(request.json)
+    data.changeNonFinKey()
+    data.changeNonFinValue()
+    print(data.AnyFinDict)
+    return {'key' : 'value'}
+
+@app.route('/api/simpleFin', methods=['POST'])
+def simpleFin() :
+    data = SimpleDocuProcessing(request.json)
+    print(data.SimpleFinDict)
+    return {'key' : 'value'}
     
 if __name__ == "__main__":
     app.run(debug = True, use_reloader = False)

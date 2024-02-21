@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { answerContext } from './AnswerContext';
+import axios from 'axios';
 
 const Fin_Check = () => {
 
@@ -8,7 +9,16 @@ const Fin_Check = () => {
     const navigate = useNavigate();
 
     // 맞습니까? 버튼 클릭했을 때
-    const handleCheckClick = () => {
+    const handleCheckClick = async () => {
+      try {
+        const response = await axios.post('http://127.0.0.1:5000/api/simpleFin', {
+          selectFinList
+        });
+        console.log(response.data)
+      }
+      catch (error) {
+        alert('전송에 실패했습니다!');
+      }
       console.log(selectFinList);
       navigate('/finalSelectFin');
     };

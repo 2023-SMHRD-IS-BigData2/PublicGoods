@@ -1,11 +1,20 @@
-from analysis_module.non_financial_model import NonFinancialModel
-from analysis_module.financial_model import FinancialModel
+from app.analysis_module import NonFinancialModel
+from app.analysis_module import FinancialModel
 from typing import Union, Tuple
 import pandas as pd
 import numpy as np
 import json
 
-class NonFinJsonToDict :
+def changeAnswer(answer : Union[str, float, int]) -> Union[str, float] :
+        answer = answer.replace('.\n', '')
+        if answer == '있습니다' : return 'Y'
+        elif answer == '없습니다' : return 'N'
+        elif answer == '모릅니다' : return 'X'
+        else :
+            float_answer = float(answer)
+            if isinstance(float_answer, float) : return float_answer
+            else : answer
+class JsonDataProcessing :
     def __init__(self, AnyFinJson : Union[str, dict]) -> None :
         if isinstance(AnyFinJson, str) : self.AnyFinDict = json.loads(AnyFinJson)
         elif isinstance(AnyFinJson, dict) : self.AnyFinDict = AnyFinJson
@@ -15,11 +24,9 @@ class NonFinJsonToDict :
         self.FinNewKey = ['매출액', '영업이익', '영업이익(발표기준)', '당기순이익', '지배주주순이익', '비지배주주순이익', '자산총계', 
                           '부채총계', '자본총계', '지배주주지분', '비지배주주지분', '자본금', '부채비율', '유보율', '영업이익률',
                           '지배주주순이익률', 'PER', 'EPS(원)', 'PBR', 'Sector_Code']
-        
-        self.SimpleFinNewKey = ['', '', '', '', '']
 
     def changeNonFinKey(self) -> dict :
-        if len(self.AnyFinDict) != 8 : return None
+        if len(self.AnyFinDict) != len(self.NonFinNewKey) : return None
         NonFinOldKey = list(self.AnyFinDict.keys())
 
         for old, new in zip(NonFinOldKey, self.NonFinNewKey) :
@@ -28,12 +35,21 @@ class NonFinJsonToDict :
         return self.AnyFinDict
     
     def changeFinKey(self) -> dict :
-        if len(self.AnyFinDict) != 20 : return None
+        if len(self.AnyFinDict) != len(self.FinNewKey) : return None
         FinOldKey = list(self.AnyFinDict.keys())
 
         for old, new in zip(FinOldKey, self.FinNewKey) :
             self.AnyFinDict[new] = self.AnyFinDict.pop(old)
         
+        return self.AnyFinDict
+    
+    def changeNonFinValue(self) -> dict :
+        if len(self.AnyFinDict) != len(self.NonFinNewKey) : return None 
+        # NonFinOldValue = list(self.AnyFinDict.values())
+
+        for temp in self.NonFinNewKey :
+            self.AnyFinDict[temp] = changeAnswer(self.AnyFinDict[temp])
+
         return self.AnyFinDict
     
     def runningNonFinModel(self) -> np.ndarray :
@@ -49,3 +65,20 @@ class NonFinJsonToDict :
         predictions = model.predict(data, pred_prob=False)
 
         return predictions
+    
+class SimpleDocuProcessing : 
+    def __init__(self, SimpleFinJson : Union[str, dict]) -> None :
+        if isinstance(SimpleFinJson, str) : self.SimpleFinDict = json.loads(SimpleFinJson)
+        elif isinstance(SimpleFinJson, dict) : self.SimpleFinDict = SimpleFinJson
+        temp = next(iter(self.SimpleFinDict.keys()))
+        self.SimpleFinDict = self.SimpleFinDict[temp]
+
+        self.SimpleFinNewKey = ['매출액', '영업이익', '총자산', '총부채']
+
+    def CombineData(self) -> dict :
+        # 데이터 결합 부분
+        return None
+    
+    def runningSimpleFinModel(self) :
+        # 데이터 모델에 넣고 돌리는 부분
+        return None
