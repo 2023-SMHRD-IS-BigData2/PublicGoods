@@ -46,7 +46,7 @@ import { answerContext } from './components/AnswerContext';
 
 function Project() {
   
-  const [selectFinList, setSelectFinList] = useState({b1:'',b2:'',b3:'',b4:''});
+  const [selectFinList, setSelectFinList] = useState({b1:'',b2:'',b3:'',b4:'',b5:'',b6:'',b7:'',b8:'',b9:'',b10:'',b11:'',b12:'',b12:'',b14:'',b15:'',b16:'',b17:'',b18:'',b19:'',b20:''});
   const [selectList, setSelectList] = useState({a1:'',a2:'',a3:'',a4:'',a5:'',a6:'',a7:'',a8:''});
   return (
     <div>

@@ -9,6 +9,7 @@ const Fin_Check = () => {
 
     // 맞습니까? 버튼 클릭했을 때
     const handleCheckClick = () => {
+      console.log(selectFinList);
       navigate('/finalSelectFin');
     };
   
@@ -51,38 +52,38 @@ const Fin_Check = () => {
                 <tr>
                   <td>1</td>
                   <td>매출을 입력해주세요.</td>
-                  <td>1911</td>
-                  <td>3022</td>
-                  <td>2796</td>
-                  <td>2368</td>
-                  <td>2122</td>
+                  <td>{selectFinList.b1}</td>
+                  <td>{selectFinList.b2}</td>
+                  <td>{selectFinList.b3}</td>
+                  <td>{selectFinList.b4}</td>
+                  <td>{selectFinList.b5}</td>
                 </tr>
                 <tr>
                   <td>2</td>
                   <td>영업이익을 입력해주세요.</td>
-                  <td>433</td>
-                  <td>516</td>
-                  <td>359</td>
-                  <td>322</td>
-                  <td>311</td>
+                  <td>{selectFinList.b6}</td>
+                  <td>{selectFinList.b7}</td>
+                  <td>{selectFinList.b8}</td>
+                  <td>{selectFinList.b9}</td>
+                  <td>{selectFinList.b10}</td>
                 </tr>
                 <tr>
                   <td>3</td>
                   <td>자산을 입력해주세요.</td>
-                  <td>4544</td>
-                  <td>4484</td>
-                  <td>4266</td>
-                  <td>4266</td>
-                  <td>3782</td>
+                  <td>{selectFinList.b11}</td>
+                  <td>{selectFinList.b12}</td>
+                  <td>{selectFinList.b13}</td>
+                  <td>{selectFinList.b14}</td>
+                  <td>{selectFinList.b15}</td>
                 </tr>
                 <tr>
                   <td>4</td>
                   <td>부채를 입력해주세요.</td>
-                  <td>905</td>
-                  <td>936</td>
-                  <td>1217</td>
-                  <td>1022</td>
-                  <td>1113</td>
+                  <td>{selectFinList.b16}</td>
+                  <td>{selectFinList.b17}</td>
+                  <td>{selectFinList.b18}</td>
+                  <td>{selectFinList.b19}</td>
+                  <td>{selectFinList.b20}</td>
                 </tr>
               </tbody>
             </table>
