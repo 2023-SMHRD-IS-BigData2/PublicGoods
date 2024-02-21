@@ -1,32 +1,32 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { answerContext } from './AnswerContext';
 
 const SelectOne = () => {
 
   const navigate = useNavigate();
-  const [selectList, setSelectList] = useContext(answerContext);
+  const {selectList, setSelectList} = useContext(answerContext);
 
   // 있습니다. 클릭했을 때
   const handleYesClick = (e) => {
-    setSelectList(setSelectList => ({
-      ...setSelectList, a1:e.target.innerText
+    setSelectList( v => ({
+      ...v, a1:e.target.innerText
     }));
     navigate('/selectTwo');
   };
 
   // 없습니다. 클릭했을 때
   const handleNoClick = (e) => {
-    setSelectList(setSelectList => ({
-      ...setSelectList, a1:e.target.innerText
+    setSelectList( v =>({
+      ...v, a1:e.target.innerText
     }));
     navigate('/selectTwo');
   };
 
   // 모릅니다. 클릭했을 때
   const handleKnowClick = (e) => {
-    setSelectList(setSelectList => ({
-      ...setSelectList, a1:e.target.innerText
+    setSelectList( v => ({
+     ...v, a1:e.target.innerText
     }));
     navigate('/selectTwo');
   };
@@ -36,7 +36,7 @@ const SelectOne = () => {
 
         <div className='selectOne'>
           {/* Progress-Bar */}
-          <div class="progress-bar">
+          <div className="progress-bar">
               <div className="progress2"></div>
           </div>
         
@@ -50,14 +50,14 @@ const SelectOne = () => {
           <div className='apply-box'>
               <div className='apply-bank'>
                 <button className='apply-btn' onClick={handleYesClick}>
-                  <p className='btn-sub'>있습니다.<br/> </p>
+                  <p className='btn-sub'>있습니다.<br/></p>
                 </button>
               </div>
 
           {/* 없습니다 Button */}
           <div className='apply-company'>
             <button className='apply-btn' onClick={handleNoClick}>
-               <p className='btn-sub'>없습니다.<br/> </p>
+               <p className='btn-sub'>없습니다.<br/></p>
             </button>
           </div>
 
