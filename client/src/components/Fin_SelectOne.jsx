@@ -44,16 +44,25 @@ const Fin_SelectOne = () => {
                   <div class="input-wrapper">
                     <input className='apply-btn2' type='number' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
-                    <button className='okBtn' onClick={handleMoneyClick}>확인</button>
+                  </div>
+                  <div class="input-wrapper">
+                    <input className='apply-btn2' type='number' placeholder='예)  3000' />
+                    <span className="placeholder-text">만원</span>
+                  </div>
+                  <div class="input-wrapper">
+                    <input className='apply-btn2' type='number' placeholder='예)  3000' />
+                    <span className="placeholder-text">만원</span>
+                  </div>
+                  <div class="input-wrapper">
+                    <input className='apply-btn2' type='number' placeholder='예)  3000' />
+                    <span className="placeholder-text">만원</span>
+                  </div>
+                  <div class="input-wrapper">
+                    <input className='apply-btn2' type='number' placeholder='예)  3000' />
+                    <span className="placeholder-text">만원</span>
                   </div>
                 </div> 
-              </div>
-  
-            {/* 모릅니다 Button */}
-              <div className='apply-company' onClick={handleKnowClick}>
-                <button className='apply-btn'>
-                  <p className='btn-sub'>모릅니다.<br/> </p>
-                </button>
+                <button className='okBtn' onClick={handleMoneyClick}>확인</button>
               </div>
             </div>
           </div>
