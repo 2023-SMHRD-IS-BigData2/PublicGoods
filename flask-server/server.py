@@ -27,11 +27,10 @@ def not_found_error(error) :
 
 @app.route('/api/loginCheck', methods=['POST'])
 def loginCheck() :
-    with lock :
-        if 'user_id' in Flasksession : 
-            user_id = Flasksession['user_id']
-            return jsonify({'user_id' : user_id}), 200
-        else : return jsonify({'user_id' : None}), 200
+    if 'user_id' in Flasksession : 
+        user_id = Flasksession['user_id']
+        return jsonify({'user_id' : user_id}), 200
+    else : return jsonify({'user_id' : None}), 200
 
 @app.route('/api/logout', methods=['POST'])
 def logout() :

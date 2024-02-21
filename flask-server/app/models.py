@@ -291,7 +291,7 @@ def updateNonFinancial(user_id, NonFinJson): # return Boolean
                         non_financial_documents_table.bank_loan_amount : NonFinJson['대출금액'],
                     })
                 row = session.query(non_financial_documents_table).\
-                    filter(non_financial_documents_table.non_finance_unique_number == NonFinNum).count(); print(row)
+                    filter(non_financial_documents_table.non_finance_unique_number == NonFinNum).count()
                 if row == 1 : 
                     session.commit(); updateBoolean = True
                 else : session.rollback()
