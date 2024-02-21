@@ -34,27 +34,55 @@ const Fin_Check = () => {
                   <tr>질문</tr>
                 </th>
                 <th>
-                  <tr>답변</tr>
+                  <tr>1</tr>
+                </th>
+                <th>
+                  <tr>2</tr>
+                </th>
+                <th>
+                  <tr>3</tr>
+                </th>
+                <th>
+                  <tr>4</tr>
+                </th>
+                <th>
+                  <tr>5</tr>
                 </th>
                 <tr>
                   <td>1</td>
                   <td>매출을 입력해주세요.</td>
-                  <td>{selectFinList.b1}</td>
+                  <td>1911</td>
+                  <td>3022</td>
+                  <td>2796</td>
+                  <td>2368</td>
+                  <td>2122</td>
                 </tr>
                 <tr>
                   <td>2</td>
                   <td>영업이익을 입력해주세요.</td>
-                  <td>{selectFinList.b2}</td>
+                  <td>433</td>
+                  <td>516</td>
+                  <td>359</td>
+                  <td>322</td>
+                  <td>311</td>
                 </tr>
                 <tr>
                   <td>3</td>
                   <td>자산을 입력해주세요.</td>
-                  <td>{selectFinList.b3}</td>
+                  <td>4544</td>
+                  <td>4484</td>
+                  <td>4266</td>
+                  <td>4266</td>
+                  <td>3782</td>
                 </tr>
                 <tr>
                   <td>4</td>
                   <td>부채를 입력해주세요.</td>
-                  <td>{selectFinList.b4}</td>
+                  <td>905</td>
+                  <td>936</td>
+                  <td>1217</td>
+                  <td>1022</td>
+                  <td>1113</td>
                 </tr>
               </tbody>
             </table>
@@ -79,11 +107,10 @@ const Fin_Check = () => {
 
     {/* 안내사항 */}
     <div className='information-box'>
-      <p className='information-content'>
-        * 재무상태표는 최소 3개, 최대 5개의 정보가 필요합니다.<br/>
-        분기 또는 연도 자료를 입력해주세요. 입력시에는 <strong>반드시 최신순</strong> 으로 입력해주세요. <br/>
-        연도별 자료 예시 23, 22, 21, 20, 19 자료 <br/>
-        분기별 자료 예시 23년 4분기 23년 3분기 23년 2분기 23년 1분기
+      <p className='information-content2'>
+        * <strong>1부터 5까지 최신순으로 기입해주세요.<br/></strong>
+        연도별 자료 예시 1) 23년 2) 22년 3) 21년 4) 20년 5) 19년<br/>
+        분기별 자료 예시 1) 23년 4분기 2) 23년 3분기 3) 23년 2분기 4) 23년 1분기 5) 22년 4분기
       </p>
     </div>
 

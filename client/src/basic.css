@@ -40,7 +40,7 @@
 
 .intro-context {
     line-height: 2.5;
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 600;
     text-align: left;
     color: rgb(80, 80, 80);
@@ -102,14 +102,14 @@
 
 .box1-fir {
     font-weight: bold;
-    font-size: 27px;
+    font-size: 25px;
     margin-right: 10px;
     color: #714efc;
 }
 
 .box-name {
     font-weight: bold;
-    font-size: 27px;
+    font-size: 25px;
 }
 
 @media (max-width: 768px) {
@@ -283,6 +283,11 @@
 .information-content {
     margin: 0 auto;
     font-size: 13px;
+}
+
+.information-content2 {
+    margin: 0 auto;
+    font-size: 15px;
 }
 
 /* --------------------------------------------------- */
@@ -1241,7 +1246,7 @@
 
 /* Result Box */
 .resultBox {
-    height: 1000px;
+    height: 1500px;
 }
 
 /* firstDash */
@@ -1298,7 +1303,7 @@
     color: white;
     height: 100%;
     width: auto;
-    background-color: green;
+    background-color: rgb(79, 148, 79);
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     animation: percentAnimation1 1s ease forwards;
@@ -1318,7 +1323,7 @@
     color: white;
     height: 100%;
     width: auto;
-    background-color: rgb(220, 2, 2);
+    background-color: rgb(185, 62, 62);
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     animation: percentAnimation2 1s ease forwards;
@@ -1338,55 +1343,47 @@
   .barBox {
     width: 100%;
     display: flex;
-    justify-content: center;
-    margin-top: 30px;
+    margin-top: 60px;
   }
 
   .thirdDash, .fourDash {
-    margin: 0 50px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
     display: flex;
     flex-direction: column;
+  }
+
+  .nonChart, .finChart {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(80, 80, 80);
   }
 
   /* thirdDash */
   .thirdDash {
-    width: 40%;
-    border: 1px solid black;
+    width: 50%;
     display: flex;
     flex-direction: column;
-  }
-  
-  .bar {
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
-  
-  .bar-fill {
-    height: 30px;
-    background-color: #8569f7;
-    color: white;
-    transition: width 0.5s ease;
-  }
-
-  .labels {
-    display: flex;
-    flex-direction: column;
-    position: absolute; /* 포지션을 상대적으로 설정합니다 */
-  }
-  
-  .label {
-    position: relative; /* 포지션을 절대적으로 설정합니다 */
-    left: -20px; /* 왼쪽으로 이동시킵니다 */
-    font-size: 20px;
-    margin-bottom: 20px;
   }
 
   /* fourDash */
   .fourDash {
     width: 40%;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
+  }
+
+  /* fifthDash */
+  .fifthDash {
+    margin-top: 60px;
+  }
+
+  .compareLine {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(80, 80, 80);
+    text-align: center;
   }
 
 /* --------------------------------------------------- */
