@@ -2,7 +2,11 @@ import React from 'react'
 
 const ShowPage = () => {
   return (
-    <div>ShowPage</div>
+    <div className='onePage-div'>
+      <div className='searchBox'>
+        <input></input>
+      </div>
+    </div>
   )
 }
 

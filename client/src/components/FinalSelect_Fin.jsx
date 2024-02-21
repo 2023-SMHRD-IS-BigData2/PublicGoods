@@ -9,11 +9,6 @@ const FinalSelect_Fin = () => {
       navigate('/selectOne');
     };
   
-    // 결과 확인 버튼 클릭했을 때
-    const handleResultClick = () => {
-      navigate('/resultPage');
-    };
-  
     return (
       // 전체 페이지 - div
     <div className='onePage-div'>
