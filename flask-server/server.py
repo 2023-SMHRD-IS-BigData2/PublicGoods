@@ -4,26 +4,40 @@ from flask_cors import CORS
  
 from app.models import insertUser, selectUser
 from werkzeug.utils import secure_filename
+from threading import Lock
+import secrets
 import json
 import os
 
 app = Flask(__name__)
 CORS(app)
+app.secret_key = secrets.token_hex(16)
+lock = Lock()
 
 UPLOAD_FOLDER = '/path/to/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['SESSION_PERMANENT'] = False
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
+
+@app.errorhandler(404)
+def not_found_error(error) :
+    return jsonify({'error': 'Not found'}), 404
 
 @app.route('/api/loginCheck', methods=['POST'])
 def loginCheck() :
     if 'user_id' in Flasksession : 
         user_id = Flasksession['user_id']
-        return user_id
-    else : return None
+        return jsonify({'user_id' : user_id}), 200
+    else : return jsonify({'user_id' : None}), 200
 
-@app.route("/api/join", methods=['POST'])
+@app.route('/api/logout', methods=['POST'])
+def logout() :
+    Flasksession.clear()
+    return True
+
+@app.route('/api/join', methods=['POST'])
 def join() :
     data = request.json
     idInput = data.get('idInput')
@@ -72,7 +86,7 @@ def upload_file():
         file.save(filepath)  # 파일 저장
         return jsonify({'success': 'File uploaded successfully', 'filename': filename})
     
-@app.route('api/NonFin', methods=['POST'])
+@app.route('/api/NonFin', methods=['POST'])
 def non_fin() :
     data = request.json
     data = json.loads(data)
@@ -80,4 +94,4 @@ def non_fin() :
     return True
     
 if __name__ == "__main__":
-    app.run(debug=True, use_reloader= False)
+    app.run(debug = True, use_reloader = False)

@@ -30,6 +30,7 @@ const NonFinCheck = () => {
     navigate('/selectOne');
   };
 
+
   return (
     // 전체 페이지 - div
     <div className='onePage-div'>

@@ -1,4 +1,36 @@
 import React, { useState } from 'react'
+import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+
+// 비재무 막대그래프
+const barData1 = [
+  { name: '기존대출연체', 비재무: 2400, amt: 2400 },
+  { name: '기존대출이청산', 비재무: 1398, amt: 2210 },
+  { name: '대출보유기간', 비재무: 9800, amt: 2290 },
+  { name: '계열사', 비재무: 3908, amt: 2000 },
+  { name: '보증한금액', 비재무: 4800, amt: 2181 },
+  { name: '수도권', 비재무: 3800, amt: 2500 },
+  { name: '평균고용인원수', 비재무: 4300, amt: 2100 },
+  { name: '대출받은금액', 비재무: 1400, amt: 2600 },
+];
+
+// 재무 막대그래프
+const barData2 = [
+  { name: '매출', 재무: 4000, amt: 2400 },
+  { name: '영업이익', 재무: 3000, amt: 2210 },
+  { name: '자산', 재무: 2000, amt: 2290 },
+  { name: '부채', 재무: 2780, amt: 2000 },
+];
+
+// 성장률 꺽은선 그래프
+const lineData = [
+  { name: '23년 1분기', 기업군: 4000, 산업군: 2400, amt: 2400 },
+  { name: '23년 2분기', 기업군: 3000, 산업군: 1398, amt: 2210 },
+  { name: '23년 3분기', 기업군: 2000, 산업군: 9800, amt: 2290 },
+  { name: '23년 4분기', 기업군: 2780, 산업군: 3908, amt: 2000 },
+  { name: '24년 1분기', 기업군: 1890, 산업군: 4800, amt: 2181 },
+  { name: '24년 2분기', 기업군: 2390, 산업군: 3800, amt: 2500 },
+  { name: '24년 3분기', 기업군: 3490, 산업군: 4300, amt: 2100 },
+];
 
 const ResultPage = () => {
 
@@ -8,25 +40,6 @@ const ResultPage = () => {
   const [nonPercentValue, setNonPercentValue] = useState(60)
   // 재무 확률
   const [finPercnetValue, setFinPercentValue] = useState(40)
-
-  // 비재무 -   막대 차트
-  const [dataNon, setDataNon] = useState([
-    {label : '1', value : 50},
-    {label : '2', value : 70},
-    {label : '3', value : 90},
-    {label : '4', value : 60},
-    {label : '5', value : 80},
-    {label : '6', value : 50},
-    {label : '7', value : 40}
-  ])
-
-  // 재무 -   막대 차트
-  const [dataFin, setDataFin] = useState([
-    {label : '1', value : 50},
-    {label : '2', value : 70},
-    {label : '3', value : 90},
-    {label : '4', value : 60},
-  ])
 
   return (
 
@@ -41,6 +54,7 @@ const ResultPage = () => {
               {moneyValue >= 60 ? '대출 가능합니다.' : '대출 불가능합니다.'}
           </div>
 
+
           {/* 두 번째 - 확률 대시보드 */}
           <div className='secondDash'>
             {/* 비재무 확률 */}
@@ -53,44 +67,64 @@ const ResultPage = () => {
             </div>
           </div>
 
+
           {/* 세 번째, 네 번째 묶기 */}
           <div className='barBox'>
           {/* 세 번째 - 비재무 막대차트 대시보드 */}
           <div className='thirdDash'>
-            {/* 막대 그래프의 각 막대를 생성 */}
-            {dataNon.map((item, index) => (
-              <div key={index} className='bar'>
-                <div className="bar-fill" style={{ width: `${item.value}%` }}></div>
-              </div>
-            ))}
-            <div className="labels">
-            {/* 라벨을 렌더링합니다 */}
-            {dataNon.map((item, index) => (
-              <div key={index} className="label">{item.label}</div>
-            ))}
-          </div>
+            <p className='nonChart'>비재무 차트</p>
+            <BarChart
+              width={800}
+              height={300}
+              data={barData1}
+              layout="vertical" // 옆으로 막대 그래프를 표시하기 위해 'vertical'로 설정
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis type="number" tick={{ fontWeight: 'bold' }}/> {/* X축을 수직으로 설정 */}
+              <YAxis dataKey="name" type="category" width={120} tick={{ fontWeight: 'bold' }} /> 
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="비재무" fill="#8884d8" barSize={20} /> {/* barSize로 막대의 높이 설정 */}
+            </BarChart>
           </div>
 
           {/* 네 번째 - 재무 막대차트 대시보드 */}
           <div className='fourDash'>
-            {/* 막대 그래프의 각 막대를 생성 */}
-            {dataFin.map((item, index) => (
-              <div key={index} className='bar'>
-                <div className="bar-fill" style={{ width: `${item.value}%` }}></div>
-              </div>
-            ))}
-            <div className="labels">
-            {/* 라벨을 렌더링합니다 */}
-            {dataFin.map((item, index) => (
-              <div key={index} className="label">{item.label}</div>
-            ))}
+            <p className='finChart'>재무 차트</p>
+            <BarChart
+                width={700}
+                height={300}
+                data={barData2}
+                layout="vertical" // 옆으로 막대 그래프를 표시하기 위해 'vertical'로 설정
+                margin={{ right: 30 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis type="number" tick={{ fontWeight: 'bold' }}/> {/* X축을 수직으로 설정 */}
+                <YAxis dataKey="name" type="category" width={70} tick={{ fontWeight: 'bold' }}/> {/* Y축을 범주형으로 설정 */}
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="재무" fill="#ffa2ba" barSize={25} /> {/* barSize로 막대의 높이 설정 */}
+              </BarChart>
+            </div>
           </div>
-          </div>
-          </div>
+
 
           {/* 다섯 번째 - 성장률 꺽은선 그래프 대시보드 */}
           <div className='fifthDash'>
-
+            <p className='compareLine'>해당 산업군과 해당 기업 비교</p>
+            <LineChart
+              width={1500}
+              height={500}
+              data={lineData}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" tick={{ fontWeight: 'bold' }}/>
+              <YAxis tick={{ fontWeight: 'bold' }}/>
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="기업군" stroke="#86b4f8" strokeWidth={2.5}/>
+              <Line type="monotone" dataKey="산업군" stroke="#eeb53a" strokeWidth={2.5}/>
+            </LineChart>
           </div>
 
         </div>

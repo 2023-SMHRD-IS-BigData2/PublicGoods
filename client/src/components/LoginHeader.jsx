@@ -13,14 +13,14 @@ const LoginHeader = () => {
     const fetchLoggedInUsername = async () => {
         try {
             // 서버로부터 이미 로그인된 사용자의 정보를 가져오는 요청을 보냄
-            const response = await axios.get('http://127.0.0.1:5000/api/user');
+            const response = await axios.post('http://127.0.0.1:5000/api/loginCheck');
 
             // 서버에서 받은 사용자 정보를 이용하여 로그인 상태를 설정
-            if (response.data != null) {
-                setUsername(response.data.idInput);
+            if (response.data.user_id != null) {
+                setUsername(response.data.user_id);
                 setIsLogin(true);
             } else {
-                setUsername('');
+                setUsername();
                 setIsLogin(false);
             }
         } catch (error) {

@@ -29,9 +29,10 @@
 }
 
 .introBox {
-    margin-top: 7em;
+    margin-top: 1em;
     margin-bottom: 50px;
     text-align: center;
+    background-color: #ece8fd;
 }
 
 .intro-start {
@@ -40,12 +41,23 @@
 
 .intro-context {
     line-height: 2.5;
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 600;
     text-align: left;
     color: rgb(80, 80, 80);
     max-width: 700px; /* 텍스트의 최대 너비를 설정할 수 있습니다. 필요에 따라 조정하십시오. */
     margin: 0 auto;
+}
+
+.addPage {
+    margin-top: 3em;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.serviceImg {
+    width: 900px;
+    margin: 20px;
 }
 
 /* 2 page */
@@ -102,14 +114,14 @@
 
 .box1-fir {
     font-weight: bold;
-    font-size: 27px;
+    font-size: 25px;
     margin-right: 10px;
     color: #714efc;
 }
 
 .box-name {
     font-weight: bold;
-    font-size: 27px;
+    font-size: 25px;
 }
 
 @media (max-width: 768px) {
@@ -165,9 +177,13 @@
 }
 
 .forth-content {
-    margin-left: 30px;
-    margin-top: 60px;
-    font-size: 18px;
+    margin-top: 60px !important;
+    margin-bottom: 60px !important;
+    font-size: 17px;
+    text-align: left;
+    line-height: 2;
+    max-width: 700px; /* 텍스트의 최대 너비를 설정할 수 있습니다. 필요에 따라 조정하십시오. */
+    margin: 0 auto;
 }
 
 /* --------------------------------------------------- */
@@ -283,6 +299,11 @@
 .information-content {
     margin: 0 auto;
     font-size: 13px;
+}
+
+.information-content2 {
+    margin: 0 auto;
+    font-size: 15px;
 }
 
 /* --------------------------------------------------- */
@@ -958,7 +979,7 @@
 /*  */
 
 .question {
-    margin-top: 100px;
+    margin-top: 80px;
     text-align: center;
 }
 
@@ -983,6 +1004,7 @@
 
 .apply-btn2 {
     padding: 65px;
+    margin: 10px;
     width: 300px;
     height: 133.5px;
     border: none;
@@ -1004,7 +1026,7 @@
     font-weight: bold;
     font-size: 25px;
     position: absolute;
-    top: 50%;
+    top: 58%;
     right: 15px;
     transform: translateY(-50%);
     color: white;
@@ -1017,7 +1039,7 @@
     text-decoration: underline;
     position: absolute;
     right: 100px;
-    bottom: 5px; 
+    bottom: 15px; 
     height: 30px;
     width: 100px;
     font-weight: bold;
@@ -1026,6 +1048,34 @@
 
   .okBtn:hover {
     text-decoration: none;
+  }
+
+  .okBtn2 {
+    border: none;
+    background-color: rgba(133, 105, 247, 0);
+    color: black;
+    text-decoration: underline;
+    position: absolute;
+    right: 100px;
+    width: 100px;
+    top : 90px;
+    font-weight: bold;
+    font-size: 23px;
+  }
+
+  .okBtn2:hover {
+    text-decoration: none;
+  }
+
+  .quarter {
+    font-size: 20px;
+    margin: 0;
+    color: rgb(80, 80, 80);
+  }
+
+  .selectInfor {
+    color: rgb(80, 80, 80);
+    font-size: 18px;
   }
 
 /* --------------------------------------------------- */
@@ -1241,7 +1291,7 @@
 
 /* Result Box */
 .resultBox {
-    height: 1000px;
+    height: 1600px;
 }
 
 /* firstDash */
@@ -1298,7 +1348,7 @@
     color: white;
     height: 100%;
     width: auto;
-    background-color: green;
+    background-color: rgb(79, 148, 79);
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     animation: percentAnimation1 1s ease forwards;
@@ -1318,7 +1368,7 @@
     color: white;
     height: 100%;
     width: auto;
-    background-color: rgb(220, 2, 2);
+    background-color: rgb(185, 62, 62);
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     animation: percentAnimation2 1s ease forwards;
@@ -1338,55 +1388,46 @@
   .barBox {
     width: 100%;
     display: flex;
+    margin-top: 60px;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 30px;
   }
 
   .thirdDash, .fourDash {
-    margin: 0 50px;
+    justify-content: center;
+    align-items: center;
     display: flex;
     flex-direction: column;
+  }
+
+  .nonChart, .finChart {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(80, 80, 80);
   }
 
   /* thirdDash */
   .thirdDash {
-    width: 40%;
-    border: 1px solid black;
+    width: 50%;
     display: flex;
-    flex-direction: column;
-  }
-  
-  .bar {
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
-  
-  .bar-fill {
-    height: 30px;
-    background-color: #8569f7;
-    color: white;
-    transition: width 0.5s ease;
-  }
-
-  .labels {
-    display: flex;
-    flex-direction: column;
-    position: absolute; /* 포지션을 상대적으로 설정합니다 */
-  }
-  
-  .label {
-    position: relative; /* 포지션을 절대적으로 설정합니다 */
-    left: -20px; /* 왼쪽으로 이동시킵니다 */
-    font-size: 20px;
-    margin-bottom: 20px;
   }
 
   /* fourDash */
   .fourDash {
     width: 40%;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
+  }
+
+  /* fifthDash */
+  .fifthDash {
+    margin-top: 60px;
+    
+  }
+
+  .compareLine {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(80, 80, 80);
+    text-align: center;
   }
 
 /* --------------------------------------------------- */
