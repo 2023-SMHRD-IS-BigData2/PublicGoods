@@ -8,19 +8,18 @@ const Fin_SelectTwo = () => {
   const {selectFinList, setSelectFinList} = useContext(answerContext);
   // 확인 버튼 클릭했을 때
   const handleMoneyClick = () => {
-    setSelectFinList(setSelectFinList => ({
-      ...setSelectFinList, b2: document.querySelector('.apply-btn2').value
+    setSelectFinList(v => ({
+      ...v, 
+      b6: document.getElementsByName('b6')[0].value,
+      b7: document.getElementsByName('b7')[0].value,
+      b8: document.getElementsByName('b8')[0].value,
+      b9: document.getElementsByName('b9')[0].value,
+      b10: document.getElementsByName('b10')[0].value
+      
     }));
     navigate('/fin_selectThree');
   };
 
-  // 모릅니다. 클릭했을 때
-  const handleKnowClick = (e) => {
-    setSelectFinList(setSelectFinList => ({
-      ...setSelectFinList, b2:e.target.innerText
-    }));
-    navigate('/fin_selectThree');
-  };
 
   return (
     <div className='selectPage'>
@@ -33,25 +32,48 @@ const Fin_SelectTwo = () => {
           {/* 질문 */}
           <div className='question'>
             <h3 className='questionTitle'>영업이익을 입력해주세요.</h3>
+            <p className='selectInfor'>* <strong>최소 3분기</strong>에서 <strong>최대 5분기</strong>까지 <strong>순서대로</strong> 적어주세요.</p>
           </div>
 
           {/* 영업이익 Input */}
           <div className='apply-box'>
               <div className='apply-bank'>
                 <div className='btn-sub2'>
+                  {/* 1분기 */}
                   <div class="input-wrapper">
-                    <input className='apply-btn2' type='number' placeholder='예)  3000' />
+                    <p className='quarter'>1분기</p>
+                    <input className='apply-btn2' type='number' name = 'b6' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
-                    <button className='okBtn' onClick={handleMoneyClick}>확인</button>
+                  </div>
+                  {/* 2분기 */}
+                  <div class="input-wrapper">
+                    <p className='quarter'>2분기</p>
+                    <input className='apply-btn2' type='number' name = 'b7' placeholder='예)  3000' />
+                    <span className="placeholder-text">만원</span>
+                  </div>
+                  {/* 3분기 */}
+                  <div class="input-wrapper">
+                    <p className='quarter'>3분기</p>
+                    <input className='apply-btn2' type='number' name = 'b8' placeholder='예)  3000' />
+                    <span className="placeholder-text">만원</span>
+                  </div>
+                  {/* 4분기 */}
+                  <div class="input-wrapper">
+                    <p className='quarter'>4분기</p>
+                    <input className='apply-btn2' type='number' name = 'b9' placeholder='예)  3000' />
+                    <span className="placeholder-text">만원</span>
+                  </div>
+                  {/* 5분기 */}
+                  <div class="input-wrapper">
+                    <p className='quarter'>5분기</p>
+                    <input className='apply-btn2' type='number' name = 'b10' placeholder='예)  3000' />
+                    <span className="placeholder-text">만원</span>
+                  </div>
+                  {/* 확인 버튼 */}
+                  <div class="input-wrapper">
+                    <button className='okBtn2' onClick={handleMoneyClick}>확인</button>
                   </div>
                 </div> 
-              </div>
-  
-            {/* 모릅니다 Button */}
-              <div className='apply-company' onClick={handleKnowClick}>
-                <button className='apply-btn'>
-                  <p className='btn-sub'>모릅니다.<br/> </p>
-                </button>
               </div>
             </div>
           </div>

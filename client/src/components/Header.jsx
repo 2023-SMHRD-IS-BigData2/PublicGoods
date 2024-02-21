@@ -8,7 +8,7 @@ const Header = () => {
 
       {/* Logo 이미지 */}
       <Link to="/"><img src="/images/Header/moolLoan.png" alt="logo" className="moolLaon-HeaderLogo" /></Link>
-
+      
     </div>
 
     )

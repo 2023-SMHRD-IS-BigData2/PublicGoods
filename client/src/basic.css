@@ -29,9 +29,10 @@
 }
 
 .introBox {
-    margin-top: 7em;
+    margin-top: 1em;
     margin-bottom: 50px;
     text-align: center;
+    background-color: #ece8fd;
 }
 
 .intro-start {
@@ -46,6 +47,17 @@
     color: rgb(80, 80, 80);
     max-width: 700px; /* 텍스트의 최대 너비를 설정할 수 있습니다. 필요에 따라 조정하십시오. */
     margin: 0 auto;
+}
+
+.addPage {
+    margin-top: 3em;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.serviceImg {
+    width: 900px;
+    margin: 20px;
 }
 
 /* 2 page */
@@ -165,9 +177,13 @@
 }
 
 .forth-content {
-    margin-left: 30px;
-    margin-top: 60px;
-    font-size: 18px;
+    margin-top: 60px !important;
+    margin-bottom: 60px !important;
+    font-size: 17px;
+    text-align: left;
+    line-height: 2;
+    max-width: 700px; /* 텍스트의 최대 너비를 설정할 수 있습니다. 필요에 따라 조정하십시오. */
+    margin: 0 auto;
 }
 
 /* --------------------------------------------------- */
@@ -963,7 +979,7 @@
 /*  */
 
 .question {
-    margin-top: 100px;
+    margin-top: 80px;
     text-align: center;
 }
 
@@ -988,6 +1004,7 @@
 
 .apply-btn2 {
     padding: 65px;
+    margin: 10px;
     width: 300px;
     height: 133.5px;
     border: none;
@@ -1009,7 +1026,7 @@
     font-weight: bold;
     font-size: 25px;
     position: absolute;
-    top: 50%;
+    top: 58%;
     right: 15px;
     transform: translateY(-50%);
     color: white;
@@ -1022,7 +1039,7 @@
     text-decoration: underline;
     position: absolute;
     right: 100px;
-    bottom: 5px; 
+    bottom: 15px; 
     height: 30px;
     width: 100px;
     font-weight: bold;
@@ -1031,6 +1048,34 @@
 
   .okBtn:hover {
     text-decoration: none;
+  }
+
+  .okBtn2 {
+    border: none;
+    background-color: rgba(133, 105, 247, 0);
+    color: black;
+    text-decoration: underline;
+    position: absolute;
+    right: 100px;
+    width: 100px;
+    top : 90px;
+    font-weight: bold;
+    font-size: 23px;
+  }
+
+  .okBtn2:hover {
+    text-decoration: none;
+  }
+
+  .quarter {
+    font-size: 20px;
+    margin: 0;
+    color: rgb(80, 80, 80);
+  }
+
+  .selectInfor {
+    color: rgb(80, 80, 80);
+    font-size: 18px;
   }
 
 /* --------------------------------------------------- */
@@ -1246,7 +1291,7 @@
 
 /* Result Box */
 .resultBox {
-    height: 1500px;
+    height: 1600px;
 }
 
 /* firstDash */
@@ -1344,12 +1389,13 @@
     width: 100%;
     display: flex;
     margin-top: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .thirdDash, .fourDash {
     justify-content: center;
     align-items: center;
-    margin: 0 20px;
     display: flex;
     flex-direction: column;
   }
@@ -1364,19 +1410,17 @@
   .thirdDash {
     width: 50%;
     display: flex;
-    flex-direction: column;
   }
 
   /* fourDash */
   .fourDash {
     width: 40%;
-    display: flex;
-    flex-direction: column;
   }
 
   /* fifthDash */
   .fifthDash {
     margin-top: 60px;
+    
   }
 
   .compareLine {
