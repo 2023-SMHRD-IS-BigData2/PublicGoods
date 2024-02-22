@@ -21,40 +21,8 @@ const OcrCheck = () => {
     {/* 체크 리스트 보여주기 */}
     <div className='apply-box3'>
         <div className='apply-bank'>
-            <p className='btn-sub2'>확인하기</p>
-            <table className='checkListTable'>
-              <tbody className='checkListTbody'>
-                <th>
-                  <tr>번호</tr>
-                </th>
-                <th>
-                  <tr>질문</tr>
-                </th>
-                <th>
-                  <tr>답변</tr>
-                </th>
-                <tr>
-                  <td>1</td>
-                  <td>매출을 입력해주세요.</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>영업이익을 입력해주세요.</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>자산을 입력해주세요.</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>부채를 입력해주세요.</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
+            <p className='btn-sub2'> OCR 확인하기</p>
+            <h2>여기에 OCR 값이 보여져야함</h2>
         </div>
     </div>
 
@@ -69,7 +37,7 @@ const OcrCheck = () => {
         {/* 다시 입력하기 Button */}
         <div className='apply-company2'>
           <button className='apply-btn4'>
-            <p className='btn-sub3' onClick={handleAgainClick}>다시 올리기</p>
+            <p className='btn-sub3' onClick={handleAgainClick}>다시 제출하기</p>
           </button>
         </div>
     </div>
