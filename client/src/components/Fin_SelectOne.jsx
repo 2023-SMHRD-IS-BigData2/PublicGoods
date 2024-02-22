@@ -41,7 +41,7 @@ const Fin_SelectOne = () => {
           </div>
 
           {/* 매출 Input */}
-          <div className='apply-box'>
+          <div className='apply-box5'>
               <div className='apply-bank'>
                 <div className='btn-sub2'>
                   {/* 1분기 */}

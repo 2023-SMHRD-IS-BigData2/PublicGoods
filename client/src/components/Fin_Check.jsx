@@ -42,7 +42,7 @@ const Fin_Check = () => {
                   <tr>번호</tr>
                 </th>
                 <th>
-                  <tr>질문</tr>
+                  <tr>질문 내용</tr>
                 </th>
                 <th>
                   <tr>1</tr>
