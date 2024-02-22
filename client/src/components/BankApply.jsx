@@ -41,7 +41,7 @@ const BankApply = () => {
                 <img src="/images/Content/search.png" className='comImg'></img>
                 <p className='btn-sub'>조회 <br/> </p>
                 <p className='btn-content2'>
-                  - 신용평가 조회 <br/>
+                  - 기업 신용평가 이력조회 <br/>
                   <br/>
                   <br/>
                   <br/>
