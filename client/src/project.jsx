@@ -13,7 +13,10 @@ import BankApply from './components/BankApply';
 import CompanyApply from './components/CompanyApply';
 import FileUpload from './components/FileUpload';
 import ResultPage from './components/ResultPage';
+
 import ShowPage from './components/ShowPage';
+import ShowListPage from './components/ShowListPage';
+import ShowNoPage from './components/ShowNoPage';
 
 import SelectOne from './components/SelectOne';
 import SelectTwo from './components/SelectTwo';
@@ -94,6 +97,8 @@ function Project() {
           <Route path='/resultPage' element={<ResultPage />} />
           {/* 은행 신청하기 조회 페이지 */}
           <Route path='/showPage' element={<ShowPage />} />
+          <Route path='/showListPage' element={<ShowListPage/>}/>
+          <Route path='/showNoPage' element={<ShowNoPage/>}/>
 
           {/* 재무제표 직접 제출하기 */}
           <Route path='selFinance' element={<SelFinance />} />

@@ -23,7 +23,7 @@ const CompanyLogin = () => {
 
     // 비밀번호
     if (!pwNum) {
-        setPwError('아이디를 입력해주세요.');
+        setPwError('비밀번호를 입력해주세요.');
     } else {
         setPwError('');
     }

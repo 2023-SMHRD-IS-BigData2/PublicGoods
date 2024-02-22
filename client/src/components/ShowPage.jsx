@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const ShowPage = () => {
 
-  const [placeholder, setPlaceHolder] = useState('사원번호');
+
+  {/* select로직으로 사업자번호를 확인한다 */}
+ 
+
+  {/* 여기 위 수정 */}
+  const [placeholder, setPlaceHolder] = useState('사업자번호');
 
   const handleInputClick = () => {
     setPlaceHolder('');
@@ -11,8 +17,9 @@ const ShowPage = () => {
   return (
     <div className='onePage-div'>
       <div className='searchBox'>
+        <p className='btn-sub2'>조회하고 싶은 기업의 사업자번호를 입력하세요.</p>
         <input className='searchInput' type='text' placeholder={placeholder} onClick={handleInputClick}></input>
-        <button className='searchBtn'>조회</button>
+        <Link to='/ShowListPage'><button className='searchBtn' >조회</button></Link>
       </div>
     </div>
   )
