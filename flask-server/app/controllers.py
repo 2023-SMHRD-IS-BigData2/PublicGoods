@@ -1,5 +1,7 @@
 from app.analysis_module import NonFinancialModel
 from app.analysis_module import FinancialModel
+from app.ocr import OcrResultPostProcessing
+from app.ocr import NaverOCR
 from typing import Union, Tuple
 import pandas as pd
 import numpy as np
@@ -82,3 +84,19 @@ class SimpleDocuProcessing :
     def runningSimpleFinModel(self) :
         # 데이터 모델에 넣고 돌리는 부분
         return None
+    
+def getOCRresult(path : str, url : str, key : str) :
+
+    ocr = NaverOCR(api_url = url, secret_key = key)
+    post_processor = OcrResultPostProcessing()
+    result = ocr.get_result(img_path = path)
+    post_processor.ocr_result = result
+    ocr_dataframes = post_processor.postprocess()
+
+    final_result = {}
+    for key, df in ocr_dataframes.items():
+            final_result[key] = df.to_json(orient='records')
+    
+    final_result = json.loads(final_result['image_0'])
+
+    return final_result

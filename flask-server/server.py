@@ -4,7 +4,10 @@ from flask_cors import CORS
 
 from app.controllers import JsonDataProcessing
 from app.controllers import SimpleDocuProcessing
+from app.controllers import getOCRresult
+
 from app.models import insertUser, selectUser
+
 from werkzeug.utils import secure_filename
 from threading import Lock
 import secrets
@@ -15,12 +18,15 @@ CORS(app)
 app.secret_key = secrets.token_hex(16)
 lock = Lock()
 
-UPLOAD_FOLDER = '/path/to/uploads'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['SESSION_PERMANENT'] = False
-
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+app.config['SESSION_PERMANENT'] = False
+
+NaverOCRURL = "https://5jhnjwjjza.apigw.ntruss.com/custom/v1/28004/94c60e18d0f07e16d2c25442c7a6c7dc86a8e362f8dc888c4cc5c71886cb8278/general"
+OCRSecretKey = "eG93a2ZjYlNhaXFCSWJSTVdueWFxWWVrTFRkT0NnWXc="
 
 @app.errorhandler(404)
 def not_found_error(error) :
@@ -68,24 +74,21 @@ def login() :
     return return_data
 
 @app.route('/api/fileUpload', methods=['POST'])
-def upload_file():
+def fileUpload():
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'})
-
     file = request.files['file']
     if file.filename == '':
         return jsonify({'error': 'No selected file'})
-
     if file:
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-
-        # 파일이 이미 존재하는지 확인하고 있다면 덮어씌웁니다.
         if os.path.exists(filepath):
-            os.remove(filepath)  # 기존 파일 삭제
-
-        file.save(filepath)  # 파일 저장
-        return jsonify({'success': 'File uploaded successfully', 'filename': filename})
+            os.remove(filepath)
+        file.save(filepath) 
+        response_data = getOCRresult(path = filepath, url = NaverOCRURL, key = OCRSecretKey)
+        return response_data
+    else : return {'key' : 'value'}
     
 @app.route('/api/NonFin', methods=['POST'])
 def non_fin() :
