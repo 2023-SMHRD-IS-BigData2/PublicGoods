@@ -49,7 +49,7 @@ const Fin_Check = () => {
                 </tr>
                 <tr>
                   <td>1</td>
-                  <td>매출을 입력해주세요.</td>
+                  <td style={{textAlign : 'left'}}>매출을 입력해주세요.</td>
                   <td>{selectFinList.b1}</td>
                   <td>{selectFinList.b2}</td>
                   <td>{selectFinList.b3}</td>
@@ -58,7 +58,7 @@ const Fin_Check = () => {
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td>영업이익을 입력해주세요.</td>
+                  <td style={{textAlign : 'left'}}>영업이익을 입력해주세요.</td>
                   <td>{selectFinList.b6}</td>
                   <td>{selectFinList.b7}</td>
                   <td>{selectFinList.b8}</td>
@@ -67,7 +67,7 @@ const Fin_Check = () => {
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td>자산을 입력해주세요.</td>
+                  <td style={{textAlign : 'left'}}>자산을 입력해주세요.</td>
                   <td>{selectFinList.b11}</td>
                   <td>{selectFinList.b12}</td>
                   <td>{selectFinList.b13}</td>
@@ -76,7 +76,7 @@ const Fin_Check = () => {
                 </tr>
                 <tr>
                   <td>4</td>
-                  <td>부채를 입력해주세요.</td>
+                  <td style={{textAlign : 'left'}}>부채를 입력해주세요.</td>
                   <td>{selectFinList.b16}</td>
                   <td>{selectFinList.b17}</td>
                   <td>{selectFinList.b18}</td>

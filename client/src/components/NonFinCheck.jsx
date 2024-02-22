@@ -40,49 +40,49 @@ const NonFinCheck = () => {
         <div className='apply-bank'>
           <p className='btn-sub2'>비재무 내용 확인하기</p>
           <table className='checkListTable'>
-            <tr align='center'>
+            <tr>
               <th>번호</th>
               <th>질문 내용</th>
               <th>답변</th>
             </tr>
             <tr>
               <td>1</td>
-              <td>기존 대출 연체가 있습니까?</td>
+              <td style={{textAlign : 'left'}}>기존 대출 연체가 있습니까?</td>
               <td>{selectList.a1}</td>
             </tr>
             <tr>
               <td>2</td>
-              <td>기존 대출이 청산이 되어있습니까?</td>
+              <td style={{textAlign : 'left'}}>기존 대출이 청산이 되어있습니까?</td>
               <td>{selectList.a2}</td>
             </tr>
             <tr>
               <td>3</td>
-              <td>기존 대출 보유시 대출 보유 기간이 어떻게 되십니까?(월 단위)</td>
+              <td style={{textAlign : 'left'}}>기존 대출 보유시 대출 보유 기간이 어떻게 되십니까?(월 단위)</td>
               <td>{selectList.a3}</td>
             </tr>
             <tr>
               <td>4</td>
-              <td>계열사가 있습니까?</td>
+              <td style={{textAlign : 'left'}}>계열사가 있습니까?</td>
               <td>{selectList.a4}</td>
             </tr>
             <tr>
               <td>5</td>
-              <td>신용보증재단, 기술보증재단 등 재단에서 보증한 금액이 있습니까? (만원 단위)</td>
+              <td style={{textAlign : 'left'}}>신용보증재단, 기술보증재단 등 재단에서 보증한 금액이 있습니까? (만원 단위)</td>
               <td>{selectList.a5}</td>
             </tr>
             <tr>
               <td>6</td>
-              <td>수도권에 있습니까?</td>
+              <td style={{textAlign : 'left'}}>수도권에 있습니까?</td>
               <td>{selectList.a6}</td>
             </tr>
             <tr>
               <td>7</td>
-              <td>평균 고용 인원 수가 어떻게 됩니까?</td>
+              <td style={{textAlign : 'left'}}>평균 고용 인원 수가 어떻게 됩니까?</td>
               <td>{selectList.a7}</td>
             </tr>
             <tr>
               <td>8</td>
-              <td>은행에게 대출 받은 금액은 얼마입니까? (만원 단위)</td>
+              <td style={{textAlign : 'left'}}>은행에게 대출 받은 금액은 얼마입니까? (만원 단위)</td>
               <td>{selectList.a8}</td>
             </tr>
           </table>
