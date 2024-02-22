@@ -100,8 +100,10 @@ const Login = () => {
             </div>
 
             {/* 회원가입 버튼 */}
-            <div className='bottomJoin'>
-                <Link to='/bankJoin'><button className='joinBtn'>회원가입이 필요하시면 클릭!</button></Link>
+            <div className='bottomJoin' style={{marginBottom : '100px', marginTop : '10px'}}>
+                <Link to='/bankJoin'>
+                    <button className='joinBtn'>회원가입이 필요하시면 클릭!</button>
+                </Link>
             </div>
 
         </div>

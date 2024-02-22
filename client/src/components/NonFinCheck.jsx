@@ -40,15 +40,11 @@ const NonFinCheck = () => {
         <div className='apply-bank'>
           <p className='btn-sub2'>비재무 내용 확인하기</p>
           <table className='checkListTable'>
-            <th align='center'>
-              <tr>번호</tr>
-            </th>
-            <th>
-              <tr>질문 내용</tr>
-            </th>
-            <th>
-              <tr>답변</tr>
-            </th>
+            <tr align='center'>
+              <th>번호</th>
+              <th>질문 내용</th>
+              <th>답변</th>
+            </tr>
             <tr>
               <td>1</td>
               <td>기존 대출 연체가 있습니까?</td>

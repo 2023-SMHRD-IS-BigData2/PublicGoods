@@ -153,8 +153,11 @@ const Join = () => {
 
             {/* 로그인 버튼 */}
             <div className='bottomBtn2'>
-                <button className='loginBtn2'
-                    onClick={handleLogin}>Join</button>
+            <button className='loginBtn2'
+                onClick={handleLogin}
+                style={{marginBottom : '50px'}}
+                >Join
+            </button>
             </div>
         </div>
     )

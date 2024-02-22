@@ -38,27 +38,15 @@ const Fin_Check = () => {
             <p className='btn-sub2'>재무제출 확인하기</p>
             <table className='checkListTable'>
               <tbody className='checkListTbody'>
-                <th>
-                  <tr>번호</tr>
-                </th>
-                <th>
-                  <tr>질문 내용</tr>
-                </th>
-                <th>
-                  <tr>1</tr>
-                </th>
-                <th>
-                  <tr>2</tr>
-                </th>
-                <th>
-                  <tr>3</tr>
-                </th>
-                <th>
-                  <tr>4</tr>
-                </th>
-                <th>
-                  <tr>5</tr>
-                </th>
+                <tr>
+                  <th>번호</th>
+                  <th>질문 내용</th>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                  <th>5</th>
+                </tr>
                 <tr>
                   <td>1</td>
                   <td>매출을 입력해주세요.</td>
