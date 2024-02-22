@@ -43,7 +43,8 @@
     transition: background-color 0.5s ease;
 }
 .app-btn2:hover {
-    background-color: white;
+    background-color: rgb(228, 228, 228);
+    border: 2px solid rgb(228, 228, 228);
     color: black;
 }
 
@@ -523,7 +524,7 @@
 
 
 .loginBtn2{
-    width:100%;
+    width:200px;
     height:50px;
     border:none;
     font-weight: 700;
@@ -603,10 +604,20 @@
     color : lightgray;
 }
 
+.joinSelect{
+    width:200px;
+    outline:none;
+    border:none;
+    height: 16px;
+    font-size: 13px;
+    font-weight: 400;
+}
+
 .errorMessageWrap3{
     color:#ef0000;
     font-size: 12px;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 /* .loginBtn2 {
@@ -1491,12 +1502,20 @@
 
 /* Show Page */
 
+.searchSub {
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+}
+
 .searchBox {
     margin-left: 20px;
+    margin-top: 30px;
+    text-align: center;
 }
 
 .searchInput {
-    width: 300px;
+    width: 400px;
     border-radius: 10px;
     border: 1px solid gray;
     padding-left: 10px;
@@ -1514,6 +1533,31 @@
     margin-left: 10px;
     border-radius: 10px;
     padding: 5px 10px 5px 10px;
+}
+
+/* --------------------------------------------------- */
+
+/* Show List Page */
+
+.showBox {
+    display: flex;
+    justify-content: center;
+}
+
+.showListTable {
+    margin-top: 30px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.showListTable td, .showListTable th {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.showListTable th {
+    background-color: #f2f2f2;
 }
 
 /* --------------------------------------------------- */

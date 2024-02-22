@@ -98,7 +98,7 @@ const CompanyLogin = () => {
         </div>
 
         {/* 회원가입 버튼 */}
-        <div className='bottomJoin'>
+        <div className='bottomJoin' style={{marginBottom : '100px', marginTop : '10px'}}>
             <Link to='/companyJoin'><button className='joinBtn'>회원가입이 필요하시면 클릭!</button></Link>
         </div>
     
