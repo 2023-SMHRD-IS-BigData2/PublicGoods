@@ -1326,7 +1326,7 @@
 .checkListTable td, .checkListTable th {
     border: 1px solid #dddddd;
     padding: 10px;
-    text-align: left;
+    text-align: center;
 }
 
 .checkListTable th {
@@ -1539,6 +1539,11 @@
 
 /* Show List Page */
 
+.showListPge {
+    width: 100vw;
+    height: 60vh;
+}
+
 .showBox {
     display: flex;
     justify-content: center;
@@ -1548,16 +1553,88 @@
     margin-top: 30px;
     border: 1px solid black;
     text-align: center;
+    width: 500px;
 }
 
 .showListTable td, .showListTable th {
     border: 1px solid #dddddd;
     padding: 10px;
-    text-align: left;
+    text-align: center;
 }
 
 .showListTable th {
     background-color: #f2f2f2;
+}
+
+.showListBtn {
+    border: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.showListBtn:hover {
+    background-color: rgba(133, 105, 247, 0.4);
+}
+
+/* --------------------------------------------------- */
+
+/* Show No Page */
+
+.noShowPg {
+    height: 850px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.noShowBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.noShowSub {
+    width: 60%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 768px) {
+    .noShowSub {
+        font-size: 18px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.noShowBtnBox {
+    margin-top: 100px;
+}
+
+.noShowBtn {
+    padding: 20px;
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+    color: white;
+    background-color: rgba(133, 105, 247, 0.7);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.noShowBtn:hover {
+    background-color: rgba(133, 105, 247, 0.4);
 }
 
 /* --------------------------------------------------- */

@@ -62,11 +62,6 @@ const FileUpload = () => {
                             <button className='uploadBtn' onClick={handleUpload}>업로드</button>
                         </form>
                     </div>
-
-                    <div className='submitBtn'>
-                        <Link to='/ocrCheck'><button className='subBtn'>제출</button></Link>
-                    </div>
-                    
                 </div>
             </div>
 
