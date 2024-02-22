@@ -7,16 +7,19 @@ from typing import List
 from typing import Union
 from sklearn.preprocessing import minmax_scale
 
-
 NEED_TO_CHECK_COLUMNS = ["ChgOffPrinGr", "GrAppv", "DisbursementGross", "BalanceGross", "SBA_Appv", "NAICS",
                          "MIS_Status"]
 
 DELETE_COLUMNS = ["LoanNr_ChkDgt", "Name", "City", "State", "Zip", "Bank", "BankState",
                   "ApprovalDate", "ApprovalFY", "DisbursementDate"]
 
-NON_FINANCIAL_COLUMNS = ['NAICS', 'Term', 'NoEmp', 'RetainedJob', 'FranchiseCode', 'UrbanRural',
-                         'ChgOffDate', 'MIS_Status', 'ChgOffPrinGr', 'GrAppv', 'SBA_Appv',
-                         'default_rate', 'SBA_Appv_Rate']
+# NON_FINANCIAL_COLUMNS = ['NAICS', 'Term', 'NoEmp', 'RetainedJob', 'FranchiseCode', 'UrbanRural',
+#                          'ChgOffDate', 'MIS_Status', 'ChgOffPrinGr', 'GrAppv', 'SBA_Appv',
+#                          'default_rate', 'SBA_Appv_Rate']
+
+NON_FINANCIAL_COLUMNS = ['NAICS', 'Term', 'ChgOffDate', 'ChgOffPrinGr', 'FranchiseCode',
+                         'SBA_Appv', 'UrbanRural', 'RetainedJob', 'GrAppv', 'SBA_Appv_Rate', 'default_rate',
+                         'MIS_Status']
 
 NAICS_DEFAULT_RATES = {
     '21': 8, '11': 9, '55': 10, '62': 10,
@@ -50,7 +53,6 @@ TARGET_YEARS = ["2018", "2019", "2020", "2021", "2022"]
 FIXED_INDICATORS = ["매출액", "영업이익", "영업이익(발표기준)", "당기순이익", "지배주주순이익", "비지배주주순이익", "자산총계",
                     "부채총계", "자본총계", "지배주주지분", "비지배주주지분", "자본금", "부채비율", "유보율", "영업이익률",
                     "지배주주순이익률", "PER", "EPS(원)", "PBR"]
-
 
 GROWTH_MODEL_FIXED_SECTORS = {
     #  농업, 임업, 어업, 수렵, 목재
@@ -317,6 +319,8 @@ def preprocess_non_financial_data(data: pd.DataFrame) -> pd.DataFrame:
 
     data.NewExist = data.NewExist.fillna(0)
 
+    data = data[NON_FINANCIAL_COLUMNS].copy()
+
     return data
 
 
@@ -461,9 +465,3 @@ def preprocessing_growth_model_data(data_path: str, sector_code: str) -> pd.Data
     rtn_df.columns = ["values"]
     rtn_df.index = pd.DatetimeIndex(rtn_df.index, freq=freq)
     return rtn_df
-
-
-
-
-
-
