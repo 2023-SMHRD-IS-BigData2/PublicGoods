@@ -43,7 +43,8 @@ const FinalSelect_nonFin = () => {
             <p className='btn-sub'>재무제표 제출하기 <br/> </p>
             <p className='btn-content'>
               <br/>
-              비재무제표는 <strong style={{fontSize : '18px'}}>선택사항</strong> 생략해도됩니다.
+              재무제표는 <strong style={{fontSize : '18px'}}>선택사항</strong> 입니다. <br/>
+              (제출하면 더 정확한 정보를 얻을 수 있습니다.)
               <br/>
               <br/>
               <br/>
