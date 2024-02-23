@@ -49,18 +49,23 @@ def join() :
     data = request.json
     idInput = data.get('idInput')
     pwNum = data.get('pwNum')
+    user_type = 'N'
     businessNum = None
     bankNumber = None
     bankName = None
-    try : businessNum = data.get('businessNum'); print('businessNum : ' + businessNum)
+    try : businessNum = data.get('businessNum'); print('businessNum : ' + businessNum); user_type = 'C'
     except : pass
     try : 
         bankNumber = data.get('bankNumber'); print('bankNumber : ' + bankNumber)
         bankName = data.get('bankName'); print('bankName : ' + bankName)
+        user_type = 'B'
     except : pass
     print(idInput, pwNum)
     Flasksession['user_id'] = idInput # 아이디를 세션값에 저장
-    return_data = jsonify({"Insert" : insertUser(idInput, pwNum), 'user_id' : idInput}) # insert : Boolean , user_id : 회원가입 아이디
+    return_data = jsonify({
+        "Insert" : insertUser(user_id = idInput, user_password = pwNum, user_type = user_type, business_num = businessNum), 
+        'user_id' : idInput
+        }) # insert : Boolean , user_id : 회원가입 아이디
     return return_data
 
 @app.route('/api/login', methods=['POST'])
@@ -87,6 +92,7 @@ def fileUpload():
             os.remove(filepath)
         file.save(filepath) 
         response_data = getOCRresult(path = filepath, url = NaverOCRURL, key = OCRSecretKey)
+
         return response_data
     else : return {'key' : 'value'}
     
