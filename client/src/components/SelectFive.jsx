@@ -28,7 +28,7 @@ const SelectFive = () => {
   
           <div className='selectOne'>
             {/* Progress-Bar */}
-            <div class="progress-bar">
+            <div className="progress-bar">
               <div className="progress5"></div>
             </div>
   
@@ -44,7 +44,7 @@ const SelectFive = () => {
             <div className='apply-box'>
               <div className='apply-bank'>
                 <div className='btn-sub2'>
-                  <div class="input-wrapper">
+                  <div className="input-wrapper">
                     <input className='apply-btn2' type='number' placeholder='예)  2000' />
                     <span className="placeholder-text">만원</span>
                     <button className='okBtn' onClick={handleOkClick}>확인</button>

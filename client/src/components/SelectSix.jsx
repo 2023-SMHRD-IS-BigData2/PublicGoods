@@ -36,7 +36,7 @@ const SelectSix = () => {
   
           <div className='selectOne'>
             {/* Progress-Bar */}
-            <div class="progress-bar">
+            <div className="progress-bar">
               <div className="progress6"></div>
             </div>
   
