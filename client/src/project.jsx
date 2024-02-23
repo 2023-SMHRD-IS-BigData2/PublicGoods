@@ -13,6 +13,7 @@ import BankApply from './components/BankApply';
 import CompanyApply from './components/CompanyApply';
 import FileUpload from './components/FileUpload';
 import ResultPage from './components/ResultPage';
+import WantLoan  from './components/WantLoan';
 
 import ShowPage from './components/ShowPage';
 import ShowListPage from './components/ShowListPage';
@@ -41,7 +42,6 @@ import FinalSelect_Fin from './components/FinalSelect_Fin';
 import AllSelectNext from './components/AllSelectNext';
 
 import Header from './components/Header';
-import LoginHeader from './components/LoginHeader';
 import Footer from './components/Footer';
 
 import { answerContext } from './components/AnswerContext';
@@ -58,7 +58,6 @@ function Project() {
       <answerContext.Provider value={{ selectFinList, setSelectFinList, selectList, setSelectList}}>
 
         <Header />
-        <LoginHeader />
 
         <Routes>
           {/* 메인페이지 */}
@@ -117,6 +116,9 @@ function Project() {
 
           {/* 재무 비재무 둘 다 제출했을 때 결과버튼만 나오는 페이지 */}
           <Route path='/allSelectNext' element={<AllSelectNext />} />
+
+          {/* 원하는 대출액 입력하는 페이지 */}
+          <Route path='/wantLoan' element={<WantLoan />} />
         </Routes>
 
         <Footer />

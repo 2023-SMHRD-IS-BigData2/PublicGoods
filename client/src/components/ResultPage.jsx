@@ -41,6 +41,27 @@ const ResultPage = () => {
   // 재무 확률
   const [finPercnetValue, setFinPercentValue] = useState(40)
 
+  const styles = {
+    valueUp: {
+        color: 'white',
+        height: '100%',
+        width: '60%',
+        backgroundColor: 'rgb(79, 148, 79)',
+        borderTopLeftRadius: '30px',
+        borderBottomLeftRadius: '30px',
+        animation: 'percentAnimation1 1s ease forwards'
+    },
+    valueDown: {
+        color: 'white',
+        height: '100%',
+        width: '40%',
+        backgroundColor: 'rgb(185, 62, 62)',
+        borderTopRightRadius: '30px',
+        borderBottomRightRadius: '30px',
+        animation: 'percentAnimation2 1s ease forwards'
+    }
+  };
+
   return (
 
     // 전체 페이지
@@ -58,11 +79,11 @@ const ResultPage = () => {
           {/* 두 번째 - 확률 대시보드 */}
           <div className='secondDash'>
             {/* 비재무 확률 */}
-            <div className={nonPercentValue >= 60 ? 'percentValue valueUp' : 'percentValue valueDown'}>
+            <div className={nonPercentValue >= 60 ? 'percentValue valueUp' : 'percentValue valueDown'} style={styles.valueUp}>
               비재무 <br/> {nonPercentValue}%
             </div>
             {/* 재무 확률 */}
-            <div className={finPercnetValue >= 60 ? 'percentValue valueUp' : 'percentValue valueDown'}>
+            <div className={finPercnetValue <= 60 ? 'percentValue valueUp' : 'percentValue valueDown'} style={styles.valueDown}>
               재무 <br/> {finPercnetValue}%
             </div>
           </div>

@@ -15,7 +15,7 @@ const NonFinCheck = () => {
       console.log(response.data);
       if (response.data != null) {
         console.log('전송성공!')
-        navigate('/finalSelectNonFin');
+        navigate('/wantLoan');
       }
     }
     catch (error) {
@@ -43,7 +43,7 @@ const NonFinCheck = () => {
             <tr>
               <th>번호</th>
               <th>질문 내용</th>
-              <th>답변</th>
+              <th style={{width : '100px'}}>답변</th>
             </tr>
             <tr>
               <td>1</td>
@@ -67,7 +67,7 @@ const NonFinCheck = () => {
             </tr>
             <tr>
               <td>5</td>
-              <td style={{textAlign : 'left'}}>신용보증재단, 기술보증재단 등 재단에서 보증한 금액이 있습니까? (만원 단위)</td>
+              <td style={{textAlign : 'left', width : '500px'}}>신용보증재단, 기술보증재단 등 재단에서 보증한 금액이 있습니까? (만원 단위)</td>
               <td>{selectList.a5}</td>
             </tr>
             <tr>
