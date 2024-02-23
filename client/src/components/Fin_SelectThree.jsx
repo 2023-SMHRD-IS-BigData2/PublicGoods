@@ -34,8 +34,9 @@ const Fin_SelectThree = () => {
           <div className='question'>
             <h3 className='questionTitle'>자산을 입력해주세요.</h3>
             <p className='selectInfor'>
-              * <strong>최소 3개</strong>에서 <strong>최대 5개</strong>까지 <strong>순서대로</strong> 적어주세요. <br/>
-              (분기 또는 연도로 작성해주세요.)
+            * <strong>최소 3개</strong>에서 <strong>최대 5개</strong>까지 <strong>순서대로</strong> 작성해주세요. <br/>
+              (분기도 가능합니다)<br/>
+              <strong>1부터 5까지 자료를 최신순으로 기입해주세요.</strong>
             </p>
           </div>
 

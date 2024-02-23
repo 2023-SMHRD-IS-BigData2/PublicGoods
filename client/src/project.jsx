@@ -118,7 +118,7 @@ function Project() {
           <Route path='/allSelectNext' element={<AllSelectNext />} />
 
           {/* 원하는 대출액 입력하는 페이지 */}
-          <Route path='/wantLoan' element={<WantLoan />} />
+          <Route path='/wantLoan' element={<WantLoan/>} />
         </Routes>
 
         <Footer />
