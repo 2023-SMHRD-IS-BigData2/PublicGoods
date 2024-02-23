@@ -1,31 +1,21 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Login = () => {
+const BankLogin = () => {
 
     const [idInput, setIdInput] = useState('');
     const [pwNum, setPwNum] = useState('');
-    const [idError, setIdError] = useState('');
-    const [pwError, setPwError] = useState('');
     const navigate = useNavigate();
 
     const handleLogin = async () => {
         let hasError = false;
 
-        // 아이디
-        if (!idInput) {
-            setIdError('아이디를 입력해주세요.');
+        // 아이디 & 비밀번호 확인
+        if (!idInput || !pwNum) {
+            alert('아이디, 비밀번호를 다시 확인해주세요.');
         } else {
-            setIdError('');
-        }
-
-        // 비밀번호
-        if (!pwNum) {
-            setPwError('비밀번호를 입력해주세요.');
-        } else {
-            setPwError('');
+            
         }
 
         // 로그인 처리
@@ -50,65 +40,50 @@ const Login = () => {
         }
     };
 
-    return (
+  return (
+    <div className='loginPage'>
 
-        <div className="login-content">
-
-            {/* Title Wrap*/}
-            <div className="titleWrap">
-                로그인
+        <div className='loginBox'>
+            {/* 로그인 설명 */}
+            <div className='loginInfo'>
+                <h3 className='LOC'>Login Our Community</h3>
             </div>
+            {/* 로그인 */}
+            <div className='login'>
+                <div className='inputBox'>
+                    {/* 로그인 제목 */}
+                    <h2 className='loginSub'>로그인</h2>
+                    {/* input */}
+                    <div className='inputIdBox'>
+                        {/* 아이디 */}
+                        <input type="text" className='idInput' placeholder='아이디' 
+                               value={idInput}
+                               onChange={(e) => setIdInput(e.target.value)}
+                        />
+                    </div>
 
-            {/* contentWrap - 아이디 입력 */}
-            <div className="contentWrap">
-                <div className="inputTitle">
-                    아이디
+                    {/* 비밀번호 */}
+                    <div className='inputPwBox'>
+                        <input type="text" className='pwInput' placeholder='비밀번호'
+                               value={pwNum}
+                               onChange={(e) => setPwNum(e.target.value)}
+                        />
+                    </div>
                 </div>
-                <div className="inputWrap">
-                    <input className="write-input" type='text' placeholder='아이디'
-                        value={idInput}
-                        onChange={(e) => setIdInput(e.target.value)}></input>
+
+                {/* 로그인 버튼 */}
+                <div className='BtnBox'>
+                    <button className='logBtn' onClick={handleLogin}>로그인</button>
+                </div>
+                {/* 회원가입 버튼 */}
+                <div className='BtnBox'>
+                    <Link to='/bankJoin'><button className='joBtn'>회원가입 하러 가기</button></Link>
                 </div>
             </div>
-
-            {/* errror 메세지 띄우기  */}
-            <div className="errorMessageWrap">
-                <div>{idError}</div>
-
-            </div>
-
-            {/* contentWrap - 비밀번호 입력 */}
-            <div className="contentWrap">
-                <div className="inputTitle">
-                    비밀번호
-                </div>
-                <div className="inputWrap">
-                    <input className="write-input" type='password' placeholder='비밀번호'
-                        value={pwNum}
-                        onChange={(e) => setPwNum(e.target.value)}></input>
-                </div>
-            </div>
-
-            {/* errror 메세지 띄우기  */}
-            <div className="errorMessageWrap">
-                <div>{pwError}</div>
-
-            </div>
-
-            {/* 로그인 버튼 */}
-            <div className='bottomBtn'>
-             <button className='loginBtn' onClick={handleLogin}>Login</button>
-            </div>
-
-            {/* 회원가입 버튼 */}
-            <div className='bottomJoin' style={{marginBottom : '100px', marginTop : '10px'}}>
-                <Link to='/bankJoin'>
-                    <button className='joinBtn'>회원가입이 필요하시면 클릭!</button>
-                </Link>
-            </div>
-
         </div>
-    )
+
+    </div>
+  )
 }
 
-export default Login
+export default BankLogin

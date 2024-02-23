@@ -346,6 +346,202 @@
 /* --------------------------------------------------- */
 
 /* Login */
+
+/* login */
+.loginPage {
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginBox {
+    width: 800px;
+    height: 500px;
+    margin: 20px;
+    border-radius: 30px;
+    display: flex;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    background-color: rgba(133, 105, 247, 0.7);
+}
+
+.loginInfo {
+    width: 400px;
+    height: 500px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LOC {
+    color: white;
+    font-weight: bold;
+}
+
+.login {
+    width: 400px;
+    height: 500px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
+
+
+.joBtn {
+    border: none;
+    background-color: white;
+    padding: 0;
+    text-decoration: underline solid gray;
+    font-size: 14px;
+}
+
+.joBtn:hover {
+    text-decoration: none;
+}
+
+.loginSub {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(80, 80, 80);
+    margin-bottom: 50px;
+}
+
+.idInput, .pwInput {
+    width: 300px;
+    height: 50px;
+    padding: 15px;
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 20px;
+    color: gray;
+    margin-bottom: 50px;
+}
+
+.idInput::placeholder, .pwInput::placeholder {
+    color: gray;
+}
+
+.idInput:focus-within, .pwInput:focus-within {
+    border: 1px solid #714efc;
+}
+
+.BtnBox {
+    margin-top: 20px;
+}
+
+.logBtn {
+    border: none;
+    background-color: rgba(133, 105, 247, 0.7);
+    border-radius: 50px;
+    font-weight: bold;
+    color:white;
+    padding: 5px 15px 5px 15px;
+}
+
+.logBtn:hover {
+    background-color: #dadada;
+    color:white;
+    transition: background-color 1s ease;
+}
+
+.loginBtn{
+    width:100%;
+    height:50px;
+}
+
+/* Join */
+.joinBox {
+    width: 800px;
+    height: 500px;
+    margin: 20px;
+    border-radius: 30px;
+    display: flex;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    background-color: rgba(133, 105, 247, 0.7);
+}
+
+.joinInfo {
+    width: 400px;
+    height: 500px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.join {
+    width: 400px;
+    height: 500px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
+
+.joinSub {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(80, 80, 80);
+    margin-bottom: 40px;
+}
+
+.categorySel {
+    font-size: 15px;
+}
+
+.idInputJoin, .pwInputJoin, .categorySel, .nbInputJoin {
+    width: 300px;
+    height: 50px;
+    padding: 15px;
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 20px;
+    color: gray;
+    margin-bottom: 20px;
+}
+
+.idInputJoin::placeholder,
+.pwInputJoin::placeholder,
+.nbInputJoin::placeholder {
+    color: gray;
+}
+
+.idInputJoin:focus-within,
+.pwInputJoin:focus-within,
+.categorySel:focus-within,
+.nbInputJoin:focus-within {
+    border: 1px solid #714efc;
+}
+
+.logBtn2 {
+    border: none;
+    background-color: rgba(133, 105, 247, 0.7);
+    border-radius: 50px;
+    font-weight: bold;
+    color:white;
+    padding: 5px 15px 5px 15px;
+    margin-bottom: 30px;
+}
+
+.logBtn2:hover {
+    background-color: #dadada;
+    color:white;
+    transition: background-color 1s ease;
+}
+
+
+/*  */
+
 .login-content {
     width: 100%;
     height: 700px;
