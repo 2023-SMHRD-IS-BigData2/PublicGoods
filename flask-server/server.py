@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-from flask import session as Flasksession
 from flask_cors import CORS
+from flask import session
 
 from app.controllers import JsonDataProcessing
 from app.controllers import SimpleDocuProcessing
@@ -33,16 +33,24 @@ OCRSecretKey = "eG93a2ZjYlNhaXFCSWJSTVdueWFxWWVrTFRkT0NnWXc="
 def not_found_error(error) :
     return jsonify({'error': 'Not found'}), 404
 
+@app.route('/api/addSession', methods=['POST'])
+def addSession() :
+    data = request.json
+    user_id = data.get('user_id')
+    print(user_id)
+    session['user_id'] = user_id
+    return '', 204
+
 @app.route('/api/loginCheck', methods=['POST'])
 def loginCheck() :
-    if 'user_id' in Flasksession : 
-        user_id = Flasksession['user_id']
-        return jsonify({'user_id' : user_id})
+    user_id = session.get('user-id')
+    print(user_id)
+    if user_id : return jsonify({'user_id' : user_id})
     else : return jsonify({'user_id' : None})
 
 @app.route('/api/logout', methods=['POST'])
 def logout() :
-    Flasksession.clear()
+    session.clear()
     return True
 
 @app.route('/api/join', methods=['POST'])
@@ -75,8 +83,6 @@ def login() :
     idInput = data.get('idInput')
     pwNum = data.get('pwNum')
     return_data = jsonify(selectUser(idInput, pwNum))
-    if return_data : 
-        Flasksession['user_id'] = idInput
     return return_data
 
 @app.route('/api/fileUpload', methods=['POST'])
@@ -102,7 +108,9 @@ def fileUpload():
 @app.route('/api/NonFin', methods=['POST'])
 def non_fin() :
     data = JsonDataProcessing(request.json)
+    print(data.AnyFinDict)
     data.changeNonFinKey()
+    print(data.AnyFinDict)
     data.changeNonFinValue()
     print(data.AnyFinDict)
     return {'key' : 'value'}

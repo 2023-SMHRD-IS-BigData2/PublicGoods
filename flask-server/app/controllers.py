@@ -8,7 +8,7 @@ import numpy as np
 import json
 
 def changeAnswer(answer : Union[str, float, int]) -> Union[str, float] :
-        answer = answer.replace('.\n', '')
+        answer = answer[:4]
         if answer == '있습니다' : return 'Y'
         elif answer == '없습니다' : return 'N'
         elif answer == '모릅니다' : return 'X'
@@ -16,6 +16,7 @@ def changeAnswer(answer : Union[str, float, int]) -> Union[str, float] :
             float_answer = float(answer)
             if isinstance(float_answer, float) : return float_answer
             else : answer
+
 class JsonDataProcessing :
     def __init__(self, AnyFinJson : Union[str, dict]) -> None :
         if isinstance(AnyFinJson, str) : self.AnyFinDict = json.loads(AnyFinJson)
