@@ -20,7 +20,7 @@ const Fin_Check = () => {
         alert('전송에 실패했습니다!');
       }
       console.log(selectFinList);
-      navigate('/wantLoan');
+      navigate('/finalSelectFin');
     };
   
     // 다시 입력하기 버튼 클릭했을 때

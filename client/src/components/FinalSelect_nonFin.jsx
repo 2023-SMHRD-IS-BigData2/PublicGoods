@@ -11,7 +11,7 @@ const FinalSelect_nonFin = () => {
   
     // 결과 확인 버튼 클릭했을 때
     const handleResultClick = () => {
-      navigate('/resultPage');
+      navigate('/wantLoan');
     };
   
     return (

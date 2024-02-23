@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
 import {Link, useNavigate } from 'react-router-dom'
 
+
 const WantLoan  = () => {
 
     const navigate = useNavigate();
 
     // 확인버튼 클릭했을 때
     const handleOkClick = (e) => {
-      navigate('/allSelectNext');
+      navigate('/resultPage');
     };
 
     return(
