@@ -36,10 +36,16 @@ const CompanyLogin = () => {
                 idInput : idInput,
                 pwNum : pwNum
             })
-            console.log(response.data);
-            if (response.data != null) {
-                console.log('Logged in successfully!');
-                navigate('/companyApply');
+            if (response.data.user_id != null) {
+                const userinfo = response.data;
+                if (userinfo.user_type === 'C' || userinfo.user_type === 'N') {
+                    // userinfo.user_id 를 헤더에 저장해주세요
+                    console.log(userinfo.user_id);
+                    navigate('/companyApply');
+                }
+                else {
+                    alert('로그인에 실패하였습니다! ');
+                }
             } else {
                 alert('로그인에 실패하였습니다! ');
             }

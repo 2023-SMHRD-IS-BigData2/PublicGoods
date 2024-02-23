@@ -6,11 +6,12 @@ from app.controllers import JsonDataProcessing
 from app.controllers import SimpleDocuProcessing
 from app.controllers import getOCRresult
 
-from app.models import insertUser, selectUser
+from app.models import insertUser, selectUser, insertSimpleFinancial
 
 from werkzeug.utils import secure_filename
 from threading import Lock
 import secrets
+import json
 import os
 
 app = Flask(__name__)
@@ -36,8 +37,8 @@ def not_found_error(error) :
 def loginCheck() :
     if 'user_id' in Flasksession : 
         user_id = Flasksession['user_id']
-        return jsonify({'user_id' : user_id}), 200
-    else : return jsonify({'user_id' : None}), 200
+        return jsonify({'user_id' : user_id})
+    else : return jsonify({'user_id' : None})
 
 @app.route('/api/logout', methods=['POST'])
 def logout() :
@@ -56,16 +57,12 @@ def join() :
     try : businessNum = data.get('businessNum'); print('businessNum : ' + businessNum); user_type = 'C'
     except : pass
     try : 
-        bankNumber = data.get('bankNumber'); print('bankNumber : ' + bankNumber)
-        bankName = data.get('bankName'); print('bankName : ' + bankName)
+        bankNumber = data.get('bankNumber')
+        bankName = data.get('bankName')
         user_type = 'B'
     except : pass
-    print(idInput, pwNum)
-    Flasksession['user_id'] = idInput # 아이디를 세션값에 저장
-    return_data = jsonify({
-        "Insert" : insertUser(user_id = idInput, user_password = pwNum, user_type = user_type, business_num = businessNum), 
-        'user_id' : idInput
-        }) # insert : Boolean , user_id : 회원가입 아이디
+    Flasksession['user_id'] = idInput
+    return_data = jsonify({"Insert" : insertUser(user_id = idInput, user_password = pwNum, user_type = user_type, business_num = businessNum)})
     return return_data
 
 @app.route('/api/login', methods=['POST'])
@@ -73,9 +70,9 @@ def login() :
     data = request.json
     idInput = data.get('idInput')
     pwNum = data.get('pwNum')
-    print(idInput, pwNum)
-    Flasksession['user_id'] = idInput
     return_data = jsonify(selectUser(idInput, pwNum))
+    if return_data : 
+        Flasksession['user_id'] = idInput
     return return_data
 
 @app.route('/api/fileUpload', methods=['POST'])
@@ -92,6 +89,8 @@ def fileUpload():
             os.remove(filepath)
         file.save(filepath) 
         response_data = getOCRresult(path = filepath, url = NaverOCRURL, key = OCRSecretKey)
+        # insertSimpleFinancial(user_id, json.dumps(response_data))
+        print(response_data)
 
         return response_data
     else : return {'key' : 'value'}

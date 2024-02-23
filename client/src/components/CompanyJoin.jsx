@@ -22,6 +22,7 @@ const CompanyJoin = () => {
                 businessNum: businessNum
             });
             if (response.data.Insert) {
+                alert('회원가입에 성공했습니다! 로그인 페이지로 돌아갑니다.')
                 navigate('/companyLogin')
             } else {
                 alert('회원가입에 실패하였습니다!');

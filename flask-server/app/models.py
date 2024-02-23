@@ -167,7 +167,7 @@ def insertUser(user_id : str, user_password : str, user_type : str, business_num
     return rowBoolean
 
 
-def selectUser(user_id : str, user_password : str) -> Union[bool, Dict] :
+def selectUser(user_id : str, user_password : str) -> Dict :
     userInfo = None
 
     with DatabaseHandler().session as session:
@@ -175,14 +175,16 @@ def selectUser(user_id : str, user_password : str) -> Union[bool, Dict] :
             session.begin()
             loginUser = session.query(moolLoan_user_table).filter(moolLoan_user_table.user_id == user_id).first()
             if loginUser and sha512_crypt.verify(user_password, loginUser.user_password):
-                userInfo = {'user_id': loginUser.user_id, 'user_password': loginUser.user_password}
+                userInfo = {'user_id': loginUser.user_id, 'user_password': loginUser.user_password, 'user_type' : loginUser.user_type}
             session.commit()
         except SQLAlchemyError as e:
             print('SQLAlchemyUserSelectError! : ' + str(e))
             session.rollback()
+            userInfo = {'user_id' : None}
         except Exception as e:
             print('ERROR! : ' + str(e))
             session.rollback()
+            userInfo = {'user_id' : None}
 
     return userInfo
 
