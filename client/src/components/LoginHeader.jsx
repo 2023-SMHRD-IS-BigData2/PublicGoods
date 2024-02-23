@@ -41,9 +41,9 @@ const LoginHeader = () => {
 
        {/* 로그인네임 & 로그아웃 */}
        {isLogin ? (
-            <div>
-                {username}님! 안녕하세요!
-                <button onClick={handleLogout}>로그아웃</button>
+            <div className='userName'>
+                <span className='userNameSpan'>{username && `${username}님 안녕하세요!`}</span>
+                <button className='logoutBtn' onClick={handleLogout}>로그아웃</button>
             </div>
         ) : null}
 
