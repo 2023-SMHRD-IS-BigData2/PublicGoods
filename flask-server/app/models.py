@@ -11,7 +11,15 @@ from app.analysis_module import NAICS_DEFAULT_RATES
 from typing import Union, Dict
 import json
 
+class RandomNumber :
+    def __init__(self) :
+        self.numberCode = datetime.now().strftime("%Y%m%d") + str(uuid4()).replace('-', '').upper()
+
+    def getNumber(self) -> str :
+        return self.numberCode
+
 Base = declarative_base()  # class
+
 class DatabaseHandler:  # SQLAlchemy 세션 시작 부분
     def __init__(self):
         self.engine = create_engine(
@@ -27,7 +35,7 @@ class moolLoan_user_table(Base):  # moolLoan_user_table 매핑
                                 default=str(datetime.now().year) + str(uuid4()).replace('-', '').upper())
     user_id = Column(VARCHAR(30), nullable=False, unique=True, comment='사용자_아이디')
     user_password = Column(VARCHAR(128), nullable=False, comment='사용자 비밀번호')
-    user_type = Column(CHAR(1), nullable=False, comment='사용자_회원타입')
+    user_type = Column(VARCHAR(10), nullable=False, comment='사용자_회원타입')
     business_num = Column(INTEGER, comment='사업자_번호')
     user_joinDate = Column(DATETIME, nullable=False, default=datetime.now(), comment='사용자_가입일자')
 
@@ -127,7 +135,7 @@ def insertUser(user_id : str, user_password : str, user_type : str, business_num
     rowBoolean = False
 
     with DatabaseHandler().session as session:
-        user_unique_number = (str(uuid4()).replace('-', '')).upper()
+        user_unique_number = RandomNumber().getNumber()
         user_password = sha512_crypt.hash(str(user_password))
         newAccount = moolLoan_user_table(
             user_unique_number=user_unique_number,
@@ -138,6 +146,8 @@ def insertUser(user_id : str, user_password : str, user_type : str, business_num
         )
         newDocuTable = moolLoan_user_documents_table(
             user_unique_number=user_unique_number,
+            non_finance_unique_number = RandomNumber().getNumber(),
+            finance_unique_number = RandomNumber().getNumber(),
             deep_result='결과없음',
             approval_status='N'
         )
@@ -160,9 +170,13 @@ def insertUser(user_id : str, user_password : str, user_type : str, business_num
                 except SQLAlchemyError as e:
                     print('SQLAlchemyUserDocumnetsInsertError! : ' + str(e))
                     session.rollback()
+                    session.delete(newAccount)
+                    session.commit()
                 except Exception as e:
                     print('ERROR! : ' + str(e))
                     session.rollback()
+                    session.delete(newAccount)
+                    session.commit()
 
     return rowBoolean
 

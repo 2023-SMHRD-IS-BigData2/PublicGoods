@@ -50,19 +50,23 @@ def join() :
     data = request.json
     idInput = data.get('idInput')
     pwNum = data.get('pwNum')
-    user_type = 'N'
     businessNum = None
+    Category = None
     bankNumber = None
     bankName = None
-    try : businessNum = data.get('businessNum'); print('businessNum : ' + businessNum); user_type = 'C'
+    try : 
+        businessNum = data.get('businessNum')
+        Category = data.get('businessCategory')
+        if (businessNum and Category) :
+            return_data = jsonify({"Insert" : insertUser(user_id = idInput, user_password = pwNum, user_type = Category, business_num = businessNum)})
     except : pass
     try : 
         bankNumber = data.get('bankNumber')
         bankName = data.get('bankName')
-        user_type = 'B'
+        if (bankNumber and bankName) :
+            Category = 'BBB'
+            return_data = jsonify({"Insert" : insertUser(user_id = idInput, user_password = pwNum, user_type = Category, business_num = businessNum)})
     except : pass
-    Flasksession['user_id'] = idInput
-    return_data = jsonify({"Insert" : insertUser(user_id = idInput, user_password = pwNum, user_type = user_type, business_num = businessNum)})
     return return_data
 
 @app.route('/api/login', methods=['POST'])

@@ -19,6 +19,7 @@ const CompanyJoin = () => {
             const response = await axios.post('http://127.0.0.1:5000/api/join', {
                 idInput: idInput,
                 pwNum: pwNum,
+                businessCategory : businessCategory,
                 businessNum: businessNum
             });
             if (response.data.Insert) {

@@ -35,10 +35,11 @@ const Login = () => {
                 const response = await axios.post('http://127.0.0.1:5000/api/login', {
                     idInput : idInput,
                     pwNum : pwNum
-                })
-                console.log(response.data);
-                if (response.data != null) {
-                    console.log('Logged in successfully!');
+                });
+                const userinfo = response.data
+                if (userinfo.user_type === 'BBB') {
+                    // userinfo.user_id를 헤더 저장처리
+                    console.log(userinfo.user_id);
                     navigate('/bankApply');
                 } else {
                     alert('로그인에 실패하였습니다! ');

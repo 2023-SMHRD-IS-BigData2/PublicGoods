@@ -38,8 +38,8 @@ const CompanyLogin = () => {
             })
             if (response.data.user_id != null) {
                 const userinfo = response.data;
-                if (userinfo.user_type === 'C' || userinfo.user_type === 'N') {
-                    // userinfo.user_id 를 헤더에 저장해주세요
+                if (userinfo.user_type !== 'BBB') {
+                    // userinfo.user_id 를 헤더에 저장처리
                     console.log(userinfo.user_id);
                     navigate('/companyApply');
                 }
