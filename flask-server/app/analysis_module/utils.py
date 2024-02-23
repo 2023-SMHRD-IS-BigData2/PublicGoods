@@ -32,11 +32,14 @@ NAICS_DEFAULT_RATES = {
 KOR_NAICS_MAPPER = {
     "기타 서비스(공공행정 제외)": "81",
     "제조": "31",
+    "제조업": "31",
     "광업, 채석, 석유 및 가스 추출": "21",
     "광업, 채석, 석유 및 가스 추출, 채석, 석유 및 가스 추출": "21",
+    "예술, 스포츠 및 여가관련 서비스업": "62",
     "금융 및 보험": "52",
     "금융 및 금융 및 보험": "52",
     "금융 및 금융 및 금융 및 보험": "52",
+    "금융 및 보험업": "52",
     "소매": "42",
     "운수장비": "22",
     "건강 관리 및 사회 지원": "71",
@@ -46,9 +49,19 @@ KOR_NAICS_MAPPER = {
     "섬유의복": "11",
     "공익/공과 사업(수도·전기·가스)": "92",
     "농업, 임업(산림업), 어업 및 수렵": "11",
+    "광업": "21",
+    "운수 및 창고업": "48",
+    "건설업": "23",
+    "전문, 과학 및 기술 서비스업": "54",
+    "전기, 가스, 증기 및 공기 조절 공급업": "22",
+    "숙박 및 음식점업": "72",
+    "농업, 임업 및 어업": "11",
+    "정보통신업": "51",
+    "교육 서비스업": "61",
     "정보/통신": "51"}
 
-TARGET_YEARS = ["2018", "2019", "2020", "2021", "2022"]
+
+TARGET_YEARS = ["1", "2", "3", "4", "5"]
 
 FIXED_INDICATORS = ["매출액", "영업이익", "영업이익(발표기준)", "당기순이익", "지배주주순이익", "비지배주주순이익", "자산총계",
                     "부채총계", "자본총계", "지배주주지분", "비지배주주지분", "자본금", "부채비율", "유보율", "영업이익률",
@@ -328,15 +341,16 @@ def preprocess_financial_data(data: pd.DataFrame) -> pd.DataFrame:
     # column name to string
     data.columns = [str(x) for x in data.columns.tolist()]
     data["Sector_Code"] = data["Company sector"].map(KOR_NAICS_MAPPER)
+    data.loc[data["Sector_Code"].isna(), "Sector_Code"] = '00'
 
     # renames
-    data = data.rename(columns={'IFRS(연결)': 'Indicators', '성장평가 (1: good, 0:bad)': 'Financial Evaluation'})
+    data = data.rename(columns={'IFRS(연결)': 'Indicators', '성장평가 (1: good, 0:bad)': 'Financial evaluation'})
     # convert to numeric values
     data[TARGET_YEARS] = data[TARGET_YEARS].apply(lambda x: pd.to_numeric(x, errors='coerce'))
 
     # Sector Data
     company_sector = data[["Company code", "Sector_Code"]].drop_duplicates()
-    company_meta = data[["Company code", "Financial Evaluation"]]
+    company_meta = data[["Company code", "Financial evaluation"]]
 
     merged_df = []
     for group_name, group_data in data.groupby("Company code"):
@@ -350,7 +364,7 @@ def preprocess_financial_data(data: pd.DataFrame) -> pd.DataFrame:
         results = pd.DataFrame([results]).T
         results.columns = ["Slope_Score"]
 
-        group_data_result = pd.concat([group_data, results], axis=1)
+        group_data_result = pd.merge(group_data, results, how="left", right_index=True, left_index=True)
         merged_df.append(group_data_result)
 
     # Concatenation group dataset
@@ -377,8 +391,8 @@ def preprocess_financial_data(data: pd.DataFrame) -> pd.DataFrame:
     # Generation Labels -> Financial Evaluation 50% 이상인 경우 1, else 0
     # 0 이면 Evaluation 이 좋은 기업 -> 대출 O
     # 1 이면 Evaluation 이 나쁜 기업 -> 대출 X
-    company_meta = company_meta.groupby('Company code')['Financial Evaluation'].mean().reset_index()
-    company_meta['Label'] = np.where(company_meta['Financial Evaluation'] > 0.5, 0, 1)
+    company_meta = company_meta.groupby('Company code')['Financial evaluation'].mean().reset_index()
+    company_meta['Label'] = np.where(company_meta['Financial evaluation'] > 0.5, 0, 1)
 
     company_meta = company_meta.set_index("Company code")
     company_sector = company_sector.set_index("Company code")
