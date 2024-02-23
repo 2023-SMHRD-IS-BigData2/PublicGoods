@@ -20,7 +20,7 @@ const Fin_Check = () => {
         alert('전송에 실패했습니다!');
       }
       console.log(selectFinList);
-      navigate('/finalSelectFin');
+      navigate('/wantLoan');
     };
   
     // 다시 입력하기 버튼 클릭했을 때
@@ -41,11 +41,11 @@ const Fin_Check = () => {
                 <tr>
                   <th>번호</th>
                   <th>질문 내용</th>
-                  <th>1</th>
-                  <th>2</th>
-                  <th>3</th>
-                  <th>4</th>
-                  <th>5</th>
+                  <th style={{width : '70px'}}>1</th>
+                  <th style={{width : '70px'}}>2</th>
+                  <th style={{width : '70px'}}>3</th>
+                  <th style={{width : '70px'}}>4</th>
+                  <th style={{width : '70px'}}>5</th>
                 </tr>
                 <tr>
                   <td>1</td>

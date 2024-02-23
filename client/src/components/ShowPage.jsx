@@ -18,7 +18,7 @@ const ShowPage = () => {
     <div className='showPg'>
       <p className='searchSub'>조회하고 싶은 기업의 사업자번호를 입력하세요.</p>
       <div className='searchBox'>
-        <input className='searchInput' type='text' placeholder={placeholder} onClick={handleInputClick}></input>
+          <input className='searchInput' type='text' placeholder={placeholder} onClick={handleInputClick}></input>
         <Link to='/ShowListPage'><button className='searchBtn'>조회</button></Link>
       </div>
     </div>
