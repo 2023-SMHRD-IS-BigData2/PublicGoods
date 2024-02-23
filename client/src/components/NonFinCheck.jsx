@@ -15,7 +15,7 @@ const NonFinCheck = () => {
       console.log(response.data);
       if (response.data != null) {
         console.log('전송성공!')
-        navigate('/wantLoan');
+        navigate('/finalSelectNonFin');
       }
     }
     catch (error) {
