@@ -2,6 +2,7 @@ import os
 import inspect
 import json
 import pickle
+import numpy as np
 import pandas as pd
 from typing import List
 from sklearn.preprocessing import OneHotEncoder
@@ -70,11 +71,27 @@ class FinancialModel(object):
 
     def get_feature_importance(self) -> pd.DataFrame:
         if self._is_fitted:
+
             # classifier 체크를 해야 할 수도 있음
-            random_forest_model = self.pipeline.named_steps['classifier']
+            random_forest_model = self.pipeline.named_steps['classifier']   # classifier
+            preprocessor = self.pipeline.named_steps['preprocessor']    # preprocessor
+
+            feature_names = self.pipeline.feature_names_in_    # trained feature names
+
+            feature_importances = random_forest_model.feature_importances_    # feature importances
+
+            # get categorical variables
+            category_feature_names = [feature_names[idx] for idx in self.categorical_features]
+            ohe_feature_names = preprocessor.named_transformers_['cat'].get_feature_names_out(input_features=category_feature_names)
+
+            # get numerical variables
+            numeric_feature_names = np.delete(feature_names, self.categorical_features)
+
+            # total feature names
+            total_feature_names = np.concatenate((ohe_feature_names, numeric_feature_names))
 
             feature_importance_df = pd.DataFrame([
-                random_forest_model.feature_importances_, random_forest_model.feature_names_in_]).T
+                feature_importances, total_feature_names]).T
             feature_importance_df.columns = ["Feature Importances", "Column Name"]
             feature_importance_df = feature_importance_df.sort_values("Feature Importances", ascending=True)
             feature_importance_df = feature_importance_df.set_index("Column Name")
