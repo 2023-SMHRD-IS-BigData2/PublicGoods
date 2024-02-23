@@ -127,23 +127,23 @@ const CompanyJoin = () => {
                             value={businessCategory}
                             onChange={(e) => setBusinessCategory(e.target.value)}>
                             <option value="" disabled selected>선택해주세요.</option>
-                            <option value="A">농업, 임업 및 어업(A)</option>
-                            <option value="B">광업(B)</option>
-                            <option value="D">전기, 가스, 증기, 및 공기 조절 공급업(D)</option>
-                            <option value="F">건설업(F)</option>
-                            <option value="C">제조업(C)</option>
-                            <option value="G">도매 및 소매업(G)</option>
-                            <option value="H">운수 및 창고업(H)</option>
-                            <option value="J">정보통신업(J)</option>
-                            <option value="K">금융 및 보험업(K)</option>
-                            <option value="LN">부동산업, 사업시설 관리, 사업 지원 및 임대 서비스업(L,N)</option>
-                            <option value="M">전문, 과학 및 기술 서비스업(M)</option>
-                            <option value="E">수도, 하수 및 폐기물 처리, 원료 재생업(E)</option>
-                            <option value="P">교육 서비스업(P)</option>
-                            <option value="R">예술, 스포츠 및 여가관련 서비스업(R)</option>
-                            <option value="I">숙박 및 음식점업(I)</option>
-                            <option value="OU">공공 행정, 국방 및 사회보장 행정, 국제 및 외국기관(O,U)</option>
-                            <option value="QST">기타(Q,S,T)</option>
+                            <option value="11">농업, 임업 및 어업(A)</option>
+                            <option value="21">광업(B)</option>
+                            <option value="22">전기, 가스, 증기, 및 공기 조절 공급업(D)</option>
+                            <option value="23">건설업(F)</option>
+                            <option value="31">제조업(C)</option>
+                            <option value="42">도매 및 소매업(G)</option>
+                            <option value="48">운수 및 창고업(H)</option>
+                            <option value="51">정보통신업(J)</option>
+                            <option value="52">금융 및 보험업(K)</option>
+                            <option value="53">부동산업, 사업시설 관리, 사업 지원 및 임대 서비스업(L,N)</option>
+                            <option value="54">전문, 과학 및 기술 서비스업(M)</option>
+                            <option value="56">수도, 하수 및 폐기물 처리, 원료 재생업(E)</option>
+                            <option value="61">교육 서비스업(P)</option>
+                            <option value="62">예술, 스포츠 및 여가관련 서비스업(R)</option>
+                            <option value="72">숙박 및 음식점업(I)</option>
+                            <option value="92">공공 행정, 국방 및 사회보장 행정, 국제 및 외국기관(O,U)</option>
+                            <option value="81">기타(Q,S,T)</option>
                         </select>
                     </div>
                 </div>
