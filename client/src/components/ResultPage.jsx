@@ -80,8 +80,8 @@ const ResultPage = () => {
               layout="vertical" // 옆으로 막대 그래프를 표시하기 위해 'vertical'로 설정
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis type="number" tick={{ fontWeight: 'bold', fill: 'black' }}/> {/* X축을 수직으로 설정 */}
-              <YAxis dataKey="name" type="category" width={120} tick={{ fontWeight: 'bold', fill: 'black' }} /> 
+              <XAxis type="number" tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/> {/* X축을 수직으로 설정 */}
+              <YAxis dataKey="name" type="category" width={120} tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/> 
               <Tooltip />
               <Legend />
               <Bar dataKey="비재무" fill="#8884d8" barSize={20} /> {/* barSize로 막대의 높이 설정 */}
@@ -99,8 +99,8 @@ const ResultPage = () => {
                 margin={{ right: 30 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis type="number" tick={{ fontWeight: 'bold', fill: 'black' }}/> {/* X축을 수직으로 설정 */}
-                <YAxis dataKey="name" type="category" width={70} tick={{ fontWeight: 'bold', fill: 'black' }}/> {/* Y축을 범주형으로 설정 */}
+                <XAxis type="number" tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/> {/* X축을 수직으로 설정 */}
+                <YAxis dataKey="name" type="category" width={70} tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/> {/* Y축을 범주형으로 설정 */}
                 <Tooltip />
                 <Legend />
                 <Bar dataKey="재무" fill="#ffa2ba" barSize={25} /> {/* barSize로 막대의 높이 설정 */}
@@ -118,8 +118,8 @@ const ResultPage = () => {
               data={lineData}
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" tick={{ fontWeight: 'bold', fill: 'black' }}/>
-              <YAxis tick={{ fontWeight: 'bold', fill: 'black' }}/>
+              <XAxis dataKey="name" tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/>
+              <YAxis tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/>
               <Tooltip />
               <Legend />
               <Line type="monotone" dataKey="기업군" stroke="#86b4f8" strokeWidth={2.5}/>

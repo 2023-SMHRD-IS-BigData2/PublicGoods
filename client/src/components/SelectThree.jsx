@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { answerContext } from './AnswerContext';
@@ -30,7 +30,7 @@ const SelectThree = () => {
 
       <div className='selectOne'>
         {/* Progress-Bar */}
-        <div class="progress-bar">
+        <div className="progress-bar">
           <div className="progress3"></div>
         </div>
 
@@ -46,7 +46,7 @@ const SelectThree = () => {
         <div className='apply-box'>
           <div className='apply-bank'>
             <div className='btn-sub2'>
-              <div class="input-wrapper">
+              <div className="input-wrapper">
                 <input className='apply-btn2'   type='number'  placeholder='예)  2' />
                 <span className="placeholder-text">개월</span>
                 <button className='okBtn' onClick={handleMonthClick}>확인</button>

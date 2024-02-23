@@ -25,7 +25,7 @@ const Fin_SelectTwo = () => {
     <div className='selectPage'>
 
         <div className='selectOne'>
-          <div class="progress-bar">
+          <div className="progress-bar">
               <div className="progressFin2"></div>
           </div>
 
@@ -43,37 +43,37 @@ const Fin_SelectTwo = () => {
               <div className='apply-bank'>
                 <div className='btn-sub2'>
                   {/* 1분기 */}
-                  <div class="input-wrapper2">
+                  <div className="input-wrapper2">
                     <p className='quarter'>1</p>
                     <input className='apply-finBtn' type='number' name = 'b6' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
                   {/* 2분기 */}
-                  <div class="input-wrapper2">
+                  <div className="input-wrapper2">
                     <p className='quarter'>2</p>
                     <input className='apply-finBtn' type='number' name = 'b7' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
                   {/* 3분기 */}
-                  <div class="input-wrapper2">
+                  <div className="input-wrapper2">
                     <p className='quarter'>3</p>
                     <input className='apply-finBtn' type='number' name = 'b8' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
                   {/* 4분기 */}
-                  <div class="input-wrapper2">
+                  <div className="input-wrapper2">
                     <p className='quarter'>4</p>
                     <input className='apply-finBtn' type='number' name = 'b9' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
                   {/* 5분기 */}
-                  <div class="input-wrapper2">
+                  <div className="input-wrapper2">
                     <p className='quarter'>5</p>
                     <input className='apply-finBtn' type='number' name = 'b10' placeholder='예)  3000' />
                     <span className="placeholder-text">만원</span>
                   </div>
                   {/* 확인 버튼 */}
-                  <div class="input-wrapper2">
+                  <div className="input-wrapper2">
                     <button className='okBtn2' onClick={handleMoneyClick}>확인</button>
                   </div>
                 </div> 

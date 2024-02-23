@@ -38,7 +38,7 @@ const SelectOne = () => {
           {/* Progress-Bar */}
 
 
-          <div class="progress-bar">
+          <div className="progress-bar">
               <div className="progress1"></div>
           </div>
         
