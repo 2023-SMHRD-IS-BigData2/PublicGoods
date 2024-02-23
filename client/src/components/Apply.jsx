@@ -20,7 +20,7 @@ const Apply = () => {
             </div>
 
             {/* 신청하기 - 기업 Button */}
-            <div className='apply-company'>
+            <div className='apply-bank'>
               <Link to='/companyLogin'><button className='apply-btn'>
                 <img src="/images/Screen/office-building.png" className='comImg'></img>
                 <p className='btn-sub'>법인(사업자) <br/> </p>

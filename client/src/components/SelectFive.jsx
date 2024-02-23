@@ -41,7 +41,7 @@ const SelectFive = () => {
             </div>
   
             {/* 금액 Input */}
-            <div className='apply-box'>
+            <div className='apply-selectBox'>
               <div className='apply-bank'>
                 <div className='btn-sub2'>
                   <div className="input-wrapper">

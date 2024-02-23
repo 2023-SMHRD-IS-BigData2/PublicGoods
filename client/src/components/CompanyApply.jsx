@@ -22,7 +22,7 @@ const CompanyApply = () => {
             </div>
 
             {/* 기업 신청하기 - 비재무제표 Button */}
-            <div className='apply-company'>
+            <div className='apply-bank'>
               <Link to='/selectOne'><button className='apply-btn'>
                 <img src="/images/Content/documents3.png" className='comImg'></img>
                 <p className='btn-sub'>비재무제표 제출<br/> </p>

@@ -22,7 +22,7 @@ const BankApply = () => {
             </div>
 
             {/* 은행 신청하기 - 비재무제표 Button */}
-            <div className='apply-company'>
+            <div className='apply-bank'>
               <Link to='/selectOne'><button className='apply-btn'>
                 <img src="/images/Content/documents3.png" className='comImg'></img>
                 <p className='btn-sub'>비재무제표 제출<br/> </p>
@@ -36,7 +36,7 @@ const BankApply = () => {
             </div>
 
             {/* 은행 신청하기 - 조회 Button */}
-            <div className='apply-company'>
+            <div className='apply-bank'>
               <Link to='/showPage'><button className='apply-btn'>
                 <img src="/images/Content/search.png" className='comImg'></img>
                 <p className='btn-sub'>조회 <br/> </p>

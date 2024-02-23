@@ -43,7 +43,7 @@ const SelectThree = () => {
         </div>
 
         {/* 개월 Input */}
-        <div className='apply-box'>
+        <div className='apply-selectBox'>
           <div className='apply-bank'>
             <div className='btn-sub2'>
               <div className="input-wrapper">
@@ -57,7 +57,7 @@ const SelectThree = () => {
           {/* 모릅니다 Button */}
           <div className='apply-company' onClick={handleKnowClick}>
             <button className='apply-btn'>
-              <p className='btn-sub'>모릅니다.<br /> </p>
+              <p className='btn-sub'>모릅니다.</p>
             </button>
           </div>
         </div>

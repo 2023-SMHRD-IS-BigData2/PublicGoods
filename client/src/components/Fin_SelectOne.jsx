@@ -75,7 +75,7 @@ const Fin_SelectOne = () => {
                     <span className="placeholder-text2">만원</span>
                   </div>
                   {/* 확인 버튼 */}
-                  <div className="input-wrapper2">
+                  <div className="input-wrapper3">
                     <button className='okBtn2' onClick={handleMoneyClick}>확인</button>
                   </div>
                 </div> 

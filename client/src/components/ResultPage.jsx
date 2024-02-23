@@ -35,7 +35,7 @@ const lineData = [
 const ResultPage = () => {
 
   // 대출 가능/불가능
-  const [moneyValue, setMoneyValue] = useState(50);
+  const [moneyValue, setMoneyValue] = useState(60);
   // 비재무 확률
   const [nonPercentValue, setNonPercentValue] = useState(60)
   // 재무 확률
