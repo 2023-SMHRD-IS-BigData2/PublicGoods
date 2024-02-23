@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
+
 // 비재무 막대그래프
 const barData1 = [
   { name: '기존대출연체', 비재무: 2400, amt: 2400 },
@@ -143,8 +144,8 @@ const ResultPage = () => {
               <YAxis tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/>
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="기업군" stroke="#86b4f8" strokeWidth={2.5}/>
-              <Line type="monotone" dataKey="산업군" stroke="#eeb53a" strokeWidth={2.5}/>
+              <Line type="monotone" dataKey="해당 기업" stroke="#86b4f8" strokeWidth={2.5}/>
+              <Line type="monotone" dataKey="해당 기업의 산업군" stroke="#eeb53a" strokeWidth={2.5}/>
             </LineChart>
           </div>
 

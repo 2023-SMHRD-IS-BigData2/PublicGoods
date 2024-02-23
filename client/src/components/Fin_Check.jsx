@@ -107,7 +107,7 @@ const Fin_Check = () => {
     {/* 안내사항 */}
     <div className='information-box'>
       <p className='information-content2'>
-        * <strong>1부터 5까지 최신순으로 기입해주세요.<br/></strong>
+        * <strong>1부터 5까지 최신순으로 기입 되어야합니다.<br/></strong>
         연도별 자료 예시 1) 23년 2) 22년 3) 21년 4) 20년 5) 19년<br/>
         분기별 자료 예시 1) 23년 4분기 2) 23년 3분기 3) 23년 2분기 4) 23년 1분기 5) 22년 4분기
       </p>
