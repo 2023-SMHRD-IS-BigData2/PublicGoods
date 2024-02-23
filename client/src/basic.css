@@ -439,6 +439,28 @@
     transition: background-color 1s ease;
 }
 
+/* userName */
+.userName {
+    text-align: right;
+    margin-right: 20px;
+}
+
+.userNameSpan {
+    margin-right: 10px;
+}
+
+.logoutBtn {
+    border: 2px solid #8571d8;
+    border-radius: 15px;
+    background-color: white;
+    padding: 5px;
+    font-size: 13px;
+}
+
+.logoutBtn:hover {
+    border: 2px solid lightgray;
+}
+
 /* --------------------------------------------------- */
 
 /* Join */
@@ -1525,7 +1547,12 @@
 
 /* Show Page */
 
+.showPg {
+    height: 700px;
+}
+
 .searchSub {
+    margin-top: 100px;
     font-weight: bold;
     font-size: 25px;
     text-align: center;
