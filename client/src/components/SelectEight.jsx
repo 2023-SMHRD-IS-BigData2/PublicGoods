@@ -28,7 +28,7 @@ const SelectEight = () => {
   
           <div className='selectOne'>
             {/* Progress-Bar */}
-            <div claclassNamess="progress-bar">
+            <div className="progress-bar">
               <div className="progress8"></div>
             </div>
   
@@ -38,7 +38,7 @@ const SelectEight = () => {
             </div>
   
             {/* 금액 Input */}
-            <div className='apply-box'>
+            <div className='apply-selectBox'>
               <div className='apply-bank'>
                 <div className='btn-sub2'>
                   <div className="input-wrapper">

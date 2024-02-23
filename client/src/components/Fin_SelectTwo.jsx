@@ -39,41 +39,41 @@ const Fin_SelectTwo = () => {
           </div>
 
           {/* 영업이익 Input */}
-          <div className='apply-box'>
+          <div className='apply-box5'>
               <div className='apply-bank'>
                 <div className='btn-sub2'>
                   {/* 1분기 */}
                   <div className="input-wrapper2">
                     <p className='quarter'>1</p>
                     <input className='apply-finBtn' type='number' name = 'b6' placeholder='예)  3000' />
-                    <span className="placeholder-text">만원</span>
+                    <span className="placeholder-text2">만원</span>
                   </div>
                   {/* 2분기 */}
                   <div className="input-wrapper2">
                     <p className='quarter'>2</p>
                     <input className='apply-finBtn' type='number' name = 'b7' placeholder='예)  3000' />
-                    <span className="placeholder-text">만원</span>
+                    <span className="placeholder-text2">만원</span>
                   </div>
                   {/* 3분기 */}
                   <div className="input-wrapper2">
                     <p className='quarter'>3</p>
                     <input className='apply-finBtn' type='number' name = 'b8' placeholder='예)  3000' />
-                    <span className="placeholder-text">만원</span>
+                    <span className="placeholder-text2">만원</span>
                   </div>
                   {/* 4분기 */}
                   <div className="input-wrapper2">
                     <p className='quarter'>4</p>
                     <input className='apply-finBtn' type='number' name = 'b9' placeholder='예)  3000' />
-                    <span className="placeholder-text">만원</span>
+                    <span className="placeholder-text2">만원</span>
                   </div>
                   {/* 5분기 */}
                   <div className="input-wrapper2">
                     <p className='quarter'>5</p>
                     <input className='apply-finBtn' type='number' name = 'b10' placeholder='예)  3000' />
-                    <span className="placeholder-text">만원</span>
+                    <span className="placeholder-text2">만원</span>
                   </div>
                   {/* 확인 버튼 */}
-                  <div className="input-wrapper2">
+                  <div className="input-wrapper3">
                     <button className='okBtn2' onClick={handleMoneyClick}>확인</button>
                   </div>
                 </div> 

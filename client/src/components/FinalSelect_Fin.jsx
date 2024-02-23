@@ -32,7 +32,7 @@ const FinalSelect_Fin = () => {
       </div>
 
         {/* 비재무제표 제출하기 Button */}
-        <div className='apply-bank'>
+        <div className='apply-company'>
           <button className='apply-btn' onClick={handleSubmitClick}>
             <img src="/images/Content/submit1.png" className='bankImg'></img>
             <p className='btn-sub'>비재무제표 제출하기 <br/> </p>

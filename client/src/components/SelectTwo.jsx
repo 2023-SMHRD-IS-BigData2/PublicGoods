@@ -45,7 +45,7 @@ const SelectTwo = () => {
           </div>
 
           {/* 있습니다 Button */}
-          <div className='apply-box'>
+          <div className='apply-selectBox'>
               <div className='apply-bank'>
                 <button className='apply-btn' onClick={handleYesClick}>
                   <p className='btn-sub'>있습니다.<br/> </p>
@@ -53,14 +53,14 @@ const SelectTwo = () => {
               </div>
 
           {/* 없습니다 Button */}
-          <div className='apply-company'>
+          <div className='apply-bank'>
             <button className='apply-btn' onClick={handleNoClick}>
                <p className='btn-sub'>없습니다.<br/> </p>
             </button>
           </div>
 
           {/* 모릅니다 Button */}
-            <div className='apply-company' onClick={handleKnowClick}>
+            <div className='apply-bank' onClick={handleKnowClick}>
               <button className='apply-btn'>
                 <p className='btn-sub'>모릅니다.<br/> </p>
               </button>
