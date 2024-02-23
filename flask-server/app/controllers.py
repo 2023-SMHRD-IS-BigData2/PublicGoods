@@ -21,7 +21,9 @@ class JsonDataProcessing :
         if isinstance(AnyFinJson, str) : self.AnyFinDict = json.loads(AnyFinJson)
         elif isinstance(AnyFinJson, dict) : self.AnyFinDict = AnyFinJson
     
-        self.NonFinNewKey = ['연체여부', '대출청산여부', '대출보유기간(월)', '계열사여부', '보증금액(만원)', '수도권여부', '고용인원수', '대출금액']
+        # self.NonFinNewKey = ['연체여부', '대출청산여부', '대출보유기간(월)', '계열사여부', '보증금액(만원)', '수도권여부', '고용인원수', '대출금액']
+        self.NonFinNewKey = ['ChgOffDate', 'ChgOffPrinGr', 'Term', 'FranchiseCode', 'SBA_Appv', 'UrbanRural', 'RetainedJob', 'GrAppv']
+        # naics_code, default_rate, sba_appv_rate
 
         self.FinNewKey = ['매출액', '영업이익', '영업이익(발표기준)', '당기순이익', '지배주주순이익', '비지배주주순이익', '자산총계', 
                           '부채총계', '자본총계', '지배주주지분', '비지배주주지분', '자본금', '부채비율', '유보율', '영업이익률',
