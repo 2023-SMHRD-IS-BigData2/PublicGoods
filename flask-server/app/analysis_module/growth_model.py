@@ -39,7 +39,7 @@ class GrowthModel(object):
             if self._freq == "BME":
                 self._offset_function = pd.offsets.BMonthEnd
             elif self._freq == "B":
-                self._offset_function = pd.offsets.Bday
+                self._offset_function = pd.offsets.BDay
             elif self._freq == "BQE":
                 self._offset_function = pd.offsets.BQuarterEnd
             else:
@@ -61,6 +61,12 @@ class GrowthModel(object):
             ).fit(search_reps=search_rep)
             self._is_fitted = True
             self._model = model
+
+    def get_model_summary(self):
+        if self._is_fitted:
+            return self._model.summay()
+        else:
+            raise Exception("No model fitted")
 
     def predict_state_duration(self):
         if self._is_fitted:
@@ -135,7 +141,7 @@ class GrowthModel(object):
         if  freq_name == "BME":
             obj._offset_function = pd.offsets.BMonthEnd
         elif freq_name == "B":
-            obj._offset_function = pd.offsets.Bday
+            obj._offset_function = pd.offsets.BDay
         elif freq_name == "BQE":
             obj._offset_function = pd.offsets.BQuarterEnd
         else:

@@ -337,6 +337,76 @@ def preprocess_non_financial_data(data: pd.DataFrame) -> pd.DataFrame:
     return data
 
 
+def preprocess_growth_model_data(data: pd.DataFrame) -> pd.DataFrame:
+
+    # column name to string
+    data.columns = [str(x) for x in data.columns.tolist()]
+    data["Sector_Code"] = data["Company sector"].map(KOR_NAICS_MAPPER)
+    data.loc[data["Sector_Code"].isna(), "Sector_Code"] = '00'
+
+    # renames
+    data = data.rename(columns={'IFRS(연결)': 'Indicators', '성장평가 (1: good, 0:bad)': 'Financial evaluation'})
+    # convert to numeric values
+    data[TARGET_YEARS] = data[TARGET_YEARS].apply(lambda x: pd.to_numeric(x, errors='coerce'))
+
+    # Sector Data
+    company_sector = data[["Company code", "Sector_Code"]].drop_duplicates()
+    company_meta = data[["Company code", "Financial evaluation"]]
+
+    merged_df = []
+    for group_name, group_data in data.groupby("Company code"):
+
+        results = {}
+        for indicator in FIXED_INDICATORS:
+            # Scoring from linear regression (coefficients score)
+            results[indicator] = score_lr(group_data, indicator, TARGET_YEARS)
+
+        group_data = group_data.set_index("Indicators")
+        results = pd.DataFrame([results]).T
+        results.columns = ["Slope_Score"]
+
+        group_data_result = pd.merge(group_data, results, how="left", right_index=True, left_index=True)
+        merged_df.append(group_data_result)
+
+    # Concatenation group dataset
+    score_df = pd.concat(merged_df, axis=0)
+    score_df["Sector_Code"] = score_df["Sector_Code"].astype(str)
+
+    return score_df
+
+
+def get_sector_revenue(data: pd.DataFrame, sector_code: str, indicators: List[str]):
+
+    data = data.reset_index()
+
+    group_data = data.groupby(["Sector_Code", "Indicators"])[TARGET_YEARS].mean().reset_index().set_index("Sector_Code")
+    year_end_date = pd.date_range(start="2019", end="2024", freq="BYE").astype(str)
+
+    sector_revenue = group_data[group_data["Indicators"].isin(indicators)]
+    sector_revenue.columns = ["Indicators"] + year_end_date.tolist()
+
+    sector_revenue = sector_revenue.loc[sector_code, :]
+
+    if isinstance(sector_revenue, pd.DataFrame):
+        sector_revenue = sector_revenue.loc[sector_code, :].melt(id_vars=["Indicators"], var_name="Date", value_name="Value")
+        sector_revenue = sector_revenue.pivot_table(index=["Date"], columns="Indicators", values="Value")
+    elif isinstance(sector_revenue, pd.Series):
+        sector_revenue = pd.DataFrame(data=sector_revenue.iloc[1:].values,
+                                      columns=[sector_revenue.iloc[0,]],
+                                      index=sector_revenue.iloc[1:].index)
+        sector_revenue = sector_revenue.astype(float)
+
+    sector_revenue.index = pd.to_datetime(sector_revenue.index)
+    target_date = pd.DataFrame(index=pd.date_range(start="2019-12-31", end="2023-12-30", freq="B"))
+    target_date.index.names = ["Date"]
+
+    revenue_df = pd.merge(
+        target_date, sector_revenue, how="left",
+        right_index=True, left_index=True).interpolate(method="spline", order=2)
+
+    return revenue_df
+
+
 def preprocess_financial_data(data: pd.DataFrame) -> pd.DataFrame:
     # column name to string
     data.columns = [str(x) for x in data.columns.tolist()]
