@@ -55,7 +55,7 @@ const CompanyLogin = () => {
         <div className='loginBox'>
             {/* 로그인 설명 */}
             <div className='loginInfo'>
-                <h3 className='LOC'>Login Our Community</h3>
+                <h3 className='LOC'>Company <br/> Login Our Community</h3>
             </div>
             {/* 로그인 */}
             <div className='login'>
@@ -86,7 +86,7 @@ const CompanyLogin = () => {
                 </div>
                 {/* 회원가입 버튼 */}
                 <div className='BtnBox'>
-                    <Link to='/bankJoin'><button className='joBtn'>회원가입 하러 가기</button></Link>
+                    <Link to='/companyJoin'><button className='joBtn'>회원가입 하러 가기</button></Link>
                 </div>
             </div>
         </div>

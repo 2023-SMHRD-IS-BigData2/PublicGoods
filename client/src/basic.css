@@ -199,10 +199,10 @@
 .forth-content {
     margin-top: 60px !important;
     margin-bottom: 60px !important;
-    font-size: 17px;
+    font-size: 18px;
     text-align: left;
     line-height: 2;
-    max-width: 700px; /* 텍스트의 최대 너비를 설정할 수 있습니다. 필요에 따라 조정하십시오. */
+    max-width: 720px; /* 텍스트의 최대 너비를 설정할 수 있습니다. 필요에 따라 조정하십시오. */
     margin: 0 auto;
 }
 
@@ -246,6 +246,7 @@
   .apply-btn:hover {
     color: white;
     background-color: rgba(133, 105, 247, 0.4);
+    transition: background-color 0.5s ease;
   }
 
   .apply-btn3 {
@@ -378,6 +379,22 @@
 .LOC {
     color: white;
     font-weight: bold;
+    animation: fadeOutIn 1s forwards;
+}
+
+@keyframes fadeOutIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .login {
@@ -390,7 +407,18 @@
     align-items: center;
     flex-direction: column;
     background-color: white;
+    animation: slideIn 2s alternate;
+    animation-iteration-count: 1;
 }
+
+@keyframes slideIn {
+    from {
+        margin-left: -400px;
+    }
+    to {
+        margin-left: 0px;
+    }
+  }
 
 
 .joBtn {
@@ -486,12 +514,23 @@
     align-items: center;
     flex-direction: column;
     background-color: white;
+    animation: slideOut 2s alternate;
 }
+
+@keyframes slideOut {
+    from {
+        margin-right: -800px;
+    }
+    to {
+        margin-right: 0px;
+    }
+  }
 
 .joinSub {
     text-align: center;
     font-weight: bold;
     color: rgb(80, 80, 80);
+    margin-top: 30px;
     margin-bottom: 40px;
 }
 
@@ -540,7 +579,7 @@
 }
 
 
-/*  */
+/* 여긴 수정 X (할려면 복사해서 따로 name 해주세요.)*/
 
 .login-content {
     width: 100%;
@@ -1737,13 +1776,34 @@
   /* thirdDash */
   .thirdDash {
     width: 50%;
+    max-width: 50%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+    flex: 1;
   }
 
   /* fourDash */
   .fourDash {
-    width: 40%;
+    width: 50%;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+    flex: 1;
   }
+
+  @media (max-width: 1500px) {
+  .thirdDash {
+    width: 30%;
+  }
+
+  .fourDash {
+    width: 30%;
+  }
+}
 
   /* fifthDash */
   .fifthDash {

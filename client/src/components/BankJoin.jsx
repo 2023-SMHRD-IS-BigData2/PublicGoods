@@ -54,7 +54,6 @@ const BankLogin = () => {
             {/* 로그인 설명 */}
             <div className='joinInfo'>
             <div className='join'>
-                <h3 className='LOC'>Join Our Community</h3>
                 <div className='inputBox'>
                     {/* 로그인 제목 */}
                     <h2 className='joinSub'>회원가입</h2>
@@ -69,7 +68,7 @@ const BankLogin = () => {
 
                     {/* 비밀번호 */}
                     <div className='inputPwBox'>
-                        <input type="text" className='pwInputJoin' placeholder='비밀번호'
+                        <input type="password" className='pwInputJoin' placeholder='비밀번호'
                                value={pwNum}
                                onChange={(e) => setPwNum(e.target.value)}
                         />
@@ -101,7 +100,7 @@ const BankLogin = () => {
 
             {/* 로그인 */}
             <div className='joinInfo'>
-                <h3 className='LOC'>Join Our Community</h3>
+                <h3 className='LOC'>Bank <br/> Join Our Community</h3>
             </div>
         </div>
 
