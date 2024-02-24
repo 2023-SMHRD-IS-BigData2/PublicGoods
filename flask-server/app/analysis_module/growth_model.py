@@ -64,7 +64,7 @@ class GrowthModel(object):
 
     def get_model_summary(self):
         if self._is_fitted:
-            return self._model.summay()
+            return self._model.summary()
         else:
             raise Exception("No model fitted")
 
