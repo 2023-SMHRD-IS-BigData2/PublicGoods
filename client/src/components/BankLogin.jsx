@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import axios from 'axios';
 
 const BankLogin = () => {
@@ -46,7 +47,7 @@ const BankLogin = () => {
         <div className='loginBox'>
             {/* 로그인 설명 */}
             <div className='loginInfo'>
-                <h3 className='LOC'>Login Our Community</h3>
+                <h3 className='LOC'>Bank <br/> Login Our Community</h3>
             </div>
             {/* 로그인 */}
             <div className='login'>
