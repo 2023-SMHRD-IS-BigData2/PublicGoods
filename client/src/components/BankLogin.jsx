@@ -64,7 +64,7 @@ const BankLogin = () => {
 
                     {/* 비밀번호 */}
                     <div className='inputPwBox'>
-                        <input type="text" className='pwInput' placeholder='비밀번호'
+                        <input type="password" className='pwInput' placeholder='비밀번호'
                                value={pwNum}
                                onChange={(e) => setPwNum(e.target.value)}
                         />

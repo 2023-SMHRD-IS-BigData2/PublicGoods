@@ -24,13 +24,13 @@ const barData2 = [
 
 // 성장률 꺽은선 그래프
 const lineData = [
-  { name: '23년 1분기', 기업군: 4000, 산업군: 2400, amt: 2400 },
-  { name: '23년 2분기', 기업군: 3000, 산업군: 1398, amt: 2210 },
-  { name: '23년 3분기', 기업군: 2000, 산업군: 9800, amt: 2290 },
-  { name: '23년 4분기', 기업군: 2780, 산업군: 3908, amt: 2000 },
-  { name: '24년 1분기', 기업군: 1890, 산업군: 4800, amt: 2181 },
-  { name: '24년 2분기', 기업군: 2390, 산업군: 3800, amt: 2500 },
-  { name: '24년 3분기', 기업군: 3490, 산업군: 4300, amt: 2100 },
+  { name: '23년 1분기', 해당기업: 4000, 해당기업의산업군: 2400, amt: 2400 },
+  { name: '23년 2분기', 해당기업: 3000, 해당기업의산업군: 1398, amt: 2210 },
+  { name: '23년 3분기', 해당기업: 2000, 해당기업의산업군: 9800, amt: 2290 },
+  { name: '23년 4분기', 해당기업: 2780, 해당기업의산업군: 3908, amt: 2000 },
+  { name: '24년 1분기', 해당기업: 1890, 해당기업의산업군: 4800, amt: 2181 },
+  { name: '24년 2분기', 해당기업: 2390, 해당기업의산업군: 3800, amt: 2500 },
+  { name: '24년 3분기', 해당기업: 3490, 해당기업의산업군: 4300, amt: 2100 },
 ];
 
 const ResultPage = () => {
@@ -144,8 +144,8 @@ const ResultPage = () => {
               <YAxis tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/>
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="해당 기업" stroke="#86b4f8" strokeWidth={2.5}/>
-              <Line type="monotone" dataKey="해당 기업의 산업군" stroke="#eeb53a" strokeWidth={2.5}/>
+              <Line type="monotone" dataKey="해당기업" stroke="#86b4f8" strokeWidth={2.5}/>
+              <Line type="monotone" dataKey="해당기업의산업군" stroke="#eeb53a" strokeWidth={2.5}/>
             </LineChart>
           </div>
 
