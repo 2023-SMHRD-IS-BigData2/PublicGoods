@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Header = () => {
 
@@ -15,7 +16,9 @@ const Header = () => {
     const checkUserSession = async () => {
         try {
             const user_id = sessionStorage.getItem('user_id');
-            if (user_id) {
+            const response = await axios.get('http://127.0.0.1:5000/api/loginCheck');
+            const sessionUser = response.data.user_id;
+            if (user_id == sessionUser) {
                 setUsername(user_id);
                 setIsLogin(true);
             }

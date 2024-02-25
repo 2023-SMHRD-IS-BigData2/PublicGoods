@@ -184,7 +184,7 @@ def insertUser(user_id : str, user_password : str, user_type : str, business_num
 def selectUser(user_id : str, user_password : str) -> Dict :
     userInfo = None
 
-    with DatabaseHandler().session as session:
+    with DatabaseHandler().session as session :
         try:
             session.begin()
             loginUser = session.query(moolLoan_user_table).filter(moolLoan_user_table.user_id == user_id).first()
@@ -202,6 +202,24 @@ def selectUser(user_id : str, user_password : str) -> Dict :
 
     return userInfo
 
+def selectUserType(user_id : str) -> str :
+    usercode = None
+    
+    with DatabaseHandler().session as session :
+        try :
+            session.begin()
+            findUser = session.query(moolLoan_user_table).filter(moolLoan_user_table.user_id == user_id).first()
+            if findUser != 'BBB' : usercode = findUser.user_type
+            else : usercode = 'Bank'
+            session.commit()
+        except SQLAlchemyError as e:
+            print('SQLAlchemyUserSelectError! : ' + str(e))
+            session.rollback()
+        except Exception as e:
+            print('ERROR! : ' + str(e))
+            session.rollback()
+
+    return usercode
 
 def updateUser(user_id : str, user_password : str, new_id : str = None , new_password : str = None) -> bool :
     row = 0
