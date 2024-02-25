@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_session import Session
 from flask_cors import CORS
 from flask import session
 
@@ -10,12 +11,13 @@ from app.models import insertUser, selectUser, insertSimpleFinancial
 
 from werkzeug.utils import secure_filename
 from threading import Lock
+from datetime import timedelta
 import secrets
-import json
 import os
 
 app = Flask(__name__)
 CORS(app)
+Session(app)
 app.secret_key = secrets.token_hex(16)
 lock = Lock()
 
@@ -23,8 +25,10 @@ UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['SESSION_TYPE'] = 'filesystem'
 
-app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_PERMANENT'] = True
+app.permanent_session_lifetime = timedelta(minutes= 60)
 
 NaverOCRURL = "https://5jhnjwjjza.apigw.ntruss.com/custom/v1/28004/94c60e18d0f07e16d2c25442c7a6c7dc86a8e362f8dc888c4cc5c71886cb8278/general"
 OCRSecretKey = "eG93a2ZjYlNhaXFCSWJSTVdueWFxWWVrTFRkT0NnWXc="
@@ -37,13 +41,13 @@ def not_found_error(error) :
 def addSession() :
     data = request.json
     user_id = data.get('user_id')
-    print(user_id)
     session['user_id'] = user_id
-    return '', 204
+    print(session['user_id'])
+    return 'session_set', 204
 
-@app.route('/api/loginCheck', methods=['POST'])
+@app.route('/api/loginCheck', methods=['GET'])
 def loginCheck() :
-    user_id = session.get('user-id')
+    user_id = session.get('user_id')
     print(user_id)
     if user_id : return jsonify({'user_id' : user_id})
     else : return jsonify({'user_id' : None})
@@ -108,10 +112,11 @@ def fileUpload():
 @app.route('/api/NonFin', methods=['POST'])
 def non_fin() :
     data = JsonDataProcessing(request.json)
-    print(data.AnyFinDict)
+    user_id = session['user_id']
+    print(user_id)
+    print(data)
     data.changeNonFinKey()
-    print(data.AnyFinDict)
-    data.changeNonFinValue()
+    data.changeNonFinValue(user_id)
     print(data.AnyFinDict)
     return {'key' : 'value'}
 

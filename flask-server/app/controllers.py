@@ -1,5 +1,7 @@
 from app.analysis_module import NonFinancialModel
 from app.analysis_module import FinancialModel
+from app.analysis_module import NAICS_DEFAULT_RATES
+from app.models import selectUserType
 from app.ocr import OcrResultPostProcessing
 from app.ocr import NaverOCR
 from typing import Union, Tuple
@@ -9,8 +11,8 @@ import json
 
 def changeAnswer(answer : Union[str, float, int]) -> Union[str, float] :
         answer = answer[:4]
-        if answer == '있습니다' : return 'Y'
-        elif answer == '없습니다' : return 'N'
+        if answer == '있습니다' : return 1
+        elif answer == '없습니다' : return 0
         elif answer == '모릅니다' : return 'X'
         else :
             float_answer = float(answer)
@@ -25,6 +27,7 @@ class JsonDataProcessing :
         # self.NonFinNewKey = ['연체여부', '대출청산여부', '대출보유기간(월)', '계열사여부', '보증금액(만원)', '수도권여부', '고용인원수', '대출금액']
         self.NonFinNewKey = ['ChgOffDate', 'ChgOffPrinGr', 'Term', 'FranchiseCode', 'SBA_Appv', 'UrbanRural', 'RetainedJob', 'GrAppv']
         # naics_code, default_rate, sba_appv_rate
+        self.NonFinaddKey = ['naics_code', 'default_rate', 'sba_appv_rate']
 
         self.FinNewKey = ['매출액', '영업이익', '영업이익(발표기준)', '당기순이익', '지배주주순이익', '비지배주주순이익', '자산총계', 
                           '부채총계', '자본총계', '지배주주지분', '비지배주주지분', '자본금', '부채비율', '유보율', '영업이익률',
@@ -48,12 +51,28 @@ class JsonDataProcessing :
         
         return self.AnyFinDict
     
-    def changeNonFinValue(self) -> dict :
+    def changeNonFinValue(self, user_id) -> dict :
         if len(self.AnyFinDict) != len(self.NonFinNewKey) : return None 
-        # NonFinOldValue = list(self.AnyFinDict.values())
 
         for temp in self.NonFinNewKey :
             self.AnyFinDict[temp] = changeAnswer(self.AnyFinDict[temp])
+
+        code = selectUserType(user_id)
+
+        if code == 'Bank' : return None
+        else : self.AnyFinDict['naics_code'] = code
+
+        try : code = NAICS_DEFAULT_RATES[code]
+        except KeyError : code = 19
+        self.AnyFinDict['default_rate'] = code
+
+        try : 
+            sba_appv_rate = (self.AnyFinDict['GrAppv'] - self.AnyFinDict['SBA_Appv']) /  self.AnyFinDict['GrAppv']
+        except (TypeError, ValueError, ZeroDivisionError) as e :
+            print('ERROR! : ' + str(e))
+            sba_appv_rate = 0
+
+        self.AnyFinDict['sba_appv_rate'] = sba_appv_rate
 
         return self.AnyFinDict
     

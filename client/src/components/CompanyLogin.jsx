@@ -41,7 +41,7 @@ const CompanyLogin = () => {
                 if (userinfo.user_type !== 'BBB') {
                     // userinfo.user_id 를 헤더에 저장처리
                     // console.log(userinfo.user_id);
-                    await axios.post('http://127.0.0.1:5000//api/addSession', {user_id : idInput});
+                    await axios.post('http://127.0.0.1:5000/api/addSession', {user_id : idInput});
                     sessionStorage.setItem('user_id', idInput);
                     navigate('/companyApply');
                     window.location.reload();
