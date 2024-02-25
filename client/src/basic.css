@@ -23,6 +23,7 @@
     letter-spacing: 2px;
     transition: background-color 0.5s ease;
 }
+
 .app-btn:hover {
     background-color: #8569f7;
     color: white;
@@ -1043,7 +1044,7 @@
 
 .selectOne {
     width: 90%;
-    max-width: 700px;
+    max-width: 750px;
     margin-top: 50px;
     margin-bottom: 100px;
     border-radius: 30px;
@@ -1596,7 +1597,6 @@
 }
 
 .checkListTable {
-    border: 1px solid black;
     width: 700px;
     height: 300px;
 }
@@ -1609,6 +1609,35 @@
 
 .checkListTable th {
     background-color: #f2f2f2;
+}
+
+/* Table - th */
+
+.firstTh {
+    background-color: white !important;
+    border: none !important;
+    color: white;
+}
+
+.secondTh {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border: none !important;
+    background-color: #bcaff7 !important;
+    color: white;
+}
+
+.thirdTh {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border: none !important;
+    background-color: #9c87f7 !important;
+    color: white;
+}
+
+/* Table - td */
+.numberTd {
+    border-top-left-radius: 30px !important;
 }
 
 .apply-btn4 {

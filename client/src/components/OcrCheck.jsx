@@ -6,7 +6,7 @@ const OcrCheck = () => {
 
     // 맞습니까? 버튼 클릭했을 때
     const handleCheckClick = () => {
-      navigate('/wantLoan');
+      navigate('/allSelectNext');
     };
   
     // 다시 올리기 버튼 클릭했을 때

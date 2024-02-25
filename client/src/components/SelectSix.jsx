@@ -42,7 +42,7 @@ const SelectSix = () => {
   
             {/* 질문 */}
             <div className='question'>
-              <h3 className='questionTitle'>수도권에 있습니까?</h3>
+              <h3 className='questionTitle'>6. 수도권에 있습니까?</h3>
             </div>
   
             {/* 있습니다 Button */}

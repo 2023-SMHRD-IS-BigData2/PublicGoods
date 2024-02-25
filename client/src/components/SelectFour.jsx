@@ -41,7 +41,7 @@ const SelectFour = () => {
   
             {/* 질문 */}
             <div className='question'>
-              <h3 className='questionTitle'>계열사가 있습니까?</h3>
+              <h3 className='questionTitle'>4. 계열사가 있습니까?</h3>
             </div>
   
             {/* 있습니다 Button */}

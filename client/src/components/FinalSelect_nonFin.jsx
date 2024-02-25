@@ -23,14 +23,14 @@ const FinalSelect_nonFin = () => {
 
       {/* 비재무제표 제출 시 - 비재무제표 체크 완료 */}
       <div className='apply-company'>
-        <button className='apply-btn3'>
+        <button className='apply-btn3' style={{width : '345px'}}>
           <img src="/images/Content/documents3.png" className='comImg'></img>
-          <p className='btn-sub'>비재무제표 제출<br/> </p>
+          <p className='btn-sub'>비재무제표 제출</p>
           <p className='btn-content2'>
             - 기존 대출 연제 여부 <br/>
             - 청산여부 <br/>
             - 신용보증재단 보증한 금액 <br/>
-            - 등등 <br/>
+            - 등등
           </p>
         </button>
         <img src="/images/Content/check.png" className='checkImg'></img>
@@ -38,14 +38,13 @@ const FinalSelect_nonFin = () => {
 
         {/* 재무제표 제출하기 Button */}
         <div className='apply-company'>
-          <button className='apply-btn' onClick={handleSubmitClick}>
+          <button className='apply-btn' onClick={handleSubmitClick} style={{width : '345px'}}>
             <img src="/images/Content/submit1.png" className='bankImg'></img>
             <p className='btn-sub'>재무제표 제출하기 <br/> </p>
             <p className='btn-content'>
               <br/>
               재무제표는 <strong style={{fontSize : '18px'}}>선택사항</strong> 입니다. <br/>
-              (제출하면 더 정확한 정보를 얻을 수 있습니다.)
-              <br/>
+              <p style={{fontSize:'13.5px', margin :'0'}}>(제출하면 더 정확한 정보를 얻을 수 있습니다.)</p>
               <br/>
             </p>
           </button>
@@ -53,7 +52,7 @@ const FinalSelect_nonFin = () => {
 
         {/* 결과 확인 Button */}
         <div className='apply-company'>
-          <button className='apply-btn' onClick={handleResultClick}>
+          <button className='apply-btn' onClick={handleResultClick} style={{width : '345px'}}>
             <img src="/images/Content/result.png" className='comImg'></img>
             <p className='btn-sub'>결과 확인 <br/> </p>
             <p className='btn-content'>

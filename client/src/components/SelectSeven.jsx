@@ -34,7 +34,7 @@ const SelectSeven = () => {
   
             {/* 질문 */}
             <div className='question'>
-              <h3 className='questionTitle'>평균 고용 인원 수가 어떻게 됩니까?</h3>
+              <h3 className='questionTitle'>7. 평균 고용 인원 수가 어떻게 됩니까?</h3>
             </div>
   
             {/* 인원수 Input */}

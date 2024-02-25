@@ -34,7 +34,7 @@ const SelectEight = () => {
   
             {/* 질문 */}
             <div className='question'>
-              <h3 className='questionTitle'>은행에게 대출 받은 금액은 얼마입니까?</h3>
+              <h3 className='questionTitle'>8. 은행에게 대출 받은 금액은 얼마입니까?</h3>
             </div>
   
             {/* 금액 Input */}
