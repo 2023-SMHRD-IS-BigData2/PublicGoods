@@ -33,7 +33,7 @@ const NonFinCheck = () => {
 
   return (
     // 전체 페이지 - div
-    <div className='onePage-div'>
+    <div className='nonFinCheckBox'>
 
       {/* 체크 리스트 보여주기 */}
       <div className='apply-box3'>

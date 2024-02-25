@@ -13,7 +13,8 @@
     border: 2px solid #8569f7;
     border-radius: 40px;
     background-color: white;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     padding: 12px;
     padding-left: 50px;
     padding-right: 50px;
@@ -50,10 +51,14 @@
 }
 
 .introBox {
-    margin-top: 1em;
+    height: 600px;
     margin-bottom: 50px;
     text-align: center;
     background-color: #ece8fd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .intro-start {
@@ -92,13 +97,13 @@
 }
 
 .second-box1 {
-    margin-top: 30px;
+    margin-top: 50px;
     flex: 1;
 }
 
 .second-box2 {
     margin-top: 50px;
-    margin-bottom: 2em;
+    margin-bottom: 5em;
 }
 
 .process-img-box1 {
@@ -156,6 +161,13 @@
 }
 
 /* 3 page */
+.third-page {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .third-box {
     margin-left: 20px;
     margin-top: 50px;
@@ -169,7 +181,7 @@
 .third-content {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 50px;
     margin-bottom: 50px;
 }
 
@@ -187,8 +199,8 @@
 }
 
 .fourth-box {
-    padding-top: 50px;
-    padding-bottom: 10px;
+    padding-top: 70px;
+    padding-bottom: 20px;
     background-color: #8571d8;
 }
 
@@ -1584,6 +1596,10 @@
 
 /* 확인하기 - 체크 리스트 */
 
+.nonFinCheckBox {
+    height: 800px;
+}
+
 .apply-box3 {
     margin-top: 9em;
     display: flex;
@@ -1605,6 +1621,10 @@
     border: 1px solid #dddddd;
     padding: 10px;
     text-align: center;
+}
+
+.checkListTable tr {
+    font-weight: bold;
 }
 
 .numberTh {
