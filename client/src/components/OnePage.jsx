@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const OnePage = () => {
+
   return (
     // 메인 전체 페이지 - div
     <div className='onePage-div'>
@@ -15,19 +16,15 @@ const OnePage = () => {
 
             {/* 1 페이지 - 물론 소개 */}
             <div className='introBox'>
-                <br/>
-                <br/>
-                <br/>
                 <h3 className='intro-start'>안녕하세요. 물론(moolLoan)입니다.</h3>
                 <br />
+                <br/>
                 <p className='intro-context'>
                     저희는 신용평가가 어려운 자영업자와 창업 초기단계 회사를 대상으로 <br/>
                     신용평가 모형을 활용한 기업여신 심사 및 피드백을 제공하는 플랫폼으로 <br/>
                     신용점수 산정을 받고 싶어하는 기업을 위해 기술력 기반 신용점수를 <br/>
                     산정 받고 해당 결과에 대해 피드백을 제공하는 서비스입니다. <br/>
                 </p>
-                <br/>
-                <br/>
             </div>
         </div>
 
