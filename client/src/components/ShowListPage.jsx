@@ -10,31 +10,31 @@ const ShowListPage  = () => {
             <table className='showListTable'>
               <tbody className='showListTbody'>
                 <tr>
-                  <th>번호</th>
-                  <th>제출 일자</th>
-                  <th>확인하기</th>
+                  <th className='firstTh'>번호</th>
+                  <th className='secondTh'>제출 일자</th>
+                  <th className='thirdTh'>확인하기</th>
                 </tr>
 
                 <tr>
-                  <td>1</td>
+                  <td className='numberTd'>1</td>
                   <td>2022.03</td>
                   <td><Link to='/resultPage'><button className='showListBtn'>결과보기</button></Link></td>
                 </tr>
 
                 <tr>
-                  <td>2</td>
+                  <td className='numberTd'>2</td>
                   <td>2022.06</td>
                   <td><button className='showListBtn'>결과보기</button></td>
                 </tr>
 
                 <tr>
-                  <td>3</td>
+                  <td className='numberTd'>3</td>
                   <td>2022.09</td>
                   <td><button className='showListBtn'>결과보기</button></td>
                 </tr>
 
                 <tr>
-                  <td>4</td>
+                  <td className='numberTd'>4</td>
                   <td>2022.12</td>
                   <td><button className='showListBtn'>결과보기</button></td>
                 </tr>

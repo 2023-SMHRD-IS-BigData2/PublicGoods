@@ -37,7 +37,7 @@ const SelectThree = () => {
         {/* 질문 */}
         <div className='question'>
           <h3 className='questionTitle'>
-            기존 대출 보유시 대출 보유 기간이 어떻게 되십니까? <br />
+            3. 기존 대출 보유시 대출 보유 기간이 어떻게 되십니까? <br />
             (월 단위)
           </h3>
         </div>

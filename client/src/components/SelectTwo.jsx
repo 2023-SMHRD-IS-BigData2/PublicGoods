@@ -41,7 +41,7 @@ const SelectTwo = () => {
 
           {/* 질문 */}
           <div className='question'>
-            <h3 className='questionTitle'>기존 대출이 청산이 되어있습니까?</h3>
+            <h3 className='questionTitle'>2. 기존 대출이 청산이 되어있습니까?</h3>
           </div>
 
           {/* 있습니다 Button */}

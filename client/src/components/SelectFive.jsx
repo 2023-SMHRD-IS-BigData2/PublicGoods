@@ -35,7 +35,7 @@ const SelectFive = () => {
             {/* 질문 */}
             <div className='question'>
               <h3 className='questionTitle'>
-                신용보증재단, 기술보증재단 등 재단에서 <br/>
+                5. 신용보증재단, 기술보증재단 등 재단에서 <br/>
                 보증한 금액이 있습니까?
               </h3>
             </div>

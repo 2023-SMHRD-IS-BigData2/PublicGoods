@@ -20,7 +20,7 @@ const Fin_Check = () => {
         alert('전송에 실패했습니다!');
       }
       console.log(selectFinList);
-      navigate('/finalSelectFin');
+      navigate('/allSelectNext');
     };
   
     // 다시 입력하기 버튼 클릭했을 때
@@ -39,16 +39,17 @@ const Fin_Check = () => {
             <table className='checkListTable'>
               <tbody className='checkListTbody'>
                 <tr>
-                  <th>번호</th>
-                  <th>질문 내용</th>
-                  <th style={{width : '70px'}}>1</th>
-                  <th style={{width : '70px'}}>2</th>
-                  <th style={{width : '70px'}}>3</th>
-                  <th style={{width : '70px'}}>4</th>
-                  <th style={{width : '70px'}}>5</th>
+                  <th className='firstTh'>번호</th>
+                  <th className='secondTh'>질문 내용</th>
+                  <th className='' style={{width : '70px'}}>1</th>
+                  <th className='' style={{width : '70px'}}>2</th>
+                  <th className='' style={{width : '70px'}}>3</th>
+                  <th className='' style={{width : '70px'}}>4</th>
+                  <th className='' style={{width : '70px'}}>5</th>
                 </tr>
+
                 <tr>
-                  <td>1</td>
+                  <td className='numberTd'>1</td>
                   <td style={{textAlign : 'left'}}>매출을 입력해주세요.</td>
                   <td>{selectFinList.b1}</td>
                   <td>{selectFinList.b2}</td>
@@ -56,8 +57,9 @@ const Fin_Check = () => {
                   <td>{selectFinList.b4}</td>
                   <td>{selectFinList.b5}</td>
                 </tr>
+
                 <tr>
-                  <td>2</td>
+                  <td className='numberTd'>2</td>
                   <td style={{textAlign : 'left'}}>영업이익을 입력해주세요.</td>
                   <td>{selectFinList.b6}</td>
                   <td>{selectFinList.b7}</td>
@@ -65,8 +67,9 @@ const Fin_Check = () => {
                   <td>{selectFinList.b9}</td>
                   <td>{selectFinList.b10}</td>
                 </tr>
+
                 <tr>
-                  <td>3</td>
+                  <td className='numberTd'>3</td>
                   <td style={{textAlign : 'left'}}>자산을 입력해주세요.</td>
                   <td>{selectFinList.b11}</td>
                   <td>{selectFinList.b12}</td>
@@ -74,7 +77,8 @@ const Fin_Check = () => {
                   <td>{selectFinList.b14}</td>
                   <td>{selectFinList.b15}</td>
                 </tr>
-                <tr>
+
+                <tr className='numberTd'>
                   <td>4</td>
                   <td style={{textAlign : 'left'}}>부채를 입력해주세요.</td>
                   <td>{selectFinList.b16}</td>

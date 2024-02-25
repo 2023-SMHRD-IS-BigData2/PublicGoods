@@ -18,7 +18,7 @@ const AllSelectNext = () => {
       
       {/* 재무제표 제출 - 체크완료 */}
       <div className='apply-company'>
-        <button className='apply-btn3'>
+        <button className='apply-btn3' style={{width : '345px'}}>
           <img src="/images/Content/documents3.png" className='comImg'></img>
           <p className='btn-sub'>재무제표 제출<br/> </p>
           <p className='btn-content2'>
@@ -33,7 +33,7 @@ const AllSelectNext = () => {
 
       {/* 비재무제표 제출 - 체크완료 */}
       <div className='apply-company'>
-        <button className='apply-btn3'>
+        <button className='apply-btn3' style={{width : '345px'}}>
           <img src="/images/Content/documents3.png" className='comImg'></img>
           <p className='btn-sub'>비재무제표 제출<br/> </p>
           <p className='btn-content2'>
@@ -48,7 +48,7 @@ const AllSelectNext = () => {
 
         {/* 결과 버튼 */}
         <div className='apply-company'>
-          <button className='apply-btn' onClick={handleResultClick}>
+          <button className='apply-btn 'style={{width : '345px'}} onClick={handleResultClick}>
             <img src="/images/Content/result.png" className='comImg'></img>
             <p className='btn-sub'>결과 확인</p>
             <p className='btn-content'>
