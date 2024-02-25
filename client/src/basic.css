@@ -1607,51 +1607,26 @@
     text-align: center;
 }
 
-.checkListTable th {
-    background-color: #f2f2f2;
-}
-
-/* Table - th */
-
-.firstTh {
-    background-color: white !important;
+.numberTh {
+    width: 70px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
     border: none !important;
     color: white;
-}
-
-.secondTh {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border: none !important;
-    background-color: #bcaff7 !important;
-    color: white;
-}
-
-.thirdTh {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border: none !important;
-    background-color: #9c87f7 !important;
-    color: white;
-}
-
-/* Table - td */
-.numberTd {
-    border-top-left-radius: 30px !important;
 }
 
 .apply-btn4 {
     padding: 5px;
-    border: none;
     border-radius: 30px;
     text-align: center;
-    color: white;
-    background-color: rgba(133, 105, 247, 0.7);
+    color: #6a79fc;
+    border: 2px solid #828efa;
+    background-color: white;
 }
 
 .apply-btn4:hover {
-    color: white;
-    background-color: rgba(133, 105, 247, 0.4);
+    color: rgba(106, 121, 252, 0.5);
+    border: 2px solid rgba(130, 142, 250, 0.5);
 }
 
 .btn-sub3 {
@@ -1912,7 +1887,7 @@
 /* Show List Page */
 
 .showListPge {
-    height: 60vh;
+    height: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1927,7 +1902,7 @@
 
 .showListTable {
     text-align: center;
-    width: 500px;
+    width: 800px;
 }
 
 .showListTable td, .showListTable th {
@@ -1940,15 +1915,45 @@
     background-color: #f2f2f2;
 }
 
+/* Table - th */
+
+.firstTh {
+    background-color: white !important;
+    border: none !important;
+    color: white;
+}
+
+.secondTh {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border: none !important;
+    background-color: #bcaff7 !important;
+    color: white;
+}
+
+.thirdTh {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border: none !important;
+    background-color: #97a1f8 !important;
+    color: white;
+}
+
+/* Table - td */
+.numberTd {
+    border-left: none !important;
+}
+
 .showListBtn {
     border: none;
     text-align: center;
     font-weight: bold;
     font-size: 16px;
+    background-color: white;
 }
 
 .showListBtn:hover {
-    background-color: rgba(133, 105, 247, 0.4);
+    text-decoration: underline;
 }
 
 /* --------------------------------------------------- */

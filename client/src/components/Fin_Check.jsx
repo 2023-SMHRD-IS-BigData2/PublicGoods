@@ -41,11 +41,11 @@ const Fin_Check = () => {
                 <tr>
                   <th className='firstTh'>번호</th>
                   <th className='secondTh'>질문 내용</th>
-                  <th className='' style={{width : '70px'}}>1</th>
-                  <th className='' style={{width : '70px'}}>2</th>
-                  <th className='' style={{width : '70px'}}>3</th>
-                  <th className='' style={{width : '70px'}}>4</th>
-                  <th className='' style={{width : '70px'}}>5</th>
+                  <th className='numberTh' style={{backgroundColor:'#bcc2f8'}}>1</th>
+                  <th className='numberTh' style={{backgroundColor:'#aab2f8'}}>2</th>
+                  <th className='numberTh' style={{backgroundColor:'#97a1f8'}}>3</th>
+                  <th className='numberTh' style={{backgroundColor:'#8692f8'}}>4</th>
+                  <th className='numberTh' style={{backgroundColor:'#7481f3'}}>5</th>
                 </tr>
 
                 <tr>
@@ -78,8 +78,8 @@ const Fin_Check = () => {
                   <td>{selectFinList.b15}</td>
                 </tr>
 
-                <tr className='numberTd'>
-                  <td>4</td>
+                <tr>
+                  <td className='numberTd'>4</td>
                   <td style={{textAlign : 'left'}}>부채를 입력해주세요.</td>
                   <td>{selectFinList.b16}</td>
                   <td>{selectFinList.b17}</td>
