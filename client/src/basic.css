@@ -1061,12 +1061,37 @@
 .ocrTable tr:first-of-type {
    text-align: center;
    font-weight: bold;
+   color: white;
+   border: none;
+   height: 40px;
+}
+
+.ocrTable tr:first-of-type td:first-of-type {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #bcaff7;
+    border: none;
+}
+
+.ocrTable tr:first-of-type td:nth-of-type(2) {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #97a1f8;
+    border: none;
+}
+
+.ocrTable tr:first-of-type td:nth-of-type(3) {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #7683f5;
+    border: none;
 }
 
 /* td */
 .ocrTable td {
     border: 1px solid lightgray;
     text-align: center;
+    border-left: none;
 }
 
 /* --------------------------------------------------- */
@@ -1338,6 +1363,7 @@
     display: inline-block;
     text-align: center;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .input-wrapper {

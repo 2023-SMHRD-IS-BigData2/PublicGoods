@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 const ShowPage = () => {
+
+  const navigate = useNavigate();
 
   {/* 여기 위 수정 */}
   const [placeholder, setPlaceHolder] = useState('사업자번호');
@@ -25,12 +27,20 @@ const ShowPage = () => {
     setPlaceHolder('');
   }
 
+  const handleSearchClick = () => {
+    if(1==1) {
+      navigate('/ShowListPage');
+    } else {
+      navigate('/showNoPage')
+    }
+  }
+
   return (
     <div className='showPg'>
       <p className='searchSub'>조회하고 싶은 기업의 사업자번호를 입력하세요.</p>
       <div className='searchBox'>
           <input className='searchInput' type='text' placeholder={placeholder} onClick={handleInputClick}></input>
-        <Link to='/ShowListPage'><button className='searchBtn'>조회</button></Link>
+          <button className='searchBtn' onClick={handleSearchClick}>조회</button>
       </div>
     </div>
   )
