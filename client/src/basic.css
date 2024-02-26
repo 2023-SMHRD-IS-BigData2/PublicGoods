@@ -186,8 +186,8 @@
 }
 
 .membership-img {
-    height: 20em;
-    width: 35em;
+    height: 25em;
+    width: 42em;
     max-width: 100%;
 }
 
@@ -702,6 +702,7 @@
     background-color: white;
     padding: 5px;
     font-size: 13px;
+    font-weight: bold;
 }
 
 .logoutBtn:hover {
