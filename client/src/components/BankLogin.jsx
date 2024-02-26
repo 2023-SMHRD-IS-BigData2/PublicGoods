@@ -36,7 +36,7 @@ const BankLogin = () => {
                 const userinfo = response.data
                 if (userinfo.user_type === 'BBB') {
                     // userinfo.user_id를 헤더 저장처리
-                    console.log(userinfo.user_id);
+                    sessionStorage.setItem('user_id', idInput);
                     navigate('/bankApply');
                     window.location.reload();
                 } else {

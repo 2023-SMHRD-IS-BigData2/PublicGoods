@@ -31,6 +31,7 @@ const Header = () => {
         setIsLogin(false);
         setUsername('');
         navigate('/');
+        window.location.reload();
     }
 
     return (
