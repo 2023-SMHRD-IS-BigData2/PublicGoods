@@ -5,7 +5,7 @@ from app.controllers import JsonDataProcessing
 from app.controllers import SimpleDocuProcessing
 from app.controllers import getOCRresult
 
-from app.models import insertUser, selectUser, selectUserBusinessNum
+from app.models import insertUser, selectUser, selectUserBusinessNum, getUserBusinessNum
 from app.models import insertNonFinancial, updateNonFinancial
 from app.models import insertSimpleFinancial, updateSimpleFinancial
 
@@ -74,7 +74,15 @@ def getBusinessNum() :
     data = selectUserBusinessNum()
     data = jsonify(data)
     return data
-    
+
+@app.route('/api/findBusinessNum', methods=['GET', 'POST'])
+def findBusinessNum() :
+    data = request.json
+    business_num = data.get('searchboxtext')
+    result = getUserBusinessNum(business_num)
+    if result : return jsonify({'result' : result})
+    else : {'result' : result}
+
 @app.route('/api/fileUpload', methods=['POST'])
 def fileUpload():
     if 'file' not in request.files:
