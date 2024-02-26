@@ -1,8 +1,14 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 const OcrCheck = () => {
+
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const data = location.state.Data;
+    console.log(data);
 
     // 맞습니까? 버튼 클릭했을 때
     const handleCheckClick = () => {
@@ -21,9 +27,18 @@ const OcrCheck = () => {
     {/* 체크 리스트 보여주기 */}
     <div className='apply-box3'>
         <div className='apply-bank'>
-            <p className='btn-sub2'> OCR 확인하기</p>
-            <h2>{data[0]}</h2>
-        </div>
+          <p className='btn-sub2'>OCR 확인하기</p>
+          <table className='ocrTable'>
+            <tbody>
+            {data.map((item, index) => (
+              <tr key={index}>
+                <td>{item['2013년12월31일']}</td>
+                <td>{item['2014년12월31일']}</td>
+                <td>{item['Indicator']}</td>
+              </tr>))}
+            </tbody>
+          </table>
+      </div>
     </div>
 
     {/* 위 사항 맞는지 체크 */}

@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { answerContext } from './AnswerContext';
+import { answerContext } from '../context/AnswerContext';
 import axios from 'axios';
 
 const Fin_Check = () => {
 
     const {selectFinList, setSelectFinList} = useContext(answerContext);
+
     const navigate = useNavigate();
 
     // 맞습니까? 버튼 클릭했을 때

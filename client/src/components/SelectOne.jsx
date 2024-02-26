@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { answerContext } from './AnswerContext';
+import { answerContext } from '../context/AnswerContext';
 
 const SelectOne = () => {
 
