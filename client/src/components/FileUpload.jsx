@@ -31,12 +31,13 @@ const FileUpload = () => {
                     user_id : sessionStorage.getItem('user_id')
                 });
                 const result = save_response.data;
-                if (result.Insert == true) {
-                    navigate('/ocrCheck');
+                if (result.Insert === true) {
+                    navigate('/ocrCheck', {state : { Data : data }});
                 }
             }
         } catch (error) {
             console.log('ERROR!! : ' + error);
+            alert('업로드 실패! 다시 올려주세요!')
         }
     };
 
