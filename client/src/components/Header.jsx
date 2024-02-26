@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 const Header = () => {
 
@@ -42,16 +41,16 @@ const Header = () => {
 
             {isLogin && (
                 <div className='userName'>
-                    <span className='userNameSpan'>{username && `${username}님 안녕하세요!`}</span>
+                    <span className='userNameSpan'><b>{username && `${username}님 반갑습니다!`}</b></span>
                     <button className='logoutBtn' onClick={handleLogout}>로그아웃</button>
                 </div>
             )}
-            {!isLogin && (
+            {/* {!isLogin && (
                 <div className='userName'>
                     <span className='userNameSpan'>{username ? `${username}님 안녕하세요!` : '로그인해주세요!'}</span>
                     <Link to="/login"><button className='logoutBtn'>로그인</button></Link>
                 </div>
-            )}
+            )} */}
         </div>
 
     )

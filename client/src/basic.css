@@ -186,8 +186,8 @@
 }
 
 .membership-img {
-    height: 20em;
-    width: 35em;
+    height: 25em;
+    width: 42em;
     max-width: 100%;
 }
 
@@ -702,6 +702,7 @@
     background-color: white;
     padding: 5px;
     font-size: 13px;
+    font-weight: bold;
 }
 
 .logoutBtn:hover {
@@ -1392,9 +1393,8 @@
 
   .okBtn2 {
     border: none;
-    background-color: rgba(133, 105, 247, 0);
+    background-color: white;
     color: black;
-    text-decoration: underline;
     position: absolute;
     right: 100px;
     width: 100px;
@@ -1404,7 +1404,7 @@
   }
 
   .okBtn2:hover {
-    text-decoration: none;
+    color: rgba(0, 0, 0, 0.5);
   }
 
   .apply-finBtn {
@@ -1629,8 +1629,8 @@
 
 .numberTh {
     width: 70px;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     border: none !important;
     color: white;
 }
@@ -1935,6 +1935,10 @@
     background-color: #f2f2f2;
 }
 
+.showListTable tr {
+    font-weight: bold;
+}
+
 /* Table - th */
 
 .firstTh {
@@ -1944,16 +1948,16 @@
 }
 
 .secondTh {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     border: none !important;
     background-color: #bcaff7 !important;
     color: white;
 }
 
 .thirdTh {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     border: none !important;
     background-color: #97a1f8 !important;
     color: white;
@@ -1965,7 +1969,8 @@
 }
 
 .showListBtn {
-    border: none;
+    border: 1px solid gray;
+    border-radius: 10px;
     text-align: center;
     font-weight: bold;
     font-size: 16px;
@@ -1973,7 +1978,7 @@
 }
 
 .showListBtn:hover {
-    text-decoration: underline;
+    background-color: lightgray;
 }
 
 /* --------------------------------------------------- */
