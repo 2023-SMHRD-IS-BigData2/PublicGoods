@@ -5,7 +5,7 @@ from app.controllers import JsonDataProcessing
 from app.controllers import SimpleDocuProcessing
 from app.controllers import getOCRresult
 
-from app.models import insertUser, selectUser
+from app.models import insertUser, selectUser, selectUserBusinessNum
 from app.models import insertNonFinancial, updateNonFinancial
 from app.models import insertSimpleFinancial, updateSimpleFinancial
 
@@ -69,6 +69,12 @@ def login() :
     return_data = jsonify(selectUser(idInput, pwNum))
     return return_data
 
+@app.route('/api/getBusinessNum', methods=['GET', 'POST'])
+def getBusinessNum() :
+    data = selectUserBusinessNum()
+    data = jsonify(data)
+    return data
+    
 @app.route('/api/fileUpload', methods=['POST'])
 def fileUpload():
     if 'file' not in request.files:

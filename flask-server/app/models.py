@@ -207,6 +207,42 @@ def selectUserType(user_id : str) -> str :
 
     return usercode
 
+def selectUserBusinessNum() -> Union[bool, Dict] :
+    tempList = []
+    resultList = []
+    
+    with DatabaseHandler().session as session :
+        try :
+            session.begin()
+            findUser = session.query(moolLoan_user_table).filter(moolLoan_user_table.user_type != 'BBB').all()
+            if not findUser : return None
+            for temp in findUser :
+                tempList.append(temp.user_unique_number)
+            findresult = session.query(moolLoan_user_documents_table).\
+                filter(moolLoan_user_documents_table.user_unique_number.in_(tempList)).all()
+            session.commit()
+            for temp in findresult :
+                document_dict = {
+                    # 'user_unique_number' : temp.user_unique_number,
+                    # 'non_finance_unique_number' : temp.non_finance_unique_number,
+                    # 'finance_unique_number' : temp.finance_unique_number,
+                    'business_num' : session.query(moolLoan_user_table).\
+                        filter(moolLoan_user_table.user_unique_number == temp.user_unique_number).first().business_num,
+                    'deep_result' : temp.deep_result,
+                    'approval_status' : temp.approval_status
+                }
+                resultList.append(document_dict)
+            return resultList
+        except SQLAlchemyError as e:
+            print('SQLAlchemyUserSelectError! : ' + str(e))
+            session.rollback()
+        except Exception as e:
+            print('ERROR! : ' + str(e))
+            session.rollback()
+
+    return False
+
+
 def updateUser(user_id : str, user_password : str, new_id : str = None , new_password : str = None) -> bool :
     row = 0
     updateBoolean = False
