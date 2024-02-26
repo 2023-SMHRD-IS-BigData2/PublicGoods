@@ -52,8 +52,8 @@ const BankLogin = () => {
 
         <div className='joinBox'>
             {/* 로그인 설명 */}
-            <div className='joinInfo'>
             <form onSubmit={handleJoinSubmit}>
+            <div className='joinInfo'>
             <div className='join'>
                 <div className='inputBox'>
                     {/* 로그인 제목 */}
@@ -114,8 +114,8 @@ const BankLogin = () => {
                     <button className='logBtn2' onClick={handleLogin}>회원가입</button>
                 </div>
             </div>
-            </form>
             </div>
+            </form>
 
             {/* 로그인 */}
             <div className='joinInfo'>

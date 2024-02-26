@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify, session
-from flask_session import Session
 from flask_cors import CORS
 
 from app.controllers import JsonDataProcessing
@@ -30,7 +29,6 @@ app.permanent_session_lifetime = timedelta(minutes= 60)
 NaverOCRURL = "https://5jhnjwjjza.apigw.ntruss.com/custom/v1/28004/94c60e18d0f07e16d2c25442c7a6c7dc86a8e362f8dc888c4cc5c71886cb8278/general"
 OCRSecretKey = "eG93a2ZjYlNhaXFCSWJSTVdueWFxWWVrTFRkT0NnWXc="
 
-Session(app)
 CORS(app)
 
 @app.errorhandler(404)
