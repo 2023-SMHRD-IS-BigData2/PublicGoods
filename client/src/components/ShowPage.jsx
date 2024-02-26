@@ -1,16 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 const ShowPage = () => {
-
-
-  {/* select로직으로 사업자번호를 확인한다 */}
- 
 
   {/* 여기 위 수정 */}
   const [placeholder, setPlaceHolder] = useState('사업자번호');
 
-  const handleInputClick = () => {
+  {/* select로직으로 사업자번호를 확인한다 */}
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.post('http://127.0.0.1:5000/api/getBusinessNum');
+        const jsonData = await response.data;
+        console.log(jsonData);
+      } catch(error) {
+        console.error('ERROR! : ' + error);
+      }
+    };
+    getData();
+  }, []);
+
+  const handleInputClick = async () => {
     setPlaceHolder('');
   }
 
