@@ -11,9 +11,9 @@ const Apply = () => {
       if (user_id !== null) {
         const userType = sessionStorage.getItem('user_type');
   
-        if (userType !== 'bbb') {
+        if (userType === 'bbb') {
           navigate('/bankApply');
-        } else if (userType === 'bbb') {
+        } else {
           navigate('/companyApply');
         }
       }

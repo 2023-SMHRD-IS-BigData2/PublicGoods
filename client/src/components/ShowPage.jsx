@@ -28,12 +28,14 @@ const ShowPage = () => {
         searchboxtext: searchboxtext
       });
       const data = response.data;
-      if (!data.result) {
-        navigate('/showNoPage')
-        console.log('결과 없음');
-      }else {
-        navigate('/showListPage')
-        console.log('결과 있음');
+      for(let i=0; i<data.length; i++){
+        console.log('data', data[i].deep_result);
+        const dataSearch = data[i].deep_result;
+        if (dataSearch === '결과있음') {
+          navigate('/showListPage')
+        }else {
+          navigate('/showNoPage')
+        }
       }
     }
     catch (error) {
@@ -45,7 +47,7 @@ const ShowPage = () => {
     <div className='showPg'>
       <p className='searchSub'>조회하고 싶은 기업의 사업자번호를 입력하세요.</p>
       <div className='searchBox'>
-        <input className='searchInput' type='text' placeholder='사업자번호'
+        <input className='searchInput' type='number' placeholder='사업자번호'
           onChange={(e) => setSearchboxtext(parseInt(e.target.value, 10))}></input>
         <button className='searchBtn' onClick={handleInputClick}>조회</button>
       </div>
