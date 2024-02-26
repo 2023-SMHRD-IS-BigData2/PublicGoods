@@ -22,7 +22,7 @@ const OcrCheck = () => {
     <div className='apply-box3'>
         <div className='apply-bank'>
             <p className='btn-sub2'> OCR 확인하기</p>
-            <h2>여기에 OCR 값이 보여져야함</h2>
+            <h2>{data[0]}</h2>
         </div>
     </div>
 

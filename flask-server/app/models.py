@@ -52,24 +52,6 @@ class moolLoan_user_documents_table(Base):  # moolLoan_user_documents_table 매�
     approval_status = Column(CHAR(1), nullable=False, comment='승인상태')
 
     ForeignKeyConstraint(['user_unique_number'], ['moolLoan_user_table.user_unique_number'], onupdate='CASCADE')
-
-# class non_financial_documents_table(Base):  # non_financial_documents_table 매핑
-#     __tablename__ = 'non_financial_documents_table'
-#     __table_args__ = {'comment': '비재무_문서_테이블'}
-
-#     document_number = Column(VARCHAR(50), primary_key=True, nullable=False, comment='문서고유번호',
-#                              default=(datetime.now().strftime('%Y%m%d') + str(uuid4()).replace('-', '')).upper())
-#     non_finance_unique_number = Column(VARCHAR(50), nullable=False, comment='비재무문서번호')
-#     delinquency_status = Column(CHAR(1), nullable=True, comment='연체여부')
-#     pay_pre_loan_status = Column(CHAR(1), nullable=True, comment='대출청산여부')
-#     loan_period = Column(INTEGER, nullable=True, comment='대출보유기간(월)')
-#     franchaise = Column(CHAR(1), nullable=True, comment='계열사여부')
-#     loan_amount = Column(INTEGER, nullable=True, comment='보증금액(만원)')
-#     city = Column(CHAR(1), nullable=True, comment='수도권여부')
-#     employee_no = Column(INTEGER, nullable=True, comment='고용인원수')
-#     bank_loan_amount = Column(INTEGER, nullable=True, comment='대출금액')
-#     ForeignKeyConstraint(['non_finance_unique_number'], ['moolLoan_user_documents_table.non_finance_unique_number'],
-#                          onupdate='CASCADE')
     
 class non_financial_documents_table(Base):
     __tablename__ = 'non_financial_documents_table'
@@ -138,6 +120,10 @@ def insertUser(user_id : str, user_password : str, user_type : str, business_num
     with DatabaseHandler().session as session:
         user_unique_number = RandomNumber().getNumber()
         user_password = sha512_crypt.hash(str(user_password))
+        try : business_num = int(business_num)
+        except (ValueError, Exception) as e : 
+            print('ValueError! ' + str(e)) 
+            return rowBoolean
         newAccount = moolLoan_user_table(
             user_unique_number=user_unique_number,
             user_id=user_id,
@@ -180,7 +166,6 @@ def insertUser(user_id : str, user_password : str, user_type : str, business_num
                     session.commit()
 
     return rowBoolean
-
 
 def selectUser(user_id : str, user_password : str) -> Dict :
     userInfo = None
@@ -277,26 +262,46 @@ def findDocuNum(user_id : str) -> Union[bool, Dict] :
 
     return result
 
-def findAdvDocuNum(DocuNum : Dict, config : str = 'NonFinNum') -> Union[bool, Dict] :
+def findAdvDocuNum(DocuNum : str, config : str = 'NonFinNum') -> Union[bool, Dict] :
     result = False
     if not DocuNum :
         return result
+    with DatabaseHandler().session as session :
+        try :
+            session.begin()
+            if config == 'NonFinNum' :
+                result = session.query(non_financial_documents_table).filter(non_financial_documents_table.non_finance_unique_number == DocuNum)
+            elif config == 'FinNum' :
+                result = session.query(financial_documents_table).filter(financial_documents_table.finance_unique_number == DocuNum)
+            session.commit()
+        except SQLAlchemyError as e:
+            print('SQLAlchemyFindAdvDocuNumError! : ' + str(e))
+            session.rollback()
+        except Exception as e:
+            print('ERROR! : ' + str(e))
+            session.rollback()
+    
+    return result
 
-def insertSimpleFinancial(user_id : str, SimpleFin : str) -> bool :
+def insertSimpleFinancial(user_id : str, SimpleFin : list) -> bool :
     FinNum = findDocuNum(user_id)['FinNum']
     insertBoolean = False
     row = 0
-    
     if not FinNum :
         return insertBoolean
     else :
+        SimpleFin = json.dumps(SimpleFin)
         with DatabaseHandler().session as session :
             SimpleFinDocu = simple_financial_documents_table(
                 finance_unique_number = FinNum,
                 finance_ocr_info = SimpleFin
             )
             try :
-                session.begin(); session.add(SimpleFinDocu); row = len(session.new)
+                session.begin(); 
+                find = session.query(simple_financial_documents_table).\
+                    filter(simple_financial_documents_table.finance_unique_number == FinNum).first()
+                if find : return insertBoolean
+                session.add(SimpleFinDocu); row = len(session.new)
                 if row == 1 : 
                     session.commit(); insertBoolean = True
                 else :
@@ -307,8 +312,42 @@ def insertSimpleFinancial(user_id : str, SimpleFin : str) -> bool :
                 print('ERROR! : ' + str(e))
             
     return insertBoolean
-            
 
+def updateSimpleFinancial(user_id : str, SimpleFin : list) -> bool :
+    FinNum = findDocuNum(user_id)['FinNum']
+    updateBoolean = False
+    row = 0
+
+    if not FinNum :
+        return updateBoolean
+    else :
+        SimpleFin = json.dumps(SimpleFin)
+        with DatabaseHandler().session as session :
+            try :
+                session.begin()
+                find = session.query(simple_financial_documents_table).\
+                    filter(simple_financial_documents_table.finance_unique_number == FinNum).first()
+                if find : document_number = find.document_number
+                else : return updateBoolean
+                session.query(simple_financial_documents_table).\
+                    filter(simple_financial_documents_table.document_number == document_number).\
+                    update({
+                        simple_financial_documents_table.finance_ocr_info : SimpleFin
+                    })
+                row = session.query(simple_financial_documents_table).\
+                    filter(simple_financial_documents_table.document_number == document_number).count()
+                if row >= 1:
+                    session.commit(); updateBoolean = True
+                else:
+                    session.rollback()
+            except SQLAlchemyError as e:
+                print('SQLAlchemyUpdateNonDocuError! : ' + str(e))
+                session.rollback()
+            except Exception as e:
+                print('ERROR! : ' + str(e))
+                session.rollback()
+
+    return updateBoolean
 
 def insertFinancial(user_id : str, FinJson : str) -> bool :
     FinNum = findDocuNum(user_id)['FinNum']
@@ -384,7 +423,10 @@ def insertNonFinancial(user_id : str, NonFinJson : str) -> bool :
                 sba_appv_rate = NonFinJson['sba_appv_rate']
             )
             try:
-                session.begin(); session.add(NonFinDocu); row = len(session.new)
+                session.begin()
+                find = session.query(non_financial_documents_table).filter(non_financial_documents_table.non_finance_unique_number == NonFinNum).first()
+                if find : return insertBoolean
+                session.add(NonFinDocu); row = len(session.new)
                 if row == 1:
                     session.commit(); insertBoolean = True
                 else:
@@ -398,20 +440,24 @@ def insertNonFinancial(user_id : str, NonFinJson : str) -> bool :
 
     return insertBoolean
 
-
 def updateNonFinancial(user_id : str, NonFinJson : str) -> bool :  # return Boolean
     NonFinNum = findDocuNum(user_id)['NonFinNum']
+    document_number = None
     updateBoolean = False
     row = 0
     if not NonFinNum:
         return updateBoolean
     else:
         with DatabaseHandler().session as session:
-            NonFinJson = json.loads(NonFinJson)
+            try : NonFinJson = json.loads(NonFinJson)
+            except : pass
             try:
                 session.begin()
+                find = session.query(non_financial_documents_table).filter(non_financial_documents_table.non_finance_unique_number == NonFinNum).first()
+                if find : document_number = find.document_number
+                else : return updateBoolean
                 session.query(non_financial_documents_table). \
-                    filter(non_financial_documents_table.non_finance_unique_number == NonFinNum).update({
+                    filter(non_financial_documents_table.document_number == document_number).update({
                     non_financial_documents_table.ChgOffDate : NonFinJson['ChgOffDate'],
                     non_financial_documents_table.ChgOffPrinGr : NonFinJson['ChgOffPrinGr'],
                     non_financial_documents_table.Term : NonFinJson['Term'],
@@ -426,7 +472,7 @@ def updateNonFinancial(user_id : str, NonFinJson : str) -> bool :  # return Bool
                 })
                 row = session.query(non_financial_documents_table). \
                     filter(non_financial_documents_table.non_finance_unique_number == NonFinNum).count()
-                if row == 1:
+                if row >= 1:
                     session.commit(); updateBoolean = True
                 else:
                     session.rollback()

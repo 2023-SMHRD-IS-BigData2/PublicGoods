@@ -5,12 +5,14 @@ from app.controllers import JsonDataProcessing
 from app.controllers import SimpleDocuProcessing
 from app.controllers import getOCRresult
 
-from app.models import insertUser, selectUser, insertSimpleFinancial
+from app.models import insertUser, selectUser
 from app.models import insertNonFinancial, updateNonFinancial
+from app.models import insertSimpleFinancial, updateSimpleFinancial
 
 from werkzeug.utils import secure_filename
 from datetime import timedelta
 import secrets
+import json
 import os
 
 app = Flask(__name__)
@@ -83,7 +85,6 @@ def fileUpload():
         response_data = getOCRresult(path = filepath, url = NaverOCRURL, key = OCRSecretKey)
         # insertSimpleFinancial(user_id, json.dumps(response_data))
         print(response_data)
-
         return response_data
     else : return {'key' : 'value'}
     
@@ -95,23 +96,21 @@ def non_fin() :
     data.changeNonFinKey()
     data.changeNonFinValue(user_id)
     print(data.AnyFinDict)
-    try :
-        row = insertNonFinancial(user_id, selectList)
-    except Exception as e :
-        print('Insert ERROR! 이미 데이터가 존재합니다! ' + str(e))
-        try :
-            row = updateNonFinancial(user_id, selectList)
-        except Exception as e :
-            print('ERROR! : ' + str(e))
-            return {'key' : row}
-        
+    nfdict = data.AnyFinDict
+    if not insertNonFinancial(user_id, nfdict) :
+        updateNonFinancial(user_id, nfdict)
     return jsonify(data.AnyFinDict)
 
 @app.route('/api/simpleFin', methods=['POST'])
 def simpleFin() :
-    data = SimpleDocuProcessing(request.json)
-    print(data.SimpleFinDict)
-    return {'key' : 'value'}
+    savedata = request.json
+    successBool = False
+    data = savedata['data']
+    user_id = savedata['user_id']
+    if not insertSimpleFinancial(user_id, data) : 
+        successBool = updateSimpleFinancial(user_id, data)
+    else : successBool = True
+    return {'Insert' : successBool}
     
 if __name__ == "__main__":
     app.run(debug = True, use_reloader = False)
