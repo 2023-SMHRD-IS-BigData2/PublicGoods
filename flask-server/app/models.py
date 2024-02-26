@@ -240,8 +240,8 @@ def selectUserBusinessNum() -> Union[bool, Dict] :
     return False
 
 def getUserBusinessNum(business_num : str) -> Union[bool, Dict] :
-    resultList = []
     tempList = []
+    resultList = []
     if not business_num : return False
 
     with DatabaseHandler().session as session :

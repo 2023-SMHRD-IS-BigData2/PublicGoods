@@ -6,18 +6,18 @@ const ShowPage = () => {
 
   const navigate = useNavigate();
 
-  {/* 여기 위 수정 */}
+  {/* 여기 위 수정 */ }
   const [placeholder, setPlaceHolder] = useState('사업자번호');
-  const [searchboxtext, setSearchboxtext] = useState(0);
+  const [searchboxtext, setSearchboxtext] = useState();
 
-  {/* select로직으로 사업자번호를 확인한다 */}
+  {/* select로직으로 사업자번호를 확인한다 */ }
   useEffect(() => {
     const getData = async () => {
       try {
         const response = await axios.post('http://127.0.0.1:5000/api/getBusinessNum');
         const jsonData = await response.data;
         console.log(jsonData);
-      } catch(error) {
+      } catch (error) {
         console.error('ERROR! : ' + error);
       }
     };
@@ -27,20 +27,21 @@ const ShowPage = () => {
   const handleInputClick = async () => {
     // setPlaceHolder('');
     try {
-      const response = await axios.post('http://127.0.0.1:5000/api/getBusinessNum', {
-        searchboxtext : searchboxtext
+      const response = await axios.post('http://127.0.0.1:5000/api/findBusinessNum', {
+        searchboxtext: searchboxtext
       });
       if (response.data.result != false) {
-        console.log(response.data.result);
+        console.log(response.data);
+        handleSearchClick();
       }
     }
     catch (error) {
       console.log('ERROR! : ' + error);
-    } 
+    }
   }
 
   const handleSearchClick = () => {
-    if(1==1) {
+    if (1 == 1) {
       navigate('/ShowListPage');
     } else {
       navigate('/showNoPage')
@@ -51,9 +52,9 @@ const ShowPage = () => {
     <div className='showPg'>
       <p className='searchSub'>조회하고 싶은 기업의 사업자번호를 입력하세요.</p>
       <div className='searchBox'>
-          <input className='searchInput' type='text' placeholder={placeholder} onClick={handleInputClick}
+        <input className='searchInput' type='text' placeholder={placeholder} /* onClick={handleInputClick} */
           onChange={(e) => setSearchboxtext(parseInt(e.target.value, 10))}></input>
-          <button className='searchBtn' onClick={handleSearchClick}>조회</button>
+        <button className='searchBtn' /* onClick={handleSearchClick} */ onClick={handleInputClick}>조회</button>
       </div>
     </div>
   )

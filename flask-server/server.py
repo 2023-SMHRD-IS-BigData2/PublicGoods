@@ -78,10 +78,12 @@ def getBusinessNum() :
 @app.route('/api/findBusinessNum', methods=['GET', 'POST'])
 def findBusinessNum() :
     data = request.json
-    business_num = data.get('searchboxtext')
+    try : business_num = int(data.get('searchboxtext'))
+    except ValueError as e : print('ValueError! : ' + str(e)); return jsonify({'key' : 'value'})
     result = getUserBusinessNum(business_num)
-    if result : return jsonify({'result' : result})
-    else : {'result' : result}
+    print(result)
+    if result : return jsonify(result)
+    else : return jsonify({'key' : 'value'})
 
 @app.route('/api/fileUpload', methods=['POST'])
 def fileUpload():
