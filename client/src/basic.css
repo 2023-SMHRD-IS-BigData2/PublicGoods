@@ -1046,6 +1046,31 @@
 
 /* --------------------------------------------------- */
 
+/* OcrCheck */
+
+.ocrTable {
+    width: 500px;
+}
+
+/* tr */
+.ocrTable tr {
+    border: 1px solid lightgray;
+    height: 30px;
+}
+
+.ocrTable tr:first-of-type {
+   text-align: center;
+   font-weight: bold;
+}
+
+/* td */
+.ocrTable td {
+    border: 1px solid lightgray;
+    text-align: center;
+}
+
+/* --------------------------------------------------- */
+
 /* Select */
 
 .selectPage {
