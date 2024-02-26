@@ -13,7 +13,7 @@ def changeAnswer(answer : Union[str, float, int]) -> Union[str, float] :
         answer = answer[:4]
         if answer == '있습니다' : return 1
         elif answer == '없습니다' : return 0
-        elif answer == '모릅니다' : return 'X'
+        elif answer == '모릅니다' : return None
         else :
             float_answer = float(answer)
             if isinstance(float_answer, float) : return float_answer

@@ -1,5 +1,4 @@
-from flask import Flask, request, jsonify, session
-from flask_session import Session
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 from app.controllers import JsonDataProcessing
@@ -7,7 +6,7 @@ from app.controllers import SimpleDocuProcessing
 from app.controllers import getOCRresult
 
 from app.models import insertUser, selectUser, insertSimpleFinancial
-from app.models import insertNonFinancial
+from app.models import insertNonFinancial, updateNonFinancial
 
 from werkzeug.utils import secure_filename
 from datetime import timedelta
@@ -30,36 +29,11 @@ app.permanent_session_lifetime = timedelta(minutes= 60)
 NaverOCRURL = "https://5jhnjwjjza.apigw.ntruss.com/custom/v1/28004/94c60e18d0f07e16d2c25442c7a6c7dc86a8e362f8dc888c4cc5c71886cb8278/general"
 OCRSecretKey = "eG93a2ZjYlNhaXFCSWJSTVdueWFxWWVrTFRkT0NnWXc="
 
-Session(app)
 CORS(app)
 
 @app.errorhandler(404)
 def not_found_error(error) :
     return jsonify({'error': 'Not found'}), 404
-
-@app.route('/debug_session')
-def debug_session():
-    print(str(session))
-    return str(session)
-
-@app.route('/api/addSession', methods=['POST'])
-def addSession() :
-    data = request.json
-    user_id = data.get('user_id')
-    session['user_id'] = user_id
-    print(session.get('user_id'))
-    return '', 204
-
-@app.route('/api/loginCheck', methods=['POST'])
-def loginCheck() :
-    user_id = session.get('user_id')
-    print(user_id)
-    return jsonify({'user_id' : user_id})
-
-@app.route('/api/logout', methods=['POST'])
-def logout() :
-    session.clear()
-    return True
 
 @app.route('/api/join', methods=['POST'])
 def join() :
@@ -121,11 +95,15 @@ def non_fin() :
     data.changeNonFinKey()
     data.changeNonFinValue(user_id)
     print(data.AnyFinDict)
-    # try :
-    #     insertNonFinancial(user_id, selectList)
-    # except Exception :
-    #     try :
-    #         up
+    try :
+        row = insertNonFinancial(user_id, selectList)
+    except Exception as e :
+        print('Insert ERROR! 이미 데이터가 존재합니다! ' + str(e))
+        try :
+            row = updateNonFinancial(user_id, selectList)
+        except Exception as e :
+            print('ERROR! : ' + str(e))
+            return {'key' : row}
         
     return jsonify(data.AnyFinDict)
 
