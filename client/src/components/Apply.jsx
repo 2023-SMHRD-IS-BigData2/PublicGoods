@@ -1,7 +1,24 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Apply = () => {
+
+  const navigate = useNavigate();
+
+    useEffect(() => {
+      const user_id = sessionStorage.getItem('user_id');
+  
+      if (user_id !== null) {
+        const userType = sessionStorage.getItem('user_type');
+  
+        if (userType !== 'bbb') {
+          navigate('/bankApply');
+        } else if (userType === 'bbb') {
+          navigate('/companyApply');
+        }
+      }
+    }, [navigate]);
+
   return (
     // 신청하기 전체 페이지 - div
     <div className='onePage-div'>
