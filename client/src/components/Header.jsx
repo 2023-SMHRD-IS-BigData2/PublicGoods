@@ -41,7 +41,7 @@ const Header = () => {
 
             {isLogin && (
                 <div className='userName'>
-                    <span className='userNameSpan'>{username && `${username}님 반갑습니다!`}</span>
+                    <span className='userNameSpan'><b>{username && `${username}님 반갑습니다!`}</b></span>
                     <button className='logoutBtn' onClick={handleLogout}>로그아웃</button>
                 </div>
             )}
