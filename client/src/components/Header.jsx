@@ -16,9 +16,8 @@ const Header = () => {
     const checkUserSession = async () => {
         try {
             const user_id = sessionStorage.getItem('user_id');
-            const response = await axios.get('http://127.0.0.1:5000/api/loginCheck');
-            const sessionUser = response.data.user_id;
-            if (user_id == sessionUser) {
+            console.log(user_id);
+            if (user_id != null) {
                 setUsername(user_id);
                 setIsLogin(true);
             }

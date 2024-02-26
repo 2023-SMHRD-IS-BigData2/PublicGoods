@@ -1,56 +1,60 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, session
 from flask_session import Session
 from flask_cors import CORS
-from flask import session
 
 from app.controllers import JsonDataProcessing
 from app.controllers import SimpleDocuProcessing
 from app.controllers import getOCRresult
 
 from app.models import insertUser, selectUser, insertSimpleFinancial
+from app.models import insertNonFinancial
 
 from werkzeug.utils import secure_filename
-from threading import Lock
 from datetime import timedelta
 import secrets
 import os
 
 app = Flask(__name__)
-CORS(app)
-Session(app)
-app.secret_key = secrets.token_hex(16)
-lock = Lock()
 
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
+
+secret_key = secrets.token_hex(16)
+app.secret_key = secret_key
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SESSION_TYPE'] = 'filesystem'
+# app.config['SESSION_PERMANENT'] = False
 
-app.config['SESSION_PERMANENT'] = True
 app.permanent_session_lifetime = timedelta(minutes= 60)
-
 NaverOCRURL = "https://5jhnjwjjza.apigw.ntruss.com/custom/v1/28004/94c60e18d0f07e16d2c25442c7a6c7dc86a8e362f8dc888c4cc5c71886cb8278/general"
 OCRSecretKey = "eG93a2ZjYlNhaXFCSWJSTVdueWFxWWVrTFRkT0NnWXc="
+
+Session(app)
+CORS(app)
 
 @app.errorhandler(404)
 def not_found_error(error) :
     return jsonify({'error': 'Not found'}), 404
+
+@app.route('/debug_session')
+def debug_session():
+    print(str(session))
+    return str(session)
 
 @app.route('/api/addSession', methods=['POST'])
 def addSession() :
     data = request.json
     user_id = data.get('user_id')
     session['user_id'] = user_id
-    print(session['user_id'])
-    return 'session_set', 204
+    print(session.get('user_id'))
+    return '', 204
 
-@app.route('/api/loginCheck', methods=['GET'])
+@app.route('/api/loginCheck', methods=['POST'])
 def loginCheck() :
     user_id = session.get('user_id')
     print(user_id)
-    if user_id : return jsonify({'user_id' : user_id})
-    else : return jsonify({'user_id' : None})
+    return jsonify({'user_id' : user_id})
 
 @app.route('/api/logout', methods=['POST'])
 def logout() :
@@ -111,14 +115,19 @@ def fileUpload():
     
 @app.route('/api/NonFin', methods=['POST'])
 def non_fin() :
-    data = JsonDataProcessing(request.json)
-    user_id = session['user_id']
-    print(user_id)
-    print(data)
+    selectList = request.json.get('selectList')
+    user_id = request.json.get('user_id')
+    data = JsonDataProcessing(selectList)
     data.changeNonFinKey()
     data.changeNonFinValue(user_id)
     print(data.AnyFinDict)
-    return {'key' : 'value'}
+    # try :
+    #     insertNonFinancial(user_id, selectList)
+    # except Exception :
+    #     try :
+    #         up
+        
+    return jsonify(data.AnyFinDict)
 
 @app.route('/api/simpleFin', methods=['POST'])
 def simpleFin() :

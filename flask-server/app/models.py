@@ -362,15 +362,18 @@ def insertNonFinancial(user_id : str, NonFinJson : str) -> bool :
         with DatabaseHandler().session as session:
             NonFinJson = json.loads(NonFinJson)
             NonFinDocu = non_financial_documents_table(
-                non_finance_unique_number=NonFinNum,
-                delinquency_status=NonFinJson['연체여부'],
-                pay_pre_loan_status=NonFinJson['대출청산여부'],
-                loan_period=NonFinJson['대출보유기간(월)'],
-                franchaise=NonFinJson['계열사여부'],
-                loan_amount=NonFinJson['보증금액(만원)'],
-                city=NonFinJson['수도권여부'],
-                employee_no=NonFinJson['고용인원수'],
-                bank_loan_amount=NonFinJson['대출금액']
+                non_finance_unique_number = NonFinNum,
+                ChgOffDate = NonFinJson['ChgOffDate'],
+                ChgOffPrinGr = NonFinJson['ChgOffPrinGr'],
+                Term = NonFinJson['Term'],
+                FranchiseCode = NonFinJson['FranchiseCode'],
+                SBA_Appv = NonFinJson['SBA_Appv'],
+                UrbanRural = NonFinJson['UrbanRural'],
+                RetainedJob = NonFinJson['RetainedJob'],
+                GrAppv = NonFinJson['GrAppv'],
+                naics_code = NonFinJson['naics_code'],
+                default_rate = NonFinJson['default_rate'],
+                sba_appv_rate = NonFinJson['sba_appv_rate']
             )
             try:
                 session.begin(); session.add(NonFinDocu); row = len(session.new)
@@ -397,42 +400,21 @@ def updateNonFinancial(user_id : str, NonFinJson : str) -> bool :  # return Bool
     else:
         with DatabaseHandler().session as session:
             NonFinJson = json.loads(NonFinJson)
-            naics_code = NonFinJson['NAICS']
-            default_rate = None
-            sba_appv_rate = None
-            try :
-                default_rate = naics_code.map(NAICS_DEFAULT_RATES)
-            except ValueError as e :
-                print('ValueError! : ' + str(e))
-                default_rate = 19
-            i = NonFinJson['대출금액']; j = NonFinJson['보증금액(만원)']
-            try:
-                sba_appv_rate = (i - j) / i
-            except ValueError as e :
-                print('ValueError! : ' + str(e))
-                sba_appv_rate = 0
-
             try:
                 session.begin()
-                # TODO : 구현완료하시면 주석은 제외해주세요
-                # 1. 프론트에서 NAICS 코드 입력받아야 하죠 (한국산업대분류코드)
-                # 2. NAICS 코드를 잘 모를 경우 그냥 '00'
-                # 3. naics_code 컬럼 추가
-                # 4. default_rate 컬럼 추가
-                # 5. sba_appv_rate 컬럼 추가
                 session.query(non_financial_documents_table). \
                     filter(non_financial_documents_table.non_finance_unique_number == NonFinNum).update({
-                    non_financial_documents_table.delinquency_status: NonFinJson['연체여부'],  # ChgOffDate
-                    non_financial_documents_table.pay_pre_loan_status: NonFinJson['대출청산여부'],  # ChgOffPrinGr
-                    non_financial_documents_table.loan_period: NonFinJson['대출보유기간(월)'],  # Term
-                    non_financial_documents_table.franchaise: NonFinJson['계열사여부'],       # FranchiseCode
-                    non_financial_documents_table.loan_amount: NonFinJson['보증금액(만원)'],    # SBA_Appv
-                    non_financial_documents_table.city: NonFinJson['수도권여부'],   # UrbanRural
-                    non_financial_documents_table.employee_no: NonFinJson['고용인원수'],   # RetainedJob
-                    non_financial_documents_table.bank_loan_amount: NonFinJson['대출금액'],  # GrAppv
-                    non_financial_documents_table.naics_code: naics_code,  # 새로 추가됨
-                    non_financial_documents_table.default_rate: default_rate,  # 새로 추가됨
-                    non_financial_documents_table.sba_appv_rate: sba_appv_rate,   # 새로 추가됨
+                    non_financial_documents_table.ChgOffDate : NonFinJson['ChgOffDate'],
+                    non_financial_documents_table.ChgOffPrinGr : NonFinJson['ChgOffPrinGr'],
+                    non_financial_documents_table.Term : NonFinJson['Term'],
+                    non_financial_documents_table.FranchiseCode : NonFinJson['FranchiseCode'],
+                    non_financial_documents_table.SBA_Appv : NonFinJson['SBA_Appv'],
+                    non_financial_documents_table.UrbanRural : NonFinJson['UrbanRural'],
+                    non_financial_documents_table.RetainedJob : NonFinJson['RetainedJob'],
+                    non_financial_documents_table.GrAppv : NonFinJson['GrAppv'],
+                    non_financial_documents_table.naics_code : NonFinJson['naics_code'],
+                    non_financial_documents_table.default_rate : NonFinJson['default_rate'],
+                    non_financial_documents_table.sba_appv_rate : NonFinJson['sba_appv_rate']
                 })
                 row = session.query(non_financial_documents_table). \
                     filter(non_financial_documents_table.non_finance_unique_number == NonFinNum).count()
@@ -447,10 +429,3 @@ def updateNonFinancial(user_id : str, NonFinJson : str) -> bool :  # return Bool
                 print('ERROR! : ' + str(e))
                 session.rollback()
     return updateBoolean
-
-# def validateNonFinancialJson(NonFinJson):
-#     required_keys = ['연체여부', '대출청산여부', '대출보유기간(월)', '계열사여부', '보증금액(만원)', '수도권여부', '고용인원수', '대출금액']
-#     for key in required_keys:
-#         if key not in NonFinJson:
-#             return False
-#     return True

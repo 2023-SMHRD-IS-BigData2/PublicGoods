@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import axios from 'axios';
@@ -8,6 +8,12 @@ const BankLogin = () => {
     const [idInput, setIdInput] = useState('');
     const [pwNum, setPwNum] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (sessionStorage.getItem('user_id') != null) {
+            navigate('/bankApply');
+        }
+    }, [sessionStorage.getItem('user_id'), navigate]);
 
     const handleLogin = async () => {
         let hasError = false;
@@ -32,6 +38,7 @@ const BankLogin = () => {
                     // userinfo.user_id를 헤더 저장처리
                     console.log(userinfo.user_id);
                     navigate('/bankApply');
+                    window.location.reload();
                 } else {
                     alert('로그인에 실패하였습니다! ');
                 }

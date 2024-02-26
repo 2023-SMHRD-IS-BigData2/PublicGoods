@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -8,6 +8,12 @@ const CompanyLogin = () => {
     const [idInput, setIdInput] = useState('');
     const [pwNum, setPwNum] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (sessionStorage.getItem('user_id') != null) {
+            navigate('/companyApply');
+        }
+    }, [sessionStorage.getItem('user_id'), navigate]);
 
     const handleLogin = async () => {
         let hasError = false;
@@ -32,7 +38,6 @@ const CompanyLogin = () => {
                 if (userinfo.user_type !== 'BBB') {
                     // userinfo.user_id 를 헤더에 저장처리
                     // console.log(userinfo.user_id);
-                    await axios.post('http://127.0.0.1:5000/api/addSession', {user_id : idInput});
                     sessionStorage.setItem('user_id', idInput);
                     navigate('/companyApply');
                     window.location.reload();

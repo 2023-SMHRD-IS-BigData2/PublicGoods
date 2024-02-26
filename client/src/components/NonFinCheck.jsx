@@ -11,9 +11,14 @@ const NonFinCheck = () => {
   // 맞다면 클릭 버튼 클릭했을 때
   const handleCheckClick = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:5000/api/NonFin', selectList);
+      const user_id = sessionStorage.getItem('user_id')
+      const response = await axios.post('http://127.0.0.1:5000/api/NonFin', {
+        selectList : selectList,
+        user_id : user_id
+      });
       console.log(response.data);
       if (response.data != null) {
+        console.log(response.data)
         console.log('전송성공!')
         navigate('/finalSelectNonFin');
       }
