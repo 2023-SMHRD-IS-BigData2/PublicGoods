@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 from flask import Flask, request, jsonify, session
+=======
+from flask import Flask, request, jsonify
+>>>>>>> origin/main
 
 from app.controllers import JsonDataProcessing
 from app.controllers import SimpleDocuProcessing
