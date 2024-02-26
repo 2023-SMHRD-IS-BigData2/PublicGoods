@@ -75,7 +75,8 @@ class non_financial_documents_table(Base):
     __tablename__ = 'non_financial_documents_table'
     __table_arge__ = {'comment': '비재무_문서_테이블'}
 
-    document_number = Column(VARCHAR(50), primary_key=True, nullable=False, comment='문서고유번호')
+    document_number = Column(VARCHAR(50), primary_key=True, nullable=False, comment='문서고유번호',
+                             default=(datetime.now().strftime('%Y%m%d') + str(uuid4()).replace('-', '')).upper())
     non_finance_unique_number = Column(VARCHAR(50), nullable=False, comment='비재무문서번호')
     ChgOffDate = Column(TINYINT, nullable=True, comment='연체여부')
     ChgOffPrinGr = Column(TINYINT, nullable=True, comment='대출청산')
@@ -276,6 +277,11 @@ def findDocuNum(user_id : str) -> Union[bool, Dict] :
 
     return result
 
+def findAdvDocuNum(DocuNum : Dict, config : str = 'NonFinNum') -> Union[bool, Dict] :
+    result = False
+    if not DocuNum :
+        return result
+
 def insertSimpleFinancial(user_id : str, SimpleFin : str) -> bool :
     FinNum = findDocuNum(user_id)['FinNum']
     insertBoolean = False
@@ -286,7 +292,7 @@ def insertSimpleFinancial(user_id : str, SimpleFin : str) -> bool :
     else :
         with DatabaseHandler().session as session :
             SimpleFinDocu = simple_financial_documents_table(
-                 finance_unique_number = FinNum,
+                finance_unique_number = FinNum,
                 finance_ocr_info = SimpleFin
             )
             try :
@@ -313,7 +319,8 @@ def insertFinancial(user_id : str, FinJson : str) -> bool :
         return insertBoolean
     else:
         with DatabaseHandler().session as session:
-            FinJson = json.loads(FinJson)
+            try : FinJson = json.loads(FinJson)
+            except : pass
             FinDocu = financial_documents_table(
                 finance_unique_number=FinNum,
                 revenue=FinJson['매출액'],
@@ -360,7 +367,8 @@ def insertNonFinancial(user_id : str, NonFinJson : str) -> bool :
         return insertBoolean
     else:
         with DatabaseHandler().session as session:
-            NonFinJson = json.loads(NonFinJson)
+            try : NonFinJson = json.loads(NonFinJson)
+            except : pass
             NonFinDocu = non_financial_documents_table(
                 non_finance_unique_number = NonFinNum,
                 ChgOffDate = NonFinJson['ChgOffDate'],
