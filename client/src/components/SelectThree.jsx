@@ -47,7 +47,7 @@ const SelectThree = () => {
           <div className='apply-bank'>
             <div className='btn-sub2'>
               <div className="input-wrapper">
-                <input className='apply-btn2'   type='number'  placeholder='예)  2' />
+                <input className='apply-btn2' type='number' placeholder='예)  2' />
                 <span className="placeholder-text">개월</span>
                 <button className='okBtn' onClick={handleMonthClick}>확인</button>
               </div>

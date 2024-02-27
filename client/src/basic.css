@@ -244,7 +244,6 @@
 .apply-company {
     margin: 0 10px;
     position: relative;
-    margin-top: 10px;
 }
 
 .apply-btn {
@@ -1363,7 +1362,6 @@
     display: inline-block;
     text-align: center;
     width: 100%;
-    margin-bottom: 20px;
 }
 
 .input-wrapper {
@@ -1730,7 +1728,7 @@
 
 /* Result Box */
 .resultBox {
-    height: 1400px;
+    height: 1600px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1743,6 +1741,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 50px;
 }
 
 .possImposs {
@@ -1826,11 +1825,18 @@
     
   } */
 
+  .barBoxDiv {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    margin-top: 80px;
+  }
+
   /* 세 번째, 네 번째 묶기 */
   .barBox {
     width: 100%;
+    padding: 30px;
     display: flex;
-    margin-top: 60px;
+    margin-top: 30px;
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -1880,10 +1886,17 @@
   }
 }
 
+.top4 {
+    text-align: center;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 28px;
+}
+
   /* fifthDash */
   .fifthDash {
-    margin-top: 60px;
-    
+    margin-top: 100px;
+    margin-bottom: 80px;
   }
 
   .compareLine {
@@ -2113,10 +2126,26 @@
     border: none;
     background-color: rgba(133, 105, 247, 0);
     color: black;
-    text-decoration: underline;
     position: absolute;
     right: 100px;
     bottom: -70px; 
+    height: 30px;
+    width: 100px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.wantBtn:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.wantBtn2 {
+    border: none;
+    background-color: rgba(133, 105, 247, 0);
+    color: white;
+    position: absolute;
+    right: 100px;
+    bottom: -100px; 
     height: 30px;
     width: 100px;
     font-weight: bold;

@@ -17,25 +17,25 @@ const ShowListPage  = () => {
 
                 <tr>
                   <td className='numberTd'>1</td>
-                  <td>2022.03</td>
+                  <td>2022.12</td>
                   <td><Link to='/resultPage'><button className='showListBtn'>결과보기</button></Link></td>
                 </tr>
 
                 <tr>
                   <td className='numberTd'>2</td>
-                  <td>2022.06</td>
-                  <td><button className='showListBtn'>결과보기</button></td>
-                </tr>
-
-                <tr>
-                  <td className='numberTd'>3</td>
                   <td>2022.09</td>
                   <td><button className='showListBtn'>결과보기</button></td>
                 </tr>
 
                 <tr>
+                  <td className='numberTd'>3</td>
+                  <td>2022.06</td>
+                  <td><button className='showListBtn'>결과보기</button></td>
+                </tr>
+
+                <tr>
                   <td className='numberTd'>4</td>
-                  <td>2022.12</td>
+                  <td>2022.03</td>
                   <td><button className='showListBtn'>결과보기</button></td>
                 </tr>
               </tbody>

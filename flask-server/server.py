@@ -83,7 +83,9 @@ def findBusinessNum() :
     try : business_num = int(data.get('searchboxtext'))
     except ValueError as e : print('ValueError! : ' + str(e)); return jsonify({'key' : 'value'})
     result = getUserBusinessNum(business_num)
+    print()
     print(result)
+    print()
     if result : return jsonify(result)
     else : return jsonify({'key' : 'value'})
 

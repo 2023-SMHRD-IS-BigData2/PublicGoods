@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import axios from 'axios';
 
 // // 비재무 막대그래프
 // const barData1 = [
@@ -31,18 +30,18 @@ import axios from 'axios';
 
 // 비재무 막대그래프
 const barData1 = [
-  { name: '기존대출연체', 비재무: 2300},
-  { name: '기존대출이청산', 비재무: 1500},
-  { name: '대출보유기간', 비재무: 1800},
-  { name: '평균고용인원수', 비재무: 1100}
+  { name: '기존대출연체', 비재무: 2100},
+  { name: '기존대출이청산', 비재무: 1100},
+  { name: '대출보유기간', 비재무: 2600},
+  { name: '평균고용인원수', 비재무: 900}
 ];
 
 // 재무 막대그래프
 const barData2 = [
-  { name: '매출', 재무: 1800},
-  { name: '영업이익', 재무: 1000},
-  { name: '자산', 재무: 1200},
-  { name: '부채', 재무: 2100},
+  { name: '매출', 재무: 2600},
+  { name: '영업이익', 재무: 1800},
+  { name: '자산', 재무: 1500},
+  { name: '부채', 재무: 1900},
 ];
 
 // 성장률 꺽은선 그래프
@@ -56,32 +55,14 @@ const lineData = [
   { name: '24년 3분기', 해당기업: 3490, 해당기업의산업군: 4300},
 ];
 
-const ResultPage = () => {
-
-  useEffect(() => {
-    const getGrowthModel = async () => {
-      try {
-        const user_id = sessionStorage.getItem('user_id');
-        const response = await axios.post('http://127.0.0.1:5000/api/getGrowthModel', {
-          user_id : user_id
-        });
-        const data = response.data;
-        console.log(data);
-      }
-      catch (error) {
-        console.log('ERROR! : ' + error);
-      }
-    }
-
-    getGrowthModel();
-  }, [])
+const ResultPage2 = () => {
 
   // 대출 가능/불가능
-  const [moneyValue, setMoneyValue] = useState(50);
+  const [moneyValue, setMoneyValue] = useState(60);
   // 비재무 확률
-  const [nonPercentValue, setNonPercentValue] = useState(50)
+  const [nonPercentValue, setNonPercentValue] = useState(60)
   // 재무 확률
-  const [finPercnetValue, setFinPercentValue] = useState(50)
+  const [finPercnetValue, setFinPercentValue] = useState(40)
 
   // 데이터를 퍼센트로 변환
   const percentData1 = barData1.map(item => ({
@@ -106,7 +87,7 @@ const ResultPage = () => {
     valueUp: {
         color: 'white',
         height: '100%',
-        width: '50%',
+        width: '60%',
         backgroundColor: 'rgb(79, 148, 79)',
         borderTopLeftRadius: '30px',
         borderBottomLeftRadius: '30px',
@@ -115,7 +96,7 @@ const ResultPage = () => {
     valueDown: {
         color: 'white',
         height: '100%',
-        width: '50%',
+        width: '40%',
         backgroundColor: 'rgb(185, 62, 62)',
         borderTopRightRadius: '30px',
         borderBottomRightRadius: '30px',
@@ -220,4 +201,4 @@ const ResultPage = () => {
   )
 }
 
-export default ResultPage
+export default ResultPage2
