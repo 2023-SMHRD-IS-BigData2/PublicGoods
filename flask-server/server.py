@@ -151,5 +151,18 @@ def getGrowthModel() :
     if json_data : return jsonify(json_data)
     else : return jsonify({'key' : json_data})
 
+@app.route('/api/getonecode', methods=['POST']) # 주소는 알아서 바꿔서 해주세요
+def getonecode() :
+    path = os.path.join(app.root_path + '\\app\\analysis_module', 'growth_model', '기타 서비스(공공행정 제외)_growth_result.csv')
+    print(path)
+    df = pd.read_csv(path)
+    json_data = []
+    try :
+        for _, row in df.iterrows() :
+            json_data.append(row.to_dict())
+    except : json_data = None
+    if json_data : return jsonify(json_data)
+    else : return jsonify({'key' : json_data})
+
 if __name__ == "__main__":
     app.run(debug = True, use_reloader = False)

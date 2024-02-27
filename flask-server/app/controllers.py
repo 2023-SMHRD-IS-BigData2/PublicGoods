@@ -149,7 +149,7 @@ def getKORNAICSmapper(user_id : str) -> str :
     userTypeString = None
     user_type = selectUserType(user_id)
     if not user_type : return None
-    if user_type == 'BBB' : return None
+    if user_type == 'BBB' : return '금융 및 보험업_growth_result'
     for key, val in filepath.items() :
         if val == user_type :
             path = key
