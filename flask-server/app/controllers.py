@@ -1,6 +1,7 @@
 from app.analysis_module import NonFinancialModel
 from app.analysis_module import FinancialModel
-from app.analysis_module import NAICS_DEFAULT_RATES
+from app.analysis_module import NAICS_DEFAULT_RATES, KOR_NAICS_MAPPER
+
 from app.models import selectUserType
 from app.ocr import OcrResultPostProcessing
 from app.ocr import NaverOCR
@@ -8,6 +9,7 @@ from typing import Union, Tuple
 import pandas as pd
 import numpy as np
 import json
+import os
 
 def changeAnswer(answer : Union[str, float, int]) -> Union[str, float] :
         answer = answer[:4]
@@ -122,3 +124,34 @@ def getOCRresult(path : str, url : str, key : str) :
     final_result = json.loads(final_result['image_0'])
 
     return final_result
+
+filepath = {
+    '건강 관리 및 사회 지원_growth_result' : '71',
+    '건설업_growth_result' : '23',
+    '공익_공과 사업(수도·전기·가스)_growth_result' : '92',
+    '광업_growth_result' : '21',
+    '교육 서비스업_growth_result' : '61',
+    '금융 및 보험업_growth_result' : '52',
+    '기타 서비스(공공행정 제외)_growth_result' : '81',
+    '농업, 임업 및 어업_growth_result' : '11',
+    '소매_growth_result' : '42',
+    '숙박 및 음식점업_growth_result' : '72',
+    '예술, 스포츠 및 여가관련 서비스업_growth_result' : '62',
+    '운수 및 창고업_growth_result' : '22',
+    '운수 및 창고업_growth_result' : '48',
+    '전기, 가스, 증기 및 공기 조절 공급업_growth_result' : '22',
+    '전문, 과학 및 기술 서비스업_growth_result' : '54',
+    '정보_통신_growth_result' : '51',
+    '제조업_growth_result' : '31'
+}
+
+def getKORNAICSmapper(user_id : str) -> str :
+    userTypeString = None
+    user_type = selectUserType(user_id)
+    if not user_type : return None
+    if user_type == 'BBB' : return None
+    for key, val in filepath.items() :
+        if val == user_type :
+            path = key
+    if not path : return None
+    return path

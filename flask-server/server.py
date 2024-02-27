@@ -3,14 +3,16 @@ from flask_cors import CORS
 
 from app.controllers import JsonDataProcessing
 from app.controllers import SimpleDocuProcessing
-from app.controllers import getOCRresult
+from app.controllers import getOCRresult, getKORNAICSmapper
 
 from app.models import insertUser, selectUser, selectUserBusinessNum, getUserBusinessNum
 from app.models import insertNonFinancial, updateNonFinancial
 from app.models import insertSimpleFinancial, updateSimpleFinancial
+from app.models import selectUserType
 
 from werkzeug.utils import secure_filename
 from datetime import timedelta
+import pandas as pd
 import secrets
 import json
 import os
@@ -127,6 +129,25 @@ def simpleFin() :
         successBool = updateSimpleFinancial(user_id, data)
     else : successBool = True
     return {'Insert' : successBool}
-    
+
+@app.route('/api/getGrowthModel', methods=['POST']) 
+def getGrowthModel() :
+    data = request.json['user_id']
+    csv_name = getKORNAICSmapper(data)
+    csv_path = f'{csv_name}.csv'
+    print(csv_path)
+
+    path = os.path.join(app.root_path + '\\app\\analysis_module', 'growth_model', csv_path)
+    print(path)
+    df = pd.read_csv(path)
+    json_data = []
+    try :
+        for _, row in df.iterrows() :
+            json_data.append(row.to_dict())
+    except : json_data = None
+
+    if json_data : return jsonify(json_data)
+    else : return jsonify({'key' : json_data})
+
 if __name__ == "__main__":
     app.run(debug = True, use_reloader = False)

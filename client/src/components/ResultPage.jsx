@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-
+import axios from 'axios';
 
 // 비재무 막대그래프
 const barData1 = [
@@ -34,6 +34,24 @@ const lineData = [
 ];
 
 const ResultPage = () => {
+
+  useEffect(() => {
+    const getGrowthModel = async () => {
+      try {
+        const user_id = sessionStorage.getItem('user_id');
+        const response = await axios.post('http://127.0.0.1:5000/api/getGrowthModel', {
+          user_id : user_id
+        });
+        const data = response.data;
+        console.log(data);
+      }
+      catch (error) {
+        console.log('ERROR! : ' + error);
+      }
+    }
+
+    getGrowthModel();
+  }, [])
 
   // 대출 가능/불가능
   const [moneyValue, setMoneyValue] = useState(60);
