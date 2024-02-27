@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import axios from 'axios';
 
 // // 비재무 막대그래프
 // const barData1 = [
@@ -27,6 +28,8 @@ import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, L
 //   { name: '24년 2분기', 해당기업: 2390, 해당기업의산업군: 3800, amt: 2500 },
 //   { name: '24년 3분기', 해당기업: 3490, 해당기업의산업군: 4300, amt: 2100 },
 // ];
+
+
 
 // 비재무 막대그래프
 const barData1 = [
@@ -57,12 +60,33 @@ const lineData = [
 
 const ResultPage2 = () => {
 
+  useEffect(() => {
+    const getGrowthModel = async () => {
+      try {
+        const user_id = sessionStorage.getItem('user_id');
+        const response = await axios.post('http://127.0.0.1:5000/api/getGrowthModel', {
+          user_id : user_id
+        });
+        const data = response.data;
+        console.log(data);
+        setGrowthModel(data);
+      }
+      catch (error) {
+        console.log('ERROR! : ' + error);
+      }
+    }
+
+    getGrowthModel();
+  }, [])
+
   // 대출 가능/불가능
   const [moneyValue, setMoneyValue] = useState(60);
   // 비재무 확률
   const [nonPercentValue, setNonPercentValue] = useState(60)
   // 재무 확률
   const [finPercnetValue, setFinPercentValue] = useState(40)
+  // 성장모형
+  const [growthModel, setGrowthModel] = useState();
 
   // 데이터를 퍼센트로 변환
   const percentData1 = barData1.map(item => ({
@@ -191,6 +215,52 @@ const ResultPage2 = () => {
               <Legend />
               <Line type="monotone" dataKey="해당기업" stroke="#86b4f8" strokeWidth={2.5}/>
               <Line type="monotone" dataKey="해당기업의산업군" stroke="#eeb53a" strokeWidth={2.5}/>
+            </LineChart>
+          </div>
+
+          <div className='growth_model'>
+            <p className='compareLine'>성장모형0</p>
+            <LineChart
+              width={1500}
+              height={500}
+              data={growthModel}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="Date" tick={{ fontWeight: 'bold', fill: 'black', display:'none' }} axisLine={{ stroke: 'black' }}/>
+              <YAxis tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/>
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="Operating_Income" stroke="#86b4f8" strokeWidth={2.5}/>
+            </LineChart>
+          </div>
+          <div className='growth_model'>
+            <p className='compareLine'>성장모형1</p>
+            <LineChart
+              width={1500}
+              height={500}
+              data={growthModel}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="Date" tick={{ fontWeight: 'bold', fill: 'black', display:'none' }} axisLine={{ stroke: 'black' }}/>
+              <YAxis tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/>
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="State_0" stroke="#86b4f8" strokeWidth={2.5}/>
+            </LineChart>
+          </div>
+          <div className='growth_model'>
+            <p className='compareLine'>성장모형2</p>
+            <LineChart
+              width={1500}
+              height={500}
+              data={growthModel}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="Date" tick={{ fontWeight: 'bold', fill: 'black', display:'none' }} axisLine={{ stroke: 'black' }}/>
+              <YAxis tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/>
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="State_1" stroke="#86b4f8" strokeWidth={2.5}/>
             </LineChart>
           </div>
 
