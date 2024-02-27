@@ -2139,6 +2139,19 @@
     color: rgba(0, 0, 0, 0.5);
 }
 
+.wantBtn2 {
+    border: none;
+    background-color: rgba(133, 105, 247, 0);
+    color: white;
+    position: absolute;
+    right: 100px;
+    bottom: -100px; 
+    height: 30px;
+    width: 100px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
 .wantLoanBox {
     height: 250px;
     margin-top: 70px;
