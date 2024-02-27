@@ -32,28 +32,17 @@ import axios from 'axios';
 // 비재무 막대그래프
 const barData1 = [
   { name: '기존대출연체', 비재무: 2300},
-  { name: '기존대출이청산', 비재무: 1500},
-  { name: '대출보유기간', 비재무: 1800},
+  { name: '기존대출이청산', 비재무: 1800},
+  { name: '대출보유기간', 비재무: 1500},
   { name: '평균고용인원수', 비재무: 1100}
 ];
 
 // 재무 막대그래프
 const barData2 = [
-  { name: '매출', 재무: 1800},
-  { name: '영업이익', 재무: 1000},
+  { name: '매출', 재무: 2100},
+  { name: '영업이익', 재무: 1800},
   { name: '자산', 재무: 1200},
-  { name: '부채', 재무: 2100},
-];
-
-// 성장률 꺽은선 그래프
-const lineData = [
-  { name: '23년 1분기', 해당기업: 3000, 해당기업의산업군: 1500},
-  { name: '23년 2분기', 해당기업: 2000, 해당기업의산업군: 1500},
-  { name: '23년 3분기', 해당기업: 2000, 해당기업의산업군: 8500},
-  { name: '23년 4분기', 해당기업: 2780, 해당기업의산업군: 3908},
-  { name: '24년 1분기', 해당기업: 3500, 해당기업의산업군: 2500},
-  { name: '24년 2분기', 해당기업: 2390, 해당기업의산업군: 3800},
-  { name: '24년 3분기', 해당기업: 3490, 해당기업의산업군: 4300},
+  { name: '부채', 재무: 1000},
 ];
 
 const ResultPage = () => {
@@ -62,7 +51,7 @@ const ResultPage = () => {
     const getGrowthModel = async () => {
       try {
         const user_id = sessionStorage.getItem('user_id');
-        const response = await axios.post('http://127.0.0.1:5000/api/getGrowthModel', {
+        const response = await axios.post('http://127.0.0.1:5000/api/getonecode', {
           user_id : user_id
         });
         const data = response.data;
@@ -96,13 +85,6 @@ const ResultPage = () => {
     const percentData2 = barData2.map(item => ({
       name: item.name,
       재무: (item.재무 / 50).toFixed(0) // 퍼센트로 변환하여 소수점 두 자리까지 표시
-    }));
-
-    // 데이터를 퍼센트로 변환
-    const percentData3 = lineData.map(item => ({
-      name: item.name,
-      해당기업: (item.해당기업 / 100).toFixed(0), // 퍼센트로 변환하여 소수점 두 자리까지 표시
-      해당기업의산업군: (item.해당기업의산업군 / 100).toFixed(0)
     }));
 
   const styles = {
@@ -197,68 +179,54 @@ const ResultPage = () => {
           </div>
           </div>
 
-
           {/* 다섯 번째 - 성장률 꺽은선 그래프 대시보드 */}
-          <div className='fifthDash'>
-            <p className='compareLine'>해당 산업군과 해당 기업 비교</p>
-            <LineChart
-              width={1500}
-              height={500}
-              data={percentData3}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/>
-              <YAxis tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/>
-              <Tooltip />
-              <Legend />
-              <Line type="monotone" dataKey="해당기업" stroke="#86b4f8" strokeWidth={2.5}/>
-              <Line type="monotone" dataKey="해당기업의산업군" stroke="#eeb53a" strokeWidth={2.5}/>
-            </LineChart>
-          </div>
-
           <div className='growth_model'>
-            <p className='compareLine'>성장모형0</p>
+            <p className='compareLine' style={{marginTop : '100px', fontSize : '40px'}}>성장모형 데이터 분석</p>
+            <p className='compareLine' style={{marginTop : '100px'}}>섹터 평균이익</p>
             <LineChart
-              width={1500}
-              height={500}
+              width={1300}
+              height={300}
               data={growthModel}
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="Date" tick={{ fontWeight: 'bold', fill: 'black', display:'none' }} axisLine={{ stroke: 'black' }}/>
-              <YAxis tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/>
+              <YAxis tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }} domain={[0, 1000]}/>
               <Tooltip />
               <Legend />
               <Line type="monotone" dataKey="Operating_Income" stroke="#86b4f8" strokeWidth={2.5}/>
             </LineChart>
           </div>
+
           <div className='growth_model'>
-            <p className='compareLine'>성장모형1</p>
+            <p className='compareLine' style={{marginTop : '100px'}}>성장 구간</p>
             <LineChart
-              width={1500}
-              height={500}
+              width={1300}
+              height={300}
               data={growthModel}
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="Date" tick={{ fontWeight: 'bold', fill: 'black', display:'none' }} axisLine={{ stroke: 'black' }}/>
-              <YAxis tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/>
+              <YAxis tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }} domain={[0, 1.01]}/>
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="State_0" stroke="#86b4f8" strokeWidth={2.5}/>
+              <Line type="monotone" dataKey="State_0" stroke="#6fb66f" strokeWidth={2.5}/>
             </LineChart>
           </div>
+          
           <div className='growth_model'>
-            <p className='compareLine'>성장모형2</p>
+            <p className='compareLine' style={{marginTop : '100px'}}>감익 구간</p>
             <LineChart
-              width={1500}
-              height={500}
+              width={1300}
+              height={300}
               data={growthModel}
+              style={{marginBottom : '100px'}}
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="Date" tick={{ fontWeight: 'bold', fill: 'black', display:'none' }} axisLine={{ stroke: 'black' }}/>
-              <YAxis tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }}/>
+              <YAxis tick={{ fontWeight: 'bold', fill: 'black' }} axisLine={{ stroke: 'black' }} domain={[0, 1.01]}/>
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="State_1" stroke="#86b4f8" strokeWidth={2.5}/>
+              <Line type="monotone" dataKey="State_1" stroke="#FFA500" strokeWidth={2.5}/>
             </LineChart>
           </div>
 
