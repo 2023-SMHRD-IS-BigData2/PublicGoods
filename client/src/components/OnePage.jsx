@@ -31,7 +31,7 @@ const OnePage = () => {
         <div className='addPage'>
         <h3 className='intro-start'>서비스 예시화면</h3>  
             <div className=''>
-                <img src="/images/Content/exservice.png" alt="exservice-img" className="serviceImg" />
+                <img src="/images/Content/exResult.jpg" alt="exservice-img" className="serviceImg" />
             </div>
         </div>
 

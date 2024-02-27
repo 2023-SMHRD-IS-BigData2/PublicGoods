@@ -130,6 +130,8 @@ const ResultPage = () => {
             </div>
           </div>
 
+          <div className='barBoxDiv'>
+
           <div className='top4'>대출 여부의 영향을 준 상위 4개의 항목</div>
 
           {/* 세 번째, 네 번째 묶기 */}
@@ -170,6 +172,7 @@ const ResultPage = () => {
                 <Bar dataKey="재무" fill="#ffa2ba" barSize={25} /> {/* barSize로 막대의 높이 설정 */}
               </BarChart>
             </div>
+          </div>
           </div>
 
 
