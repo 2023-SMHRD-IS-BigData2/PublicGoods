@@ -18,7 +18,7 @@ const Fin_Check = () => {
         console.log(response.data)
       }
       catch (error) {
-        alert('전송에 실패했습니다!');
+        console('전송에 실패했습니다!');
       }
       console.log(selectFinList);
       navigate('/allSelectNext');

@@ -130,6 +130,7 @@ const ResultPage = () => {
             </div>
           </div>
 
+          <div className='top4'>대출 여부의 영향을 준 상위 4개의 항목</div>
 
           {/* 세 번째, 네 번째 묶기 */}
           <div className='barBox'>
