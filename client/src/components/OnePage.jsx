@@ -60,7 +60,7 @@ const OnePage = () => {
             <div className='third-box'>
                 <h3 className='third-sub'>멤버십</h3>
                 <p className='third-content'>
-                    <img src="/images/Content/Membership5.png" alt="membership-img" className="membership-img" />
+                    <img src="/images/Content/serviceImg.png" alt="membership-img" className="membership-img" />
                 </p>
             </div>
         </div>
