@@ -13,6 +13,7 @@ import BankApply from './components/BankApply';
 import CompanyApply from './components/CompanyApply';
 import FileUpload from './components/FileUpload';
 import ResultPage from './components/ResultPage';
+import ResultPage2 from './components/ResultPage2';
 import WantLoan  from './components/WantLoan';
 
 import ShowPage from './components/ShowPage';
@@ -93,6 +94,8 @@ function Project() {
 
           {/* 비재무제표 제출한 후 결과 확인 페이지 */}
           <Route path='/resultPage' element={<ResultPage />} />
+
+          <Route path='/resultPage2' element={<ResultPage2 />} />
           {/* 은행 신청하기 조회 페이지 */}
           <Route path='/showPage' element={<ShowPage />} />
           <Route path='/showListPage' element={<ShowListPage/>}/>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -6,10 +6,30 @@ const WantLoan  = () => {
 
     const navigate = useNavigate();
 
+    // const handleOkClick = () => {
+    //     const user_id = sessionStorage.getItem('user_id');
+    
+    //     if (user_id !== null) {
+    //       const userType = sessionStorage.getItem('user_type');
+    
+    //       if (userType === 'BBB') {
+    //         navigate('/resultPage');
+    //       } else {
+    //         navigate('/resultPage2');
+    //       }
+    //     }
+    // }
+
     // 확인버튼 클릭했을 때
-    const handleOkClick = (e) => {
+    const handleOkClick = () => {
       navigate('/resultPage');
     };
+
+    // 확인2버튼 클릭했을 때
+    const handleOkClick2 = () => {
+        navigate('/resultPage2');
+      };
+  
 
     return(
         <div className='wantLoanPg'>
@@ -27,6 +47,7 @@ const WantLoan  = () => {
                         <input className='apply-btn2' type='number' placeholder='예)  3000' />
                         <span className="placeholder-text">만원</span>
                         <button className='wantBtn' onClick={handleOkClick}>확인</button>
+                        <button className='wantBtn2' onClick={handleOkClick2}>확인</button>
                     </div>
                 </div>
                 </div>
